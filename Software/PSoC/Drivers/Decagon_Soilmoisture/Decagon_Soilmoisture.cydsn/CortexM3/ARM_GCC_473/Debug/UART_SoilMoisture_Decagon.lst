@@ -1,0 +1,3168 @@
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"UART_SoilMoisture_Decagon.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	UART_SoilMoisture_Decagon_initVar
+  19              		.bss
+  20              		.type	UART_SoilMoisture_Decagon_initVar, %object
+  21              		.size	UART_SoilMoisture_Decagon_initVar, 1
+  22              	UART_SoilMoisture_Decagon_initVar:
+  23 0000 00       		.space	1
+  24              		.section	.text.UART_SoilMoisture_Decagon_Start,"ax",%progbits
+  25              		.align	2
+  26              		.global	UART_SoilMoisture_Decagon_Start
+  27              		.thumb
+  28              		.thumb_func
+  29              		.type	UART_SoilMoisture_Decagon_Start, %function
+  30              	UART_SoilMoisture_Decagon_Start:
+  31              	.LFB0:
+  32              		.file 1 ".\\Generated_Source\\PSoC5\\UART_SoilMoisture_Decagon.c"
+   1:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * File Name: UART_SoilMoisture_Decagon.c
+   3:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Version 2.30
+   4:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+   5:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Description:
+   6:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  This file provides all API functionality of the UART component
+   7:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+   8:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Note:
+   9:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+  10:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** ********************************************************************************
+  11:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * You may use this file only in accordance with the license, terms, conditions,
+  13:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  14:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *******************************************************************************/
+  16:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+  17:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** #include "UART_SoilMoisture_Decagon.h"
+  18:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** #include "CyLib.h"
+  19:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** #if(UART_SoilMoisture_Decagon_INTERNAL_CLOCK_USED)
+  20:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #include "UART_SoilMoisture_Decagon_IntClock.h"
+  21:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** #endif /* End UART_SoilMoisture_Decagon_INTERNAL_CLOCK_USED */
+  22:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+  23:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+  24:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** /***************************************
+  25:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Global data allocation
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 2
+
+
+  26:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** ***************************************/
+  27:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+  28:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** uint8 UART_SoilMoisture_Decagon_initVar = 0u;
+  29:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** #if( UART_SoilMoisture_Decagon_TX_ENABLED && (UART_SoilMoisture_Decagon_TXBUFFERSIZE > UART_SoilMoi
+  30:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     volatile uint8 UART_SoilMoisture_Decagon_txBuffer[UART_SoilMoisture_Decagon_TXBUFFERSIZE];
+  31:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     volatile uint8 UART_SoilMoisture_Decagon_txBufferRead = 0u;
+  32:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     uint8 UART_SoilMoisture_Decagon_txBufferWrite = 0u;
+  33:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** #endif /* End UART_SoilMoisture_Decagon_TX_ENABLED */
+  34:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** #if( ( UART_SoilMoisture_Decagon_RX_ENABLED || UART_SoilMoisture_Decagon_HD_ENABLED ) && \
+  35:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****      (UART_SoilMoisture_Decagon_RXBUFFERSIZE > UART_SoilMoisture_Decagon_FIFO_LENGTH) )
+  36:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     volatile uint8 UART_SoilMoisture_Decagon_rxBuffer[UART_SoilMoisture_Decagon_RXBUFFERSIZE];
+  37:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     volatile uint8 UART_SoilMoisture_Decagon_rxBufferRead = 0u;
+  38:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     volatile uint8 UART_SoilMoisture_Decagon_rxBufferWrite = 0u;
+  39:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     volatile uint8 UART_SoilMoisture_Decagon_rxBufferLoopDetect = 0u;
+  40:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     volatile uint8 UART_SoilMoisture_Decagon_rxBufferOverflow = 0u;
+  41:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #if (UART_SoilMoisture_Decagon_RXHW_ADDRESS_ENABLED)
+  42:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         volatile uint8 UART_SoilMoisture_Decagon_rxAddressMode = UART_SoilMoisture_Decagon_RXADDRES
+  43:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         volatile uint8 UART_SoilMoisture_Decagon_rxAddressDetected = 0u;
+  44:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #endif /* End EnableHWAddress */
+  45:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** #endif /* End UART_SoilMoisture_Decagon_RX_ENABLED */
+  46:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+  47:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+  48:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** /*******************************************************************************
+  49:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Function Name: UART_SoilMoisture_Decagon_Start
+  50:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** ********************************************************************************
+  51:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+  52:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Summary:
+  53:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  Initialize and Enable the UART component.
+  54:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  Enable the clock input to enable operation.
+  55:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+  56:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Parameters:
+  57:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  None.
+  58:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+  59:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Return:
+  60:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  None.
+  61:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+  62:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Global variables:
+  63:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  The UART_SoilMoisture_Decagon_intiVar variable is used to indicate initial
+  64:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  configuration of this component. The variable is initialized to zero (0u)
+  65:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  and set to one (1u) the first time UART_Start() is called. This allows for
+  66:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  component initialization without re-initialization in all subsequent calls
+  67:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  to the UART_SoilMoisture_Decagon_Start() routine.
+  68:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+  69:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Reentrant:
+  70:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  No.
+  71:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+  72:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *******************************************************************************/
+  73:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** void UART_SoilMoisture_Decagon_Start(void) 
+  74:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** {
+  33              		.loc 1 74 0
+  34              		.cfi_startproc
+  35              		@ args = 0, pretend = 0, frame = 0
+  36              		@ frame_needed = 1, uses_anonymous_args = 0
+  37 0000 80B5     		push	{r7, lr}
+  38              	.LCFI0:
+  39              		.cfi_def_cfa_offset 8
+  40              		.cfi_offset 7, -8
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 3
+
+
+  41              		.cfi_offset 14, -4
+  42 0002 00AF     		add	r7, sp, #0
+  43              	.LCFI1:
+  44              		.cfi_def_cfa_register 7
+  75:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     /* If not Initialized then initialize all required hardware and software */
+  76:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     if(UART_SoilMoisture_Decagon_initVar == 0u)
+  45              		.loc 1 76 0
+  46 0004 40F20003 		movw	r3, #:lower16:UART_SoilMoisture_Decagon_initVar
+  47 0008 C0F20003 		movt	r3, #:upper16:UART_SoilMoisture_Decagon_initVar
+  48 000c 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+  49 000e 002B     		cmp	r3, #0
+  50 0010 08D1     		bne	.L2
+  77:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     {
+  78:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         UART_SoilMoisture_Decagon_Init();
+  51              		.loc 1 78 0
+  52 0012 FFF7FEFF 		bl	UART_SoilMoisture_Decagon_Init
+  79:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         UART_SoilMoisture_Decagon_initVar = 1u;
+  53              		.loc 1 79 0
+  54 0016 40F20003 		movw	r3, #:lower16:UART_SoilMoisture_Decagon_initVar
+  55 001a C0F20003 		movt	r3, #:upper16:UART_SoilMoisture_Decagon_initVar
+  56 001e 4FF00102 		mov	r2, #1
+  57 0022 1A70     		strb	r2, [r3, #0]
+  58              	.L2:
+  80:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     }
+  81:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     UART_SoilMoisture_Decagon_Enable();
+  59              		.loc 1 81 0
+  60 0024 FFF7FEFF 		bl	UART_SoilMoisture_Decagon_Enable
+  82:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** }
+  61              		.loc 1 82 0
+  62 0028 80BD     		pop	{r7, pc}
+  63              		.cfi_endproc
+  64              	.LFE0:
+  65              		.size	UART_SoilMoisture_Decagon_Start, .-UART_SoilMoisture_Decagon_Start
+  66 002a 00BF     		.section	.text.UART_SoilMoisture_Decagon_Init,"ax",%progbits
+  67              		.align	2
+  68              		.global	UART_SoilMoisture_Decagon_Init
+  69              		.thumb
+  70              		.thumb_func
+  71              		.type	UART_SoilMoisture_Decagon_Init, %function
+  72              	UART_SoilMoisture_Decagon_Init:
+  73              	.LFB1:
+  83:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+  84:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+  85:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** /*******************************************************************************
+  86:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Function Name: UART_SoilMoisture_Decagon_Init
+  87:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** ********************************************************************************
+  88:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+  89:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Summary:
+  90:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  Initialize component's parameters to the parameters set by user in the
+  91:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  customizer of the component placed onto schematic. Usually called in
+  92:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  UART_SoilMoisture_Decagon_Start().
+  93:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+  94:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Parameters:
+  95:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  None.
+  96:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+  97:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Return:
+  98:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  None.
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 4
+
+
+  99:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+ 100:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *******************************************************************************/
+ 101:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** void UART_SoilMoisture_Decagon_Init(void) 
+ 102:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** {
+  74              		.loc 1 102 0
+  75              		.cfi_startproc
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 1, uses_anonymous_args = 0
+  78              		@ link register save eliminated.
+  79 0000 80B4     		push	{r7}
+  80              	.LCFI2:
+  81              		.cfi_def_cfa_offset 4
+  82              		.cfi_offset 7, -4
+  83 0002 00AF     		add	r7, sp, #0
+  84              	.LCFI3:
+  85              		.cfi_def_cfa_register 7
+ 103:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #if(UART_SoilMoisture_Decagon_RX_ENABLED || UART_SoilMoisture_Decagon_HD_ENABLED)
+ 104:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 105:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #if(UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED && (UART_SoilMoisture_Decagon_RXBUFFERSI
+ 106:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             /* Set the RX Interrupt. */
+ 107:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             (void)CyIntSetVector(UART_SoilMoisture_Decagon_RX_VECT_NUM, &UART_SoilMoisture_Decagon_
+ 108:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             CyIntSetPriority(UART_SoilMoisture_Decagon_RX_VECT_NUM, UART_SoilMoisture_Decagon_RX_PR
+ 109:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #endif /* End UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED */
+ 110:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 111:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #if (UART_SoilMoisture_Decagon_RXHW_ADDRESS_ENABLED)
+ 112:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             UART_SoilMoisture_Decagon_SetRxAddressMode(UART_SoilMoisture_Decagon_RXAddressMode);
+ 113:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             UART_SoilMoisture_Decagon_SetRxAddress1(UART_SoilMoisture_Decagon_RXHWADDRESS1);
+ 114:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             UART_SoilMoisture_Decagon_SetRxAddress2(UART_SoilMoisture_Decagon_RXHWADDRESS2);
+ 115:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #endif /* End UART_SoilMoisture_Decagon_RXHW_ADDRESS_ENABLED */
+ 116:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 117:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         /* Init Count7 period */
+ 118:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         UART_SoilMoisture_Decagon_RXBITCTR_PERIOD_REG = UART_SoilMoisture_Decagon_RXBITCTR_INIT;
+  86              		.loc 1 118 0
+  87 0004 46F28143 		movw	r3, #25729
+  88 0008 C4F20003 		movt	r3, 16384
+  89 000c 4FF07202 		mov	r2, #114
+  90 0010 1A70     		strb	r2, [r3, #0]
+ 119:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         /* Configure the Initial RX interrupt mask */
+ 120:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         UART_SoilMoisture_Decagon_RXSTATUS_MASK_REG  = UART_SoilMoisture_Decagon_INIT_RX_INTERRUPTS
+  91              		.loc 1 120 0
+  92 0012 46F28243 		movw	r3, #25730
+  93 0016 C4F20003 		movt	r3, 16384
+  94 001a 4FF02002 		mov	r2, #32
+  95 001e 1A70     		strb	r2, [r3, #0]
+ 121:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #endif /* End UART_SoilMoisture_Decagon_RX_ENABLED || UART_SoilMoisture_Decagon_HD_ENABLED*/
+ 122:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 123:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #if(UART_SoilMoisture_Decagon_TX_ENABLED)
+ 124:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #if(UART_SoilMoisture_Decagon_TX_INTERRUPT_ENABLED && (UART_SoilMoisture_Decagon_TXBUFFERSI
+ 125:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             /* Set the TX Interrupt. */
+ 126:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             (void)CyIntSetVector(UART_SoilMoisture_Decagon_TX_VECT_NUM, &UART_SoilMoisture_Decagon_
+ 127:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             CyIntSetPriority(UART_SoilMoisture_Decagon_TX_VECT_NUM, UART_SoilMoisture_Decagon_TX_PR
+ 128:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #endif /* End UART_SoilMoisture_Decagon_TX_INTERRUPT_ENABLED */
+ 129:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 130:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         /* Write Counter Value for TX Bit Clk Generator*/
+ 131:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #if(UART_SoilMoisture_Decagon_TXCLKGEN_DP)
+ 132:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             UART_SoilMoisture_Decagon_TXBITCLKGEN_CTR_REG = UART_SoilMoisture_Decagon_BIT_CENTER;
+ 133:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             UART_SoilMoisture_Decagon_TXBITCLKTX_COMPLETE_REG = (UART_SoilMoisture_Decagon_NUMBER_O
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 5
+
+
+ 134:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                         UART_SoilMoisture_Decagon_NUMBER_OF_START_BIT) * UART_SoilMoisture_Decagon_
+ 135:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #else
+ 136:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             UART_SoilMoisture_Decagon_TXBITCTR_PERIOD_REG = ((UART_SoilMoisture_Decagon_NUMBER_OF_D
+ 137:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                         UART_SoilMoisture_Decagon_NUMBER_OF_START_BIT) * UART_SoilMoisture_Decagon_
+ 138:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #endif /* End UART_SoilMoisture_Decagon_TXCLKGEN_DP */
+ 139:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 140:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         /* Configure the Initial TX interrupt mask */
+ 141:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #if(UART_SoilMoisture_Decagon_TX_INTERRUPT_ENABLED && (UART_SoilMoisture_Decagon_TXBUFFERSI
+ 142:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             UART_SoilMoisture_Decagon_TXSTATUS_MASK_REG = UART_SoilMoisture_Decagon_TX_STS_FIFO_EMP
+ 143:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #else
+ 144:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             UART_SoilMoisture_Decagon_TXSTATUS_MASK_REG = UART_SoilMoisture_Decagon_INIT_TX_INTERRU
+ 145:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #endif /*End UART_SoilMoisture_Decagon_TX_INTERRUPT_ENABLED*/
+ 146:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 147:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #endif /* End UART_SoilMoisture_Decagon_TX_ENABLED */
+ 148:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 149:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #if(UART_SoilMoisture_Decagon_PARITY_TYPE_SW)  /* Write Parity to Control Register */
+ 150:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         UART_SoilMoisture_Decagon_WriteControlRegister( \
+ 151:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             (UART_SoilMoisture_Decagon_ReadControlRegister() & (uint8)~UART_SoilMoisture_Decagon_CT
+ 152:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             (uint8)(UART_SoilMoisture_Decagon_PARITY_TYPE << UART_SoilMoisture_Decagon_CTRL_PARITY_
+ 153:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #endif /* End UART_SoilMoisture_Decagon_PARITY_TYPE_SW */
+ 154:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** }
+  96              		.loc 1 154 0
+  97 0020 BD46     		mov	sp, r7
+  98 0022 80BC     		pop	{r7}
+  99 0024 7047     		bx	lr
+ 100              		.cfi_endproc
+ 101              	.LFE1:
+ 102              		.size	UART_SoilMoisture_Decagon_Init, .-UART_SoilMoisture_Decagon_Init
+ 103 0026 00BF     		.section	.text.UART_SoilMoisture_Decagon_Enable,"ax",%progbits
+ 104              		.align	2
+ 105              		.global	UART_SoilMoisture_Decagon_Enable
+ 106              		.thumb
+ 107              		.thumb_func
+ 108              		.type	UART_SoilMoisture_Decagon_Enable, %function
+ 109              	UART_SoilMoisture_Decagon_Enable:
+ 110              	.LFB2:
+ 155:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 156:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 157:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** /*******************************************************************************
+ 158:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Function Name: UART_SoilMoisture_Decagon_Enable
+ 159:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** ********************************************************************************
+ 160:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+ 161:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Summary:
+ 162:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  Enables the UART block operation
+ 163:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+ 164:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Parameters:
+ 165:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  None.
+ 166:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+ 167:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Return:
+ 168:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  None.
+ 169:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+ 170:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Global Variables:
+ 171:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  UART_SoilMoisture_Decagon_rxAddressDetected - set to initial state (0).
+ 172:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+ 173:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *******************************************************************************/
+ 174:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** void UART_SoilMoisture_Decagon_Enable(void) 
+ 175:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** {
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 6
+
+
+ 111              		.loc 1 175 0
+ 112              		.cfi_startproc
+ 113              		@ args = 0, pretend = 0, frame = 8
+ 114              		@ frame_needed = 1, uses_anonymous_args = 0
+ 115 0000 80B5     		push	{r7, lr}
+ 116              	.LCFI4:
+ 117              		.cfi_def_cfa_offset 8
+ 118              		.cfi_offset 7, -8
+ 119              		.cfi_offset 14, -4
+ 120 0002 82B0     		sub	sp, sp, #8
+ 121              	.LCFI5:
+ 122              		.cfi_def_cfa_offset 16
+ 123 0004 00AF     		add	r7, sp, #0
+ 124              	.LCFI6:
+ 125              		.cfi_def_cfa_register 7
+ 176:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     uint8 enableInterrupts;
+ 177:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     enableInterrupts = CyEnterCriticalSection();
+ 126              		.loc 1 177 0
+ 127 0006 FFF7FEFF 		bl	CyEnterCriticalSection
+ 128 000a 0346     		mov	r3, r0
+ 129 000c FB71     		strb	r3, [r7, #7]
+ 178:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 179:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #if(UART_SoilMoisture_Decagon_RX_ENABLED || UART_SoilMoisture_Decagon_HD_ENABLED)
+ 180:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         /*RX Counter (Count7) Enable */
+ 181:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         UART_SoilMoisture_Decagon_RXBITCTR_CONTROL_REG |= UART_SoilMoisture_Decagon_CNTR_ENABLE;
+ 130              		.loc 1 181 0
+ 131 000e 46F29143 		movw	r3, #25745
+ 132 0012 C4F20003 		movt	r3, 16384
+ 133 0016 46F29142 		movw	r2, #25745
+ 134 001a C4F20002 		movt	r2, 16384
+ 135 001e 1278     		ldrb	r2, [r2, #0]
+ 136 0020 D2B2     		uxtb	r2, r2
+ 137 0022 42F02002 		orr	r2, r2, #32
+ 138 0026 D2B2     		uxtb	r2, r2
+ 139 0028 1A70     		strb	r2, [r3, #0]
+ 182:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         /* Enable the RX Interrupt. */
+ 183:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         UART_SoilMoisture_Decagon_RXSTATUS_ACTL_REG  |= UART_SoilMoisture_Decagon_INT_ENABLE;
+ 140              		.loc 1 183 0
+ 141 002a 46F29243 		movw	r3, #25746
+ 142 002e C4F20003 		movt	r3, 16384
+ 143 0032 46F29242 		movw	r2, #25746
+ 144 0036 C4F20002 		movt	r2, 16384
+ 145 003a 1278     		ldrb	r2, [r2, #0]
+ 146 003c D2B2     		uxtb	r2, r2
+ 147 003e 42F01002 		orr	r2, r2, #16
+ 148 0042 D2B2     		uxtb	r2, r2
+ 149 0044 1A70     		strb	r2, [r3, #0]
+ 184:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #if(UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED && (UART_SoilMoisture_Decagon_RXBUFFERSI
+ 185:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             CyIntEnable(UART_SoilMoisture_Decagon_RX_VECT_NUM);
+ 186:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             #if (UART_SoilMoisture_Decagon_RXHW_ADDRESS_ENABLED)
+ 187:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 UART_SoilMoisture_Decagon_rxAddressDetected = 0u;
+ 188:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             #endif /* End UART_SoilMoisture_Decagon_RXHW_ADDRESS_ENABLED */
+ 189:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #endif /* End UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED */
+ 190:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #endif /* End UART_SoilMoisture_Decagon_RX_ENABLED || UART_SoilMoisture_Decagon_HD_ENABLED*/
+ 191:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 192:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #if(UART_SoilMoisture_Decagon_TX_ENABLED)
+ 193:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         /*TX Counter (DP/Count7) Enable */
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 7
+
+
+ 194:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #if(!UART_SoilMoisture_Decagon_TXCLKGEN_DP)
+ 195:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             UART_SoilMoisture_Decagon_TXBITCTR_CONTROL_REG |= UART_SoilMoisture_Decagon_CNTR_ENABLE
+ 196:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #endif /* End UART_SoilMoisture_Decagon_TXCLKGEN_DP */
+ 197:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         /* Enable the TX Interrupt. */
+ 198:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         UART_SoilMoisture_Decagon_TXSTATUS_ACTL_REG |= UART_SoilMoisture_Decagon_INT_ENABLE;
+ 199:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #if(UART_SoilMoisture_Decagon_TX_INTERRUPT_ENABLED && (UART_SoilMoisture_Decagon_TXBUFFERSI
+ 200:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             CyIntEnable(UART_SoilMoisture_Decagon_TX_VECT_NUM);
+ 201:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #endif /* End UART_SoilMoisture_Decagon_TX_INTERRUPT_ENABLED*/
+ 202:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****      #endif /* End UART_SoilMoisture_Decagon_TX_ENABLED */
+ 203:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 204:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #if(UART_SoilMoisture_Decagon_INTERNAL_CLOCK_USED)
+ 205:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         /* Enable the clock. */
+ 206:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         UART_SoilMoisture_Decagon_IntClock_Start();
+ 150              		.loc 1 206 0
+ 151 0046 FFF7FEFF 		bl	UART_SoilMoisture_Decagon_IntClock_Start
+ 207:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #endif /* End UART_SoilMoisture_Decagon_INTERNAL_CLOCK_USED */
+ 208:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 209:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     CyExitCriticalSection(enableInterrupts);
+ 152              		.loc 1 209 0
+ 153 004a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 154 004c 1846     		mov	r0, r3
+ 155 004e FFF7FEFF 		bl	CyExitCriticalSection
+ 210:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** }
+ 156              		.loc 1 210 0
+ 157 0052 07F10807 		add	r7, r7, #8
+ 158 0056 BD46     		mov	sp, r7
+ 159 0058 80BD     		pop	{r7, pc}
+ 160              		.cfi_endproc
+ 161              	.LFE2:
+ 162              		.size	UART_SoilMoisture_Decagon_Enable, .-UART_SoilMoisture_Decagon_Enable
+ 163 005a 00BF     		.section	.text.UART_SoilMoisture_Decagon_Stop,"ax",%progbits
+ 164              		.align	2
+ 165              		.global	UART_SoilMoisture_Decagon_Stop
+ 166              		.thumb
+ 167              		.thumb_func
+ 168              		.type	UART_SoilMoisture_Decagon_Stop, %function
+ 169              	UART_SoilMoisture_Decagon_Stop:
+ 170              	.LFB3:
+ 211:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 212:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 213:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** /*******************************************************************************
+ 214:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Function Name: UART_SoilMoisture_Decagon_Stop
+ 215:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** ********************************************************************************
+ 216:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+ 217:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Summary:
+ 218:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  Disable the UART component
+ 219:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+ 220:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Parameters:
+ 221:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  None.
+ 222:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+ 223:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Return:
+ 224:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  None.
+ 225:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+ 226:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *******************************************************************************/
+ 227:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** void UART_SoilMoisture_Decagon_Stop(void) 
+ 228:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** {
+ 171              		.loc 1 228 0
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 8
+
+
+ 172              		.cfi_startproc
+ 173              		@ args = 0, pretend = 0, frame = 8
+ 174              		@ frame_needed = 1, uses_anonymous_args = 0
+ 175 0000 80B5     		push	{r7, lr}
+ 176              	.LCFI7:
+ 177              		.cfi_def_cfa_offset 8
+ 178              		.cfi_offset 7, -8
+ 179              		.cfi_offset 14, -4
+ 180 0002 82B0     		sub	sp, sp, #8
+ 181              	.LCFI8:
+ 182              		.cfi_def_cfa_offset 16
+ 183 0004 00AF     		add	r7, sp, #0
+ 184              	.LCFI9:
+ 185              		.cfi_def_cfa_register 7
+ 229:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     uint8 enableInterrupts;
+ 230:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     enableInterrupts = CyEnterCriticalSection();
+ 186              		.loc 1 230 0
+ 187 0006 FFF7FEFF 		bl	CyEnterCriticalSection
+ 188 000a 0346     		mov	r3, r0
+ 189 000c FB71     		strb	r3, [r7, #7]
+ 231:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 232:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     /* Write Bit Counter Disable */
+ 233:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #if(UART_SoilMoisture_Decagon_RX_ENABLED || UART_SoilMoisture_Decagon_HD_ENABLED)
+ 234:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         UART_SoilMoisture_Decagon_RXBITCTR_CONTROL_REG &= (uint8)~UART_SoilMoisture_Decagon_CNTR_EN
+ 190              		.loc 1 234 0
+ 191 000e 46F29143 		movw	r3, #25745
+ 192 0012 C4F20003 		movt	r3, 16384
+ 193 0016 46F29142 		movw	r2, #25745
+ 194 001a C4F20002 		movt	r2, 16384
+ 195 001e 1278     		ldrb	r2, [r2, #0]
+ 196 0020 D2B2     		uxtb	r2, r2
+ 197 0022 22F02002 		bic	r2, r2, #32
+ 198 0026 D2B2     		uxtb	r2, r2
+ 199 0028 1A70     		strb	r2, [r3, #0]
+ 235:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #endif /* End UART_SoilMoisture_Decagon_RX_ENABLED */
+ 236:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 237:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #if(UART_SoilMoisture_Decagon_TX_ENABLED)
+ 238:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #if(!UART_SoilMoisture_Decagon_TXCLKGEN_DP)
+ 239:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             UART_SoilMoisture_Decagon_TXBITCTR_CONTROL_REG &= (uint8)~UART_SoilMoisture_Decagon_CNT
+ 240:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #endif /* End UART_SoilMoisture_Decagon_TXCLKGEN_DP */
+ 241:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #endif /* UART_SoilMoisture_Decagon_TX_ENABLED */
+ 242:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 243:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #if(UART_SoilMoisture_Decagon_INTERNAL_CLOCK_USED)
+ 244:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         /* Disable the clock. */
+ 245:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         UART_SoilMoisture_Decagon_IntClock_Stop();
+ 200              		.loc 1 245 0
+ 201 002a FFF7FEFF 		bl	UART_SoilMoisture_Decagon_IntClock_Stop
+ 246:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #endif /* End UART_SoilMoisture_Decagon_INTERNAL_CLOCK_USED */
+ 247:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 248:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     /* Disable internal interrupt component */
+ 249:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #if(UART_SoilMoisture_Decagon_RX_ENABLED || UART_SoilMoisture_Decagon_HD_ENABLED)
+ 250:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         UART_SoilMoisture_Decagon_RXSTATUS_ACTL_REG  &= (uint8)~UART_SoilMoisture_Decagon_INT_ENABL
+ 202              		.loc 1 250 0
+ 203 002e 46F29243 		movw	r3, #25746
+ 204 0032 C4F20003 		movt	r3, 16384
+ 205 0036 46F29242 		movw	r2, #25746
+ 206 003a C4F20002 		movt	r2, 16384
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 9
+
+
+ 207 003e 1278     		ldrb	r2, [r2, #0]
+ 208 0040 D2B2     		uxtb	r2, r2
+ 209 0042 22F01002 		bic	r2, r2, #16
+ 210 0046 D2B2     		uxtb	r2, r2
+ 211 0048 1A70     		strb	r2, [r3, #0]
+ 251:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #if(UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED && (UART_SoilMoisture_Decagon_RXBUFFERSI
+ 252:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             UART_SoilMoisture_Decagon_DisableRxInt();
+ 253:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #endif /* End UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED */
+ 254:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #endif /* End UART_SoilMoisture_Decagon_RX_ENABLED */
+ 255:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 256:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #if(UART_SoilMoisture_Decagon_TX_ENABLED)
+ 257:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         UART_SoilMoisture_Decagon_TXSTATUS_ACTL_REG &= (uint8)~UART_SoilMoisture_Decagon_INT_ENABLE
+ 258:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #if(UART_SoilMoisture_Decagon_TX_INTERRUPT_ENABLED && (UART_SoilMoisture_Decagon_TXBUFFERSI
+ 259:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             UART_SoilMoisture_Decagon_DisableTxInt();
+ 260:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #endif /* End UART_SoilMoisture_Decagon_TX_INTERRUPT_ENABLED */
+ 261:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #endif /* End UART_SoilMoisture_Decagon_TX_ENABLED */
+ 262:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 263:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     CyExitCriticalSection(enableInterrupts);
+ 212              		.loc 1 263 0
+ 213 004a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 214 004c 1846     		mov	r0, r3
+ 215 004e FFF7FEFF 		bl	CyExitCriticalSection
+ 264:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** }
+ 216              		.loc 1 264 0
+ 217 0052 07F10807 		add	r7, r7, #8
+ 218 0056 BD46     		mov	sp, r7
+ 219 0058 80BD     		pop	{r7, pc}
+ 220              		.cfi_endproc
+ 221              	.LFE3:
+ 222              		.size	UART_SoilMoisture_Decagon_Stop, .-UART_SoilMoisture_Decagon_Stop
+ 223 005a 00BF     		.section	.text.UART_SoilMoisture_Decagon_ReadControlRegister,"ax",%progbits
+ 224              		.align	2
+ 225              		.global	UART_SoilMoisture_Decagon_ReadControlRegister
+ 226              		.thumb
+ 227              		.thumb_func
+ 228              		.type	UART_SoilMoisture_Decagon_ReadControlRegister, %function
+ 229              	UART_SoilMoisture_Decagon_ReadControlRegister:
+ 230              	.LFB4:
+ 265:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 266:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 267:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** /*******************************************************************************
+ 268:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Function Name: UART_SoilMoisture_Decagon_ReadControlRegister
+ 269:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** ********************************************************************************
+ 270:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+ 271:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Summary:
+ 272:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  Read the current state of the control register
+ 273:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+ 274:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Parameters:
+ 275:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  None.
+ 276:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+ 277:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Return:
+ 278:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  Current state of the control register.
+ 279:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+ 280:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *******************************************************************************/
+ 281:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** uint8 UART_SoilMoisture_Decagon_ReadControlRegister(void) 
+ 282:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** {
+ 231              		.loc 1 282 0
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 10
+
+
+ 232              		.cfi_startproc
+ 233              		@ args = 0, pretend = 0, frame = 0
+ 234              		@ frame_needed = 1, uses_anonymous_args = 0
+ 235              		@ link register save eliminated.
+ 236 0000 80B4     		push	{r7}
+ 237              	.LCFI10:
+ 238              		.cfi_def_cfa_offset 4
+ 239              		.cfi_offset 7, -4
+ 240 0002 00AF     		add	r7, sp, #0
+ 241              	.LCFI11:
+ 242              		.cfi_def_cfa_register 7
+ 283:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #if( UART_SoilMoisture_Decagon_CONTROL_REG_REMOVED )
+ 284:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         return(0u);
+ 243              		.loc 1 284 0
+ 244 0004 4FF00003 		mov	r3, #0
+ 285:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #else
+ 286:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         return(UART_SoilMoisture_Decagon_CONTROL_REG);
+ 287:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #endif /* End UART_SoilMoisture_Decagon_CONTROL_REG_REMOVED */
+ 288:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** }
+ 245              		.loc 1 288 0
+ 246 0008 1846     		mov	r0, r3
+ 247 000a BD46     		mov	sp, r7
+ 248 000c 80BC     		pop	{r7}
+ 249 000e 7047     		bx	lr
+ 250              		.cfi_endproc
+ 251              	.LFE4:
+ 252              		.size	UART_SoilMoisture_Decagon_ReadControlRegister, .-UART_SoilMoisture_Decagon_ReadControlRegist
+ 253              		.section	.text.UART_SoilMoisture_Decagon_WriteControlRegister,"ax",%progbits
+ 254              		.align	2
+ 255              		.global	UART_SoilMoisture_Decagon_WriteControlRegister
+ 256              		.thumb
+ 257              		.thumb_func
+ 258              		.type	UART_SoilMoisture_Decagon_WriteControlRegister, %function
+ 259              	UART_SoilMoisture_Decagon_WriteControlRegister:
+ 260              	.LFB5:
+ 289:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 290:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 291:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** /*******************************************************************************
+ 292:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Function Name: UART_SoilMoisture_Decagon_WriteControlRegister
+ 293:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** ********************************************************************************
+ 294:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+ 295:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Summary:
+ 296:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  Writes an 8-bit value into the control register
+ 297:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+ 298:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Parameters:
+ 299:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  control:  control register value
+ 300:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+ 301:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** * Return:
+ 302:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *  None.
+ 303:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *
+ 304:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** *******************************************************************************/
+ 305:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** void  UART_SoilMoisture_Decagon_WriteControlRegister(uint8 control) 
+ 306:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** {
+ 261              		.loc 1 306 0
+ 262              		.cfi_startproc
+ 263              		@ args = 0, pretend = 0, frame = 8
+ 264              		@ frame_needed = 1, uses_anonymous_args = 0
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 11
+
+
+ 265              		@ link register save eliminated.
+ 266 0000 80B4     		push	{r7}
+ 267              	.LCFI12:
+ 268              		.cfi_def_cfa_offset 4
+ 269              		.cfi_offset 7, -4
+ 270 0002 83B0     		sub	sp, sp, #12
+ 271              	.LCFI13:
+ 272              		.cfi_def_cfa_offset 16
+ 273 0004 00AF     		add	r7, sp, #0
+ 274              	.LCFI14:
+ 275              		.cfi_def_cfa_register 7
+ 276 0006 0346     		mov	r3, r0
+ 277 0008 FB71     		strb	r3, [r7, #7]
+ 307:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #if( UART_SoilMoisture_Decagon_CONTROL_REG_REMOVED )
+ 308:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         if(control != 0u) { }      /* release compiler warning */
+ 309:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #else
+ 310:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****        UART_SoilMoisture_Decagon_CONTROL_REG = control;
+ 311:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #endif /* End UART_SoilMoisture_Decagon_CONTROL_REG_REMOVED */
+ 312:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** }
+ 278              		.loc 1 312 0
+ 279 000a 07F10C07 		add	r7, r7, #12
+ 280 000e BD46     		mov	sp, r7
+ 281 0010 80BC     		pop	{r7}
+ 282 0012 7047     		bx	lr
+ 283              		.cfi_endproc
+ 284              	.LFE5:
+ 285              		.size	UART_SoilMoisture_Decagon_WriteControlRegister, .-UART_SoilMoisture_Decagon_WriteControlRegi
+ 286              		.section	.text.UART_SoilMoisture_Decagon_SetRxInterruptMode,"ax",%progbits
+ 287              		.align	2
+ 288              		.global	UART_SoilMoisture_Decagon_SetRxInterruptMode
+ 289              		.thumb
+ 290              		.thumb_func
+ 291              		.type	UART_SoilMoisture_Decagon_SetRxInterruptMode, %function
+ 292              	UART_SoilMoisture_Decagon_SetRxInterruptMode:
+ 293              	.LFB6:
+ 313:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 314:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 315:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** #if(UART_SoilMoisture_Decagon_RX_ENABLED || UART_SoilMoisture_Decagon_HD_ENABLED)
+ 316:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 317:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #if(UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED)
+ 318:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 319:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         /*******************************************************************************
+ 320:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         * Function Name: UART_SoilMoisture_Decagon_EnableRxInt
+ 321:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         ********************************************************************************
+ 322:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         *
+ 323:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         * Summary:
+ 324:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         *  Enable RX interrupt generation
+ 325:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         *
+ 326:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         * Parameters:
+ 327:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         *  None.
+ 328:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         *
+ 329:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         * Return:
+ 330:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         *  None.
+ 331:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         *
+ 332:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         * Theory:
+ 333:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         *  Enable the interrupt output -or- the interrupt component itself
+ 334:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         *
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 12
+
+
+ 335:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         *******************************************************************************/
+ 336:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         void UART_SoilMoisture_Decagon_EnableRxInt(void) 
+ 337:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         {
+ 338:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             CyIntEnable(UART_SoilMoisture_Decagon_RX_VECT_NUM);
+ 339:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         }
+ 340:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 341:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 342:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         /*******************************************************************************
+ 343:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         * Function Name: UART_SoilMoisture_Decagon_DisableRxInt
+ 344:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         ********************************************************************************
+ 345:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         *
+ 346:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         * Summary:
+ 347:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         *  Disable RX interrupt generation
+ 348:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         *
+ 349:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         * Parameters:
+ 350:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         *  None.
+ 351:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         *
+ 352:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         * Return:
+ 353:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         *  None.
+ 354:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         *
+ 355:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         * Theory:
+ 356:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         *  Disable the interrupt output -or- the interrupt component itself
+ 357:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         *
+ 358:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         *******************************************************************************/
+ 359:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         void UART_SoilMoisture_Decagon_DisableRxInt(void) 
+ 360:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         {
+ 361:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             CyIntDisable(UART_SoilMoisture_Decagon_RX_VECT_NUM);
+ 362:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         }
+ 363:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 364:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     #endif /* UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED */
+ 365:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 366:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 367:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     /*******************************************************************************
+ 368:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Function Name: UART_SoilMoisture_Decagon_SetRxInterruptMode
+ 369:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     ********************************************************************************
+ 370:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 371:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Summary:
+ 372:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  Configure which status bits trigger an interrupt event
+ 373:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 374:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Parameters:
+ 375:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  IntSrc:  An or'd combination of the desired status bit masks (defined in
+ 376:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *           the header file)
+ 377:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 378:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Return:
+ 379:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  None.
+ 380:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 381:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Theory:
+ 382:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  Enables the output of specific status bits to the interrupt controller
+ 383:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 384:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *******************************************************************************/
+ 385:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     void UART_SoilMoisture_Decagon_SetRxInterruptMode(uint8 intSrc) 
+ 386:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     {
+ 294              		.loc 1 386 0
+ 295              		.cfi_startproc
+ 296              		@ args = 0, pretend = 0, frame = 8
+ 297              		@ frame_needed = 1, uses_anonymous_args = 0
+ 298              		@ link register save eliminated.
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 13
+
+
+ 299 0000 80B4     		push	{r7}
+ 300              	.LCFI15:
+ 301              		.cfi_def_cfa_offset 4
+ 302              		.cfi_offset 7, -4
+ 303 0002 83B0     		sub	sp, sp, #12
+ 304              	.LCFI16:
+ 305              		.cfi_def_cfa_offset 16
+ 306 0004 00AF     		add	r7, sp, #0
+ 307              	.LCFI17:
+ 308              		.cfi_def_cfa_register 7
+ 309 0006 0346     		mov	r3, r0
+ 310 0008 FB71     		strb	r3, [r7, #7]
+ 387:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         UART_SoilMoisture_Decagon_RXSTATUS_MASK_REG  = intSrc;
+ 311              		.loc 1 387 0
+ 312 000a 46F28243 		movw	r3, #25730
+ 313 000e C4F20003 		movt	r3, 16384
+ 314 0012 FA79     		ldrb	r2, [r7, #7]
+ 315 0014 1A70     		strb	r2, [r3, #0]
+ 388:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     }
+ 316              		.loc 1 388 0
+ 317 0016 07F10C07 		add	r7, r7, #12
+ 318 001a BD46     		mov	sp, r7
+ 319 001c 80BC     		pop	{r7}
+ 320 001e 7047     		bx	lr
+ 321              		.cfi_endproc
+ 322              	.LFE6:
+ 323              		.size	UART_SoilMoisture_Decagon_SetRxInterruptMode, .-UART_SoilMoisture_Decagon_SetRxInterruptMode
+ 324              		.section	.text.UART_SoilMoisture_Decagon_ReadRxData,"ax",%progbits
+ 325              		.align	2
+ 326              		.global	UART_SoilMoisture_Decagon_ReadRxData
+ 327              		.thumb
+ 328              		.thumb_func
+ 329              		.type	UART_SoilMoisture_Decagon_ReadRxData, %function
+ 330              	UART_SoilMoisture_Decagon_ReadRxData:
+ 331              	.LFB7:
+ 389:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 390:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 391:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     /*******************************************************************************
+ 392:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Function Name: UART_SoilMoisture_Decagon_ReadRxData
+ 393:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     ********************************************************************************
+ 394:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 395:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Summary:
+ 396:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  Returns data in RX Data register without checking status register to
+ 397:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  determine if data is valid
+ 398:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 399:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Parameters:
+ 400:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  None.
+ 401:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 402:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Return:
+ 403:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  Received data from RX register
+ 404:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 405:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Global Variables:
+ 406:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon_rxBuffer - RAM buffer pointer for save received data.
+ 407:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon_rxBufferWrite - cyclic index for write to rxBuffer,
+ 408:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *     checked to identify new data.
+ 409:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon_rxBufferRead - cyclic index for read from rxBuffer,
+ 410:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *     incremented after each byte has been read from buffer.
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 14
+
+
+ 411:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon_rxBufferLoopDetect - creared if loop condition was detected
+ 412:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *     in RX ISR.
+ 413:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 414:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Reentrant:
+ 415:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  No.
+ 416:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 417:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *******************************************************************************/
+ 418:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     uint8 UART_SoilMoisture_Decagon_ReadRxData(void) 
+ 419:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     {
+ 332              		.loc 1 419 0
+ 333              		.cfi_startproc
+ 334              		@ args = 0, pretend = 0, frame = 8
+ 335              		@ frame_needed = 1, uses_anonymous_args = 0
+ 336              		@ link register save eliminated.
+ 337 0000 80B4     		push	{r7}
+ 338              	.LCFI18:
+ 339              		.cfi_def_cfa_offset 4
+ 340              		.cfi_offset 7, -4
+ 341 0002 83B0     		sub	sp, sp, #12
+ 342              	.LCFI19:
+ 343              		.cfi_def_cfa_offset 16
+ 344 0004 00AF     		add	r7, sp, #0
+ 345              	.LCFI20:
+ 346              		.cfi_def_cfa_register 7
+ 420:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         uint8 rxData;
+ 421:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 422:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #if(UART_SoilMoisture_Decagon_RXBUFFERSIZE > UART_SoilMoisture_Decagon_FIFO_LENGTH)
+ 423:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             uint8 loc_rxBufferRead;
+ 424:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             uint8 loc_rxBufferWrite;
+ 425:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             /* Protect variables that could change on interrupt. */
+ 426:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             /* Disable Rx interrupt. */
+ 427:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             #if(UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED)
+ 428:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 UART_SoilMoisture_Decagon_DisableRxInt();
+ 429:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             #endif /* UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED */
+ 430:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             loc_rxBufferRead = UART_SoilMoisture_Decagon_rxBufferRead;
+ 431:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             loc_rxBufferWrite = UART_SoilMoisture_Decagon_rxBufferWrite;
+ 432:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 433:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             if( (UART_SoilMoisture_Decagon_rxBufferLoopDetect != 0u) || (loc_rxBufferRead != loc_rx
+ 434:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             {
+ 435:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 rxData = UART_SoilMoisture_Decagon_rxBuffer[loc_rxBufferRead];
+ 436:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 loc_rxBufferRead++;
+ 437:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 438:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 if(loc_rxBufferRead >= UART_SoilMoisture_Decagon_RXBUFFERSIZE)
+ 439:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 {
+ 440:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                     loc_rxBufferRead = 0u;
+ 441:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 }
+ 442:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 /* Update the real pointer */
+ 443:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 UART_SoilMoisture_Decagon_rxBufferRead = loc_rxBufferRead;
+ 444:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 445:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 if(UART_SoilMoisture_Decagon_rxBufferLoopDetect != 0u )
+ 446:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 {
+ 447:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                     UART_SoilMoisture_Decagon_rxBufferLoopDetect = 0u;
+ 448:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                     #if( (UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED) && (UART_SoilMoisture_Dec
+ 449:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                          (UART_SoilMoisture_Decagon_RXBUFFERSIZE > UART_SoilMoisture_Decagon_FIFO_L
+ 450:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                         /* When Hardware Flow Control selected - return RX mask */
+ 451:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                         #if( UART_SoilMoisture_Decagon_HD_ENABLED )
+ 452:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                             if((UART_SoilMoisture_Decagon_CONTROL_REG & UART_SoilMoisture_Decagon_C
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 15
+
+
+ 453:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                             {   /* In Half duplex mode return RX mask only in RX
+ 454:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                                 *  configuration set, otherwise
+ 455:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                                 *  mask will be returned in LoadRxConfig() API.
+ 456:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                                 */
+ 457:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                                 UART_SoilMoisture_Decagon_RXSTATUS_MASK_REG  |= UART_SoilMoisture_D
+ 458:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                             }
+ 459:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                         #else
+ 460:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                             UART_SoilMoisture_Decagon_RXSTATUS_MASK_REG  |= UART_SoilMoisture_Decag
+ 461:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                         #endif /* end UART_SoilMoisture_Decagon_HD_ENABLED */
+ 462:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                     #endif /* UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED and Hardware flow cont
+ 463:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 }
+ 464:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             }
+ 465:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             else
+ 466:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             {   /* Needs to check status for RX_STS_FIFO_NOTEMPTY bit*/
+ 467:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 rxData = UART_SoilMoisture_Decagon_RXDATA_REG;
+ 468:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             }
+ 469:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 470:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             /* Enable Rx interrupt. */
+ 471:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             #if(UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED)
+ 472:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 UART_SoilMoisture_Decagon_EnableRxInt();
+ 473:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             #endif /* End UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED */
+ 474:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 475:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #else /* UART_SoilMoisture_Decagon_RXBUFFERSIZE > UART_SoilMoisture_Decagon_FIFO_LENGTH */
+ 476:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 477:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             /* Needs to check status for RX_STS_FIFO_NOTEMPTY bit*/
+ 478:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             rxData = UART_SoilMoisture_Decagon_RXDATA_REG;
+ 347              		.loc 1 478 0
+ 348 0006 46F24243 		movw	r3, #25666
+ 349 000a C4F20003 		movt	r3, 16384
+ 350 000e 1B78     		ldrb	r3, [r3, #0]
+ 351 0010 FB71     		strb	r3, [r7, #7]
+ 479:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 480:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #endif /* UART_SoilMoisture_Decagon_RXBUFFERSIZE > UART_SoilMoisture_Decagon_FIFO_LENGTH */
+ 481:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 482:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         return(rxData);
+ 352              		.loc 1 482 0
+ 353 0012 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 483:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     }
+ 354              		.loc 1 483 0
+ 355 0014 1846     		mov	r0, r3
+ 356 0016 07F10C07 		add	r7, r7, #12
+ 357 001a BD46     		mov	sp, r7
+ 358 001c 80BC     		pop	{r7}
+ 359 001e 7047     		bx	lr
+ 360              		.cfi_endproc
+ 361              	.LFE7:
+ 362              		.size	UART_SoilMoisture_Decagon_ReadRxData, .-UART_SoilMoisture_Decagon_ReadRxData
+ 363              		.section	.text.UART_SoilMoisture_Decagon_ReadRxStatus,"ax",%progbits
+ 364              		.align	2
+ 365              		.global	UART_SoilMoisture_Decagon_ReadRxStatus
+ 366              		.thumb
+ 367              		.thumb_func
+ 368              		.type	UART_SoilMoisture_Decagon_ReadRxStatus, %function
+ 369              	UART_SoilMoisture_Decagon_ReadRxStatus:
+ 370              	.LFB8:
+ 484:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 485:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 16
+
+
+ 486:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     /*******************************************************************************
+ 487:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Function Name: UART_SoilMoisture_Decagon_ReadRxStatus
+ 488:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     ********************************************************************************
+ 489:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 490:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Summary:
+ 491:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  Read the current state of the status register
+ 492:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  And detect software buffer overflow.
+ 493:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 494:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Parameters:
+ 495:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  None.
+ 496:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 497:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Return:
+ 498:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  Current state of the status register.
+ 499:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 500:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Global Variables:
+ 501:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon_rxBufferOverflow - used to indicate overload condition.
+ 502:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *   It set to one in RX interrupt when there isn?t free space in
+ 503:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *   UART_SoilMoisture_Decagon_rxBufferRead to write new data. This condition returned
+ 504:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *   and cleared to zero by this API as an
+ 505:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *   UART_SoilMoisture_Decagon_RX_STS_SOFT_BUFF_OVER bit along with RX Status register
+ 506:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *   bits.
+ 507:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 508:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *******************************************************************************/
+ 509:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     uint8 UART_SoilMoisture_Decagon_ReadRxStatus(void) 
+ 510:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     {
+ 371              		.loc 1 510 0
+ 372              		.cfi_startproc
+ 373              		@ args = 0, pretend = 0, frame = 8
+ 374              		@ frame_needed = 1, uses_anonymous_args = 0
+ 375              		@ link register save eliminated.
+ 376 0000 80B4     		push	{r7}
+ 377              	.LCFI21:
+ 378              		.cfi_def_cfa_offset 4
+ 379              		.cfi_offset 7, -4
+ 380 0002 83B0     		sub	sp, sp, #12
+ 381              	.LCFI22:
+ 382              		.cfi_def_cfa_offset 16
+ 383 0004 00AF     		add	r7, sp, #0
+ 384              	.LCFI23:
+ 385              		.cfi_def_cfa_register 7
+ 511:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         uint8 status;
+ 512:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 513:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         status = UART_SoilMoisture_Decagon_RXSTATUS_REG & UART_SoilMoisture_Decagon_RX_HW_MASK;
+ 386              		.loc 1 513 0
+ 387 0006 46F26243 		movw	r3, #25698
+ 388 000a C4F20003 		movt	r3, 16384
+ 389 000e 1B78     		ldrb	r3, [r3, #0]
+ 390 0010 DBB2     		uxtb	r3, r3
+ 391 0012 03F07F03 		and	r3, r3, #127
+ 392 0016 FB71     		strb	r3, [r7, #7]
+ 514:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 515:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #if(UART_SoilMoisture_Decagon_RXBUFFERSIZE > UART_SoilMoisture_Decagon_FIFO_LENGTH)
+ 516:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             if( UART_SoilMoisture_Decagon_rxBufferOverflow != 0u )
+ 517:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             {
+ 518:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 status |= UART_SoilMoisture_Decagon_RX_STS_SOFT_BUFF_OVER;
+ 519:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 UART_SoilMoisture_Decagon_rxBufferOverflow = 0u;
+ 520:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             }
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 17
+
+
+ 521:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #endif /* UART_SoilMoisture_Decagon_RXBUFFERSIZE */
+ 522:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 523:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         return(status);
+ 393              		.loc 1 523 0
+ 394 0018 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 524:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     }
+ 395              		.loc 1 524 0
+ 396 001a 1846     		mov	r0, r3
+ 397 001c 07F10C07 		add	r7, r7, #12
+ 398 0020 BD46     		mov	sp, r7
+ 399 0022 80BC     		pop	{r7}
+ 400 0024 7047     		bx	lr
+ 401              		.cfi_endproc
+ 402              	.LFE8:
+ 403              		.size	UART_SoilMoisture_Decagon_ReadRxStatus, .-UART_SoilMoisture_Decagon_ReadRxStatus
+ 404 0026 00BF     		.section	.text.UART_SoilMoisture_Decagon_GetChar,"ax",%progbits
+ 405              		.align	2
+ 406              		.global	UART_SoilMoisture_Decagon_GetChar
+ 407              		.thumb
+ 408              		.thumb_func
+ 409              		.type	UART_SoilMoisture_Decagon_GetChar, %function
+ 410              	UART_SoilMoisture_Decagon_GetChar:
+ 411              	.LFB9:
+ 525:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 526:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 527:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     /*******************************************************************************
+ 528:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Function Name: UART_SoilMoisture_Decagon_GetChar
+ 529:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     ********************************************************************************
+ 530:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 531:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Summary:
+ 532:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  Reads UART RX buffer immediately, if data is not available or an error
+ 533:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  condition exists, zero is returned; otherwise, character is read and
+ 534:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  returned.
+ 535:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 536:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Parameters:
+ 537:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  None.
+ 538:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 539:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Return:
+ 540:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  Character read from UART RX buffer. ASCII characters from 1 to 255 are valid.
+ 541:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  A returned zero signifies an error condition or no data available.
+ 542:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 543:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Global Variables:
+ 544:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon_rxBuffer - RAM buffer pointer for save received data.
+ 545:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon_rxBufferWrite - cyclic index for write to rxBuffer,
+ 546:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *     checked to identify new data.
+ 547:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon_rxBufferRead - cyclic index for read from rxBuffer,
+ 548:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *     incremented after each byte has been read from buffer.
+ 549:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon_rxBufferLoopDetect - creared if loop condition was detected
+ 550:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *     in RX ISR.
+ 551:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 552:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Reentrant:
+ 553:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  No.
+ 554:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 555:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *******************************************************************************/
+ 556:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     uint8 UART_SoilMoisture_Decagon_GetChar(void) 
+ 557:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     {
+ 412              		.loc 1 557 0
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 18
+
+
+ 413              		.cfi_startproc
+ 414              		@ args = 0, pretend = 0, frame = 8
+ 415              		@ frame_needed = 1, uses_anonymous_args = 0
+ 416              		@ link register save eliminated.
+ 417 0000 80B4     		push	{r7}
+ 418              	.LCFI24:
+ 419              		.cfi_def_cfa_offset 4
+ 420              		.cfi_offset 7, -4
+ 421 0002 83B0     		sub	sp, sp, #12
+ 422              	.LCFI25:
+ 423              		.cfi_def_cfa_offset 16
+ 424 0004 00AF     		add	r7, sp, #0
+ 425              	.LCFI26:
+ 426              		.cfi_def_cfa_register 7
+ 558:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         uint8 rxData = 0u;
+ 427              		.loc 1 558 0
+ 428 0006 4FF00003 		mov	r3, #0
+ 429 000a FB71     		strb	r3, [r7, #7]
+ 559:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         uint8 rxStatus;
+ 560:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 561:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #if(UART_SoilMoisture_Decagon_RXBUFFERSIZE > UART_SoilMoisture_Decagon_FIFO_LENGTH)
+ 562:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             uint8 loc_rxBufferRead;
+ 563:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             uint8 loc_rxBufferWrite;
+ 564:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             /* Protect variables that could change on interrupt. */
+ 565:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             /* Disable Rx interrupt. */
+ 566:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             #if(UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED)
+ 567:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 UART_SoilMoisture_Decagon_DisableRxInt();
+ 568:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             #endif /* UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED */
+ 569:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             loc_rxBufferRead = UART_SoilMoisture_Decagon_rxBufferRead;
+ 570:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             loc_rxBufferWrite = UART_SoilMoisture_Decagon_rxBufferWrite;
+ 571:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 572:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             if( (UART_SoilMoisture_Decagon_rxBufferLoopDetect != 0u) || (loc_rxBufferRead != loc_rx
+ 573:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             {
+ 574:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 rxData = UART_SoilMoisture_Decagon_rxBuffer[loc_rxBufferRead];
+ 575:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 loc_rxBufferRead++;
+ 576:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 if(loc_rxBufferRead >= UART_SoilMoisture_Decagon_RXBUFFERSIZE)
+ 577:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 {
+ 578:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                     loc_rxBufferRead = 0u;
+ 579:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 }
+ 580:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 /* Update the real pointer */
+ 581:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 UART_SoilMoisture_Decagon_rxBufferRead = loc_rxBufferRead;
+ 582:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 583:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 if(UART_SoilMoisture_Decagon_rxBufferLoopDetect > 0u )
+ 584:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 {
+ 585:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                     UART_SoilMoisture_Decagon_rxBufferLoopDetect = 0u;
+ 586:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                     #if( (UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED) && (UART_SoilMoisture_Dec
+ 587:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                         /* When Hardware Flow Control selected - return RX mask */
+ 588:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                         #if( UART_SoilMoisture_Decagon_HD_ENABLED )
+ 589:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                             if((UART_SoilMoisture_Decagon_CONTROL_REG & UART_SoilMoisture_Decagon_C
+ 590:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                             {   /* In Half duplex mode return RX mask only if
+ 591:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                                 *  RX configuration set, otherwise
+ 592:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                                 *  mask will be returned in LoadRxConfig() API.
+ 593:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                                 */
+ 594:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                                 UART_SoilMoisture_Decagon_RXSTATUS_MASK_REG  |= UART_SoilMoisture_D
+ 595:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                             }
+ 596:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                         #else
+ 597:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                             UART_SoilMoisture_Decagon_RXSTATUS_MASK_REG  |= UART_SoilMoisture_Decag
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 19
+
+
+ 598:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                         #endif /* end UART_SoilMoisture_Decagon_HD_ENABLED */
+ 599:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                     #endif /* UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED and Hardware flow cont
+ 600:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 }
+ 601:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 602:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             }
+ 603:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             else
+ 604:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             {   rxStatus = UART_SoilMoisture_Decagon_RXSTATUS_REG;
+ 605:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 if((rxStatus & UART_SoilMoisture_Decagon_RX_STS_FIFO_NOTEMPTY) != 0u)
+ 606:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 {   /* Read received data from FIFO*/
+ 607:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                     rxData = UART_SoilMoisture_Decagon_RXDATA_REG;
+ 608:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                     /*Check status on error*/
+ 609:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                     if((rxStatus & (UART_SoilMoisture_Decagon_RX_STS_BREAK | UART_SoilMoisture_Deca
+ 610:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                                    UART_SoilMoisture_Decagon_RX_STS_STOP_ERROR | UART_SoilMoisture_
+ 611:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                     {
+ 612:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                         rxData = 0u;
+ 613:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                     }
+ 614:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 }
+ 615:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             }
+ 616:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 617:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             /* Enable Rx interrupt. */
+ 618:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             #if(UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED)
+ 619:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 UART_SoilMoisture_Decagon_EnableRxInt();
+ 620:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             #endif /* UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED */
+ 621:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 622:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #else /* UART_SoilMoisture_Decagon_RXBUFFERSIZE > UART_SoilMoisture_Decagon_FIFO_LENGTH */
+ 623:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 624:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             rxStatus =UART_SoilMoisture_Decagon_RXSTATUS_REG;
+ 430              		.loc 1 624 0
+ 431 000c 46F26243 		movw	r3, #25698
+ 432 0010 C4F20003 		movt	r3, 16384
+ 433 0014 1B78     		ldrb	r3, [r3, #0]
+ 434 0016 BB71     		strb	r3, [r7, #6]
+ 625:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             if((rxStatus & UART_SoilMoisture_Decagon_RX_STS_FIFO_NOTEMPTY) != 0u)
+ 435              		.loc 1 625 0
+ 436 0018 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 437 001a 03F02003 		and	r3, r3, #32
+ 438 001e 002B     		cmp	r3, #0
+ 439 0020 0DD0     		beq	.L15
+ 626:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             {   /* Read received data from FIFO*/
+ 627:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 rxData = UART_SoilMoisture_Decagon_RXDATA_REG;
+ 440              		.loc 1 627 0
+ 441 0022 46F24243 		movw	r3, #25666
+ 442 0026 C4F20003 		movt	r3, 16384
+ 443 002a 1B78     		ldrb	r3, [r3, #0]
+ 444 002c FB71     		strb	r3, [r7, #7]
+ 628:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 /*Check status on error*/
+ 629:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 if((rxStatus & (UART_SoilMoisture_Decagon_RX_STS_BREAK | UART_SoilMoisture_Decagon_
+ 630:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                                UART_SoilMoisture_Decagon_RX_STS_STOP_ERROR | UART_SoilMoisture_Deca
+ 445              		.loc 1 630 0
+ 446 002e BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 447 0030 03F01E03 		and	r3, r3, #30
+ 629:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 if((rxStatus & (UART_SoilMoisture_Decagon_RX_STS_BREAK | UART_SoilMoisture_Decagon_
+ 448              		.loc 1 629 0
+ 449 0034 002B     		cmp	r3, #0
+ 450 0036 02D0     		beq	.L15
+ 631:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 {
+ 632:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                     rxData = 0u;
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 20
+
+
+ 451              		.loc 1 632 0
+ 452 0038 4FF00003 		mov	r3, #0
+ 453 003c FB71     		strb	r3, [r7, #7]
+ 454              	.L15:
+ 633:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 }
+ 634:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             }
+ 635:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #endif /* UART_SoilMoisture_Decagon_RXBUFFERSIZE > UART_SoilMoisture_Decagon_FIFO_LENGTH */
+ 636:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 637:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         return(rxData);
+ 455              		.loc 1 637 0
+ 456 003e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 638:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     }
+ 457              		.loc 1 638 0
+ 458 0040 1846     		mov	r0, r3
+ 459 0042 07F10C07 		add	r7, r7, #12
+ 460 0046 BD46     		mov	sp, r7
+ 461 0048 80BC     		pop	{r7}
+ 462 004a 7047     		bx	lr
+ 463              		.cfi_endproc
+ 464              	.LFE9:
+ 465              		.size	UART_SoilMoisture_Decagon_GetChar, .-UART_SoilMoisture_Decagon_GetChar
+ 466              		.section	.text.UART_SoilMoisture_Decagon_GetByte,"ax",%progbits
+ 467              		.align	2
+ 468              		.global	UART_SoilMoisture_Decagon_GetByte
+ 469              		.thumb
+ 470              		.thumb_func
+ 471              		.type	UART_SoilMoisture_Decagon_GetByte, %function
+ 472              	UART_SoilMoisture_Decagon_GetByte:
+ 473              	.LFB10:
+ 639:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 640:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 641:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     /*******************************************************************************
+ 642:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Function Name: UART_SoilMoisture_Decagon_GetByte
+ 643:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     ********************************************************************************
+ 644:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 645:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Summary:
+ 646:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  Grab the next available byte of data from the recieve FIFO
+ 647:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 648:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Parameters:
+ 649:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  None.
+ 650:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 651:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Return:
+ 652:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  MSB contains Status Register and LSB contains UART RX data
+ 653:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 654:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Reentrant:
+ 655:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  No.
+ 656:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 657:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *******************************************************************************/
+ 658:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     uint16 UART_SoilMoisture_Decagon_GetByte(void) 
+ 659:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     {
+ 474              		.loc 1 659 0
+ 475              		.cfi_startproc
+ 476              		@ args = 0, pretend = 0, frame = 0
+ 477              		@ frame_needed = 1, uses_anonymous_args = 0
+ 478 0000 98B5     		push	{r3, r4, r7, lr}
+ 479              	.LCFI27:
+ 480              		.cfi_def_cfa_offset 16
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 21
+
+
+ 481              		.cfi_offset 3, -16
+ 482              		.cfi_offset 4, -12
+ 483              		.cfi_offset 7, -8
+ 484              		.cfi_offset 14, -4
+ 485 0002 00AF     		add	r7, sp, #0
+ 486              	.LCFI28:
+ 487              		.cfi_def_cfa_register 7
+ 660:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         return ( ((uint16)UART_SoilMoisture_Decagon_ReadRxStatus() << 8u) | UART_SoilMoisture_Decag
+ 488              		.loc 1 660 0
+ 489 0004 FFF7FEFF 		bl	UART_SoilMoisture_Decagon_ReadRxStatus
+ 490 0008 0346     		mov	r3, r0
+ 491 000a 4FEA0323 		lsl	r3, r3, #8
+ 492 000e 9CB2     		uxth	r4, r3
+ 493 0010 FFF7FEFF 		bl	UART_SoilMoisture_Decagon_ReadRxData
+ 494 0014 0346     		mov	r3, r0
+ 495 0016 2246     		mov	r2, r4	@ movhi
+ 496 0018 1343     		orrs	r3, r3, r2
+ 497 001a 9BB2     		uxth	r3, r3
+ 498 001c 9BB2     		uxth	r3, r3
+ 661:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     }
+ 499              		.loc 1 661 0
+ 500 001e 1846     		mov	r0, r3
+ 501 0020 98BD     		pop	{r3, r4, r7, pc}
+ 502              		.cfi_endproc
+ 503              	.LFE10:
+ 504              		.size	UART_SoilMoisture_Decagon_GetByte, .-UART_SoilMoisture_Decagon_GetByte
+ 505 0022 00BF     		.section	.text.UART_SoilMoisture_Decagon_GetRxBufferSize,"ax",%progbits
+ 506              		.align	2
+ 507              		.global	UART_SoilMoisture_Decagon_GetRxBufferSize
+ 508              		.thumb
+ 509              		.thumb_func
+ 510              		.type	UART_SoilMoisture_Decagon_GetRxBufferSize, %function
+ 511              	UART_SoilMoisture_Decagon_GetRxBufferSize:
+ 512              	.LFB11:
+ 662:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 663:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 664:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     /*******************************************************************************
+ 665:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Function Name: UART_SoilMoisture_Decagon_GetRxBufferSize
+ 666:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     ********************************************************************************
+ 667:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 668:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Summary:
+ 669:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  Determine the amount of bytes left in the RX buffer and return the count in
+ 670:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  bytes
+ 671:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 672:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Parameters:
+ 673:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  None.
+ 674:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 675:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Return:
+ 676:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  uint8: Integer count of the number of bytes left
+ 677:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  in the RX buffer
+ 678:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 679:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Global Variables:
+ 680:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon_rxBufferWrite - used to calculate left bytes.
+ 681:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon_rxBufferRead - used to calculate left bytes.
+ 682:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon_rxBufferLoopDetect - checked to decide left bytes amount.
+ 683:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 684:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Reentrant:
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 22
+
+
+ 685:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  No.
+ 686:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 687:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Theory:
+ 688:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  Allows the user to find out how full the RX Buffer is.
+ 689:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 690:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *******************************************************************************/
+ 691:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     uint8 UART_SoilMoisture_Decagon_GetRxBufferSize(void)
+ 692:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                                                             
+ 693:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     {
+ 513              		.loc 1 693 0
+ 514              		.cfi_startproc
+ 515              		@ args = 0, pretend = 0, frame = 8
+ 516              		@ frame_needed = 1, uses_anonymous_args = 0
+ 517              		@ link register save eliminated.
+ 518 0000 80B4     		push	{r7}
+ 519              	.LCFI29:
+ 520              		.cfi_def_cfa_offset 4
+ 521              		.cfi_offset 7, -4
+ 522 0002 83B0     		sub	sp, sp, #12
+ 523              	.LCFI30:
+ 524              		.cfi_def_cfa_offset 16
+ 525 0004 00AF     		add	r7, sp, #0
+ 526              	.LCFI31:
+ 527              		.cfi_def_cfa_register 7
+ 694:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         uint8 size;
+ 695:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 696:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #if(UART_SoilMoisture_Decagon_RXBUFFERSIZE > UART_SoilMoisture_Decagon_FIFO_LENGTH)
+ 697:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 698:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             /* Disable Rx interrupt. */
+ 699:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             /* Protect variables that could change on interrupt. */
+ 700:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             #if(UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED)
+ 701:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 UART_SoilMoisture_Decagon_DisableRxInt();
+ 702:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             #endif /* UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED */
+ 703:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 704:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             if(UART_SoilMoisture_Decagon_rxBufferRead == UART_SoilMoisture_Decagon_rxBufferWrite)
+ 705:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             {
+ 706:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 if(UART_SoilMoisture_Decagon_rxBufferLoopDetect > 0u)
+ 707:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 {
+ 708:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                     size = UART_SoilMoisture_Decagon_RXBUFFERSIZE;
+ 709:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 }
+ 710:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 else
+ 711:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 {
+ 712:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                     size = 0u;
+ 713:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 }
+ 714:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             }
+ 715:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             else if(UART_SoilMoisture_Decagon_rxBufferRead < UART_SoilMoisture_Decagon_rxBufferWrit
+ 716:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             {
+ 717:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 size = (UART_SoilMoisture_Decagon_rxBufferWrite - UART_SoilMoisture_Decagon_rxBuffe
+ 718:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             }
+ 719:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             else
+ 720:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             {
+ 721:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 size = (UART_SoilMoisture_Decagon_RXBUFFERSIZE - UART_SoilMoisture_Decagon_rxBuffer
+ 722:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             }
+ 723:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 724:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             /* Enable Rx interrupt. */
+ 725:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             #if(UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED)
+ 726:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 UART_SoilMoisture_Decagon_EnableRxInt();
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 23
+
+
+ 727:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             #endif /* End UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED */
+ 728:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 729:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #else /* UART_SoilMoisture_Decagon_RXBUFFERSIZE > UART_SoilMoisture_Decagon_FIFO_LENGTH */
+ 730:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 731:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             /* We can only know if there is data in the fifo. */
+ 732:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             size = ((UART_SoilMoisture_Decagon_RXSTATUS_REG & UART_SoilMoisture_Decagon_RX_STS_FIFO
+ 528              		.loc 1 732 0
+ 529 0006 46F26243 		movw	r3, #25698
+ 530 000a C4F20003 		movt	r3, 16384
+ 531 000e 1B78     		ldrb	r3, [r3, #0]
+ 532 0010 DBB2     		uxtb	r3, r3
+ 533 0012 03F02003 		and	r3, r3, #32
+ 534 0016 002B     		cmp	r3, #0
+ 535 0018 02D0     		beq	.L20
+ 536              		.loc 1 732 0 is_stmt 0 discriminator 1
+ 537 001a 4FF00103 		mov	r3, #1
+ 538 001e 01E0     		b	.L21
+ 539              	.L20:
+ 540              		.loc 1 732 0 discriminator 2
+ 541 0020 4FF00003 		mov	r3, #0
+ 542              	.L21:
+ 543              		.loc 1 732 0 discriminator 3
+ 544 0024 FB71     		strb	r3, [r7, #7]
+ 733:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 734:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #endif /* End UART_SoilMoisture_Decagon_RXBUFFERSIZE > UART_SoilMoisture_Decagon_FIFO_LENGT
+ 735:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 736:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         return(size);
+ 545              		.loc 1 736 0 is_stmt 1 discriminator 3
+ 546 0026 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 737:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     }
+ 547              		.loc 1 737 0 discriminator 3
+ 548 0028 1846     		mov	r0, r3
+ 549 002a 07F10C07 		add	r7, r7, #12
+ 550 002e BD46     		mov	sp, r7
+ 551 0030 80BC     		pop	{r7}
+ 552 0032 7047     		bx	lr
+ 553              		.cfi_endproc
+ 554              	.LFE11:
+ 555              		.size	UART_SoilMoisture_Decagon_GetRxBufferSize, .-UART_SoilMoisture_Decagon_GetRxBufferSize
+ 556              		.section	.text.UART_SoilMoisture_Decagon_ClearRxBuffer,"ax",%progbits
+ 557              		.align	2
+ 558              		.global	UART_SoilMoisture_Decagon_ClearRxBuffer
+ 559              		.thumb
+ 560              		.thumb_func
+ 561              		.type	UART_SoilMoisture_Decagon_ClearRxBuffer, %function
+ 562              	UART_SoilMoisture_Decagon_ClearRxBuffer:
+ 563              	.LFB12:
+ 738:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 739:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 740:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     /*******************************************************************************
+ 741:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Function Name: UART_SoilMoisture_Decagon_ClearRxBuffer
+ 742:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     ********************************************************************************
+ 743:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 744:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Summary:
+ 745:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  Clears the RX RAM buffer by setting the read and write pointers both to zero.
+ 746:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  Clears hardware RX FIFO.
+ 747:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 24
+
+
+ 748:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Parameters:
+ 749:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  None.
+ 750:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 751:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Return:
+ 752:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  None.
+ 753:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 754:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Global Variables:
+ 755:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon_rxBufferWrite - cleared to zero.
+ 756:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon_rxBufferRead - cleared to zero.
+ 757:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon_rxBufferLoopDetect - cleared to zero.
+ 758:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon_rxBufferOverflow - cleared to zero.
+ 759:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 760:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Reentrant:
+ 761:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  No.
+ 762:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 763:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Theory:
+ 764:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  Setting the pointers to zero makes the system believe there is no data to
+ 765:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  read and writing will resume at address 0 overwriting any data that may
+ 766:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  have remained in the RAM.
+ 767:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 768:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Side Effects:
+ 769:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  Any received data not read from the RAM or FIFO buffer will be lost.
+ 770:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *******************************************************************************/
+ 771:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     void UART_SoilMoisture_Decagon_ClearRxBuffer(void) 
+ 772:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     {
+ 564              		.loc 1 772 0
+ 565              		.cfi_startproc
+ 566              		@ args = 0, pretend = 0, frame = 8
+ 567              		@ frame_needed = 1, uses_anonymous_args = 0
+ 568 0000 80B5     		push	{r7, lr}
+ 569              	.LCFI32:
+ 570              		.cfi_def_cfa_offset 8
+ 571              		.cfi_offset 7, -8
+ 572              		.cfi_offset 14, -4
+ 573 0002 82B0     		sub	sp, sp, #8
+ 574              	.LCFI33:
+ 575              		.cfi_def_cfa_offset 16
+ 576 0004 00AF     		add	r7, sp, #0
+ 577              	.LCFI34:
+ 578              		.cfi_def_cfa_register 7
+ 773:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         uint8 enableInterrupts;
+ 774:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 775:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         /* clear the HW FIFO */
+ 776:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         /* Enter critical section */
+ 777:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         enableInterrupts = CyEnterCriticalSection();
+ 579              		.loc 1 777 0
+ 580 0006 FFF7FEFF 		bl	CyEnterCriticalSection
+ 581 000a 0346     		mov	r3, r0
+ 582 000c FB71     		strb	r3, [r7, #7]
+ 778:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         UART_SoilMoisture_Decagon_RXDATA_AUX_CTL_REG |=  UART_SoilMoisture_Decagon_RX_FIFO_CLR;
+ 583              		.loc 1 778 0
+ 584 000e 46F29243 		movw	r3, #25746
+ 585 0012 C4F20003 		movt	r3, 16384
+ 586 0016 46F29242 		movw	r2, #25746
+ 587 001a C4F20002 		movt	r2, 16384
+ 588 001e 1278     		ldrb	r2, [r2, #0]
+ 589 0020 D2B2     		uxtb	r2, r2
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 25
+
+
+ 590 0022 42F00102 		orr	r2, r2, #1
+ 591 0026 D2B2     		uxtb	r2, r2
+ 592 0028 1A70     		strb	r2, [r3, #0]
+ 779:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         UART_SoilMoisture_Decagon_RXDATA_AUX_CTL_REG &= (uint8)~UART_SoilMoisture_Decagon_RX_FIFO_C
+ 593              		.loc 1 779 0
+ 594 002a 46F29243 		movw	r3, #25746
+ 595 002e C4F20003 		movt	r3, 16384
+ 596 0032 46F29242 		movw	r2, #25746
+ 597 0036 C4F20002 		movt	r2, 16384
+ 598 003a 1278     		ldrb	r2, [r2, #0]
+ 599 003c D2B2     		uxtb	r2, r2
+ 600 003e 22F00102 		bic	r2, r2, #1
+ 601 0042 D2B2     		uxtb	r2, r2
+ 602 0044 1A70     		strb	r2, [r3, #0]
+ 780:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         /* Exit critical section */
+ 781:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         CyExitCriticalSection(enableInterrupts);
+ 603              		.loc 1 781 0
+ 604 0046 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 605 0048 1846     		mov	r0, r3
+ 606 004a FFF7FEFF 		bl	CyExitCriticalSection
+ 782:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 783:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #if(UART_SoilMoisture_Decagon_RXBUFFERSIZE > UART_SoilMoisture_Decagon_FIFO_LENGTH)
+ 784:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             /* Disable Rx interrupt. */
+ 785:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             /* Protect variables that could change on interrupt. */
+ 786:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             #if(UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED)
+ 787:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 UART_SoilMoisture_Decagon_DisableRxInt();
+ 788:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             #endif /* End UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED */
+ 789:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 790:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             UART_SoilMoisture_Decagon_rxBufferRead = 0u;
+ 791:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             UART_SoilMoisture_Decagon_rxBufferWrite = 0u;
+ 792:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             UART_SoilMoisture_Decagon_rxBufferLoopDetect = 0u;
+ 793:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             UART_SoilMoisture_Decagon_rxBufferOverflow = 0u;
+ 794:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 795:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             /* Enable Rx interrupt. */
+ 796:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             #if(UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED)
+ 797:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 UART_SoilMoisture_Decagon_EnableRxInt();
+ 798:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             #endif /* End UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED */
+ 799:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #endif /* End UART_SoilMoisture_Decagon_RXBUFFERSIZE > UART_SoilMoisture_Decagon_FIFO_LENGT
+ 800:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 801:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     }
+ 607              		.loc 1 801 0
+ 608 004e 07F10807 		add	r7, r7, #8
+ 609 0052 BD46     		mov	sp, r7
+ 610 0054 80BD     		pop	{r7, pc}
+ 611              		.cfi_endproc
+ 612              	.LFE12:
+ 613              		.size	UART_SoilMoisture_Decagon_ClearRxBuffer, .-UART_SoilMoisture_Decagon_ClearRxBuffer
+ 614 0056 00BF     		.section	.text.UART_SoilMoisture_Decagon_SetRxAddressMode,"ax",%progbits
+ 615              		.align	2
+ 616              		.global	UART_SoilMoisture_Decagon_SetRxAddressMode
+ 617              		.thumb
+ 618              		.thumb_func
+ 619              		.type	UART_SoilMoisture_Decagon_SetRxAddressMode, %function
+ 620              	UART_SoilMoisture_Decagon_SetRxAddressMode:
+ 621              	.LFB13:
+ 802:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 803:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 26
+
+
+ 804:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     /*******************************************************************************
+ 805:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Function Name: UART_SoilMoisture_Decagon_SetRxAddressMode
+ 806:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     ********************************************************************************
+ 807:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 808:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Summary:
+ 809:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  Set the receive addressing mode
+ 810:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 811:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Parameters:
+ 812:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  addressMode: Enumerated value indicating the mode of RX addressing
+ 813:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon__B_UART__AM_SW_BYTE_BYTE -  Software Byte-by-Byte address
+ 814:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *                                               detection
+ 815:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon__B_UART__AM_SW_DETECT_TO_BUFFER - Software Detect to Buffer
+ 816:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *                                               address detection
+ 817:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon__B_UART__AM_HW_BYTE_BY_BYTE - Hardware Byte-by-Byte address
+ 818:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *                                               detection
+ 819:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon__B_UART__AM_HW_DETECT_TO_BUFFER - Hardware Detect to Buffer
+ 820:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *                                               address detection
+ 821:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon__B_UART__AM_NONE - No address detection
+ 822:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 823:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Return:
+ 824:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  None.
+ 825:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 826:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Global Variables:
+ 827:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon_rxAddressMode - the parameter stored in this variable for
+ 828:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *   the farther usage in RX ISR.
+ 829:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  UART_SoilMoisture_Decagon_rxAddressDetected - set to initial state (0).
+ 830:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 831:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *******************************************************************************/
+ 832:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     void UART_SoilMoisture_Decagon_SetRxAddressMode(uint8 addressMode)
+ 833:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                                                         
+ 834:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     {
+ 622              		.loc 1 834 0
+ 623              		.cfi_startproc
+ 624              		@ args = 0, pretend = 0, frame = 8
+ 625              		@ frame_needed = 1, uses_anonymous_args = 0
+ 626              		@ link register save eliminated.
+ 627 0000 80B4     		push	{r7}
+ 628              	.LCFI35:
+ 629              		.cfi_def_cfa_offset 4
+ 630              		.cfi_offset 7, -4
+ 631 0002 83B0     		sub	sp, sp, #12
+ 632              	.LCFI36:
+ 633              		.cfi_def_cfa_offset 16
+ 634 0004 00AF     		add	r7, sp, #0
+ 635              	.LCFI37:
+ 636              		.cfi_def_cfa_register 7
+ 637 0006 0346     		mov	r3, r0
+ 638 0008 FB71     		strb	r3, [r7, #7]
+ 835:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #if(UART_SoilMoisture_Decagon_RXHW_ADDRESS_ENABLED)
+ 836:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             #if(UART_SoilMoisture_Decagon_CONTROL_REG_REMOVED)
+ 837:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 if(addressMode != 0u) { }     /* release compiler warning */
+ 838:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             #else /* UART_SoilMoisture_Decagon_CONTROL_REG_REMOVED */
+ 839:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 uint8 tmpCtrl;
+ 840:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 tmpCtrl = UART_SoilMoisture_Decagon_CONTROL_REG & (uint8)~UART_SoilMoisture_Decagon
+ 841:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 tmpCtrl |= (uint8)(addressMode << UART_SoilMoisture_Decagon_CTRL_RXADDR_MODE0_SHIFT
+ 842:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 UART_SoilMoisture_Decagon_CONTROL_REG = tmpCtrl;
+ 843:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 #if(UART_SoilMoisture_Decagon_RX_INTERRUPT_ENABLED && \
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 27
+
+
+ 844:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                    (UART_SoilMoisture_Decagon_RXBUFFERSIZE > UART_SoilMoisture_Decagon_FIFO_LENGTH)
+ 845:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                     UART_SoilMoisture_Decagon_rxAddressMode = addressMode;
+ 846:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                     UART_SoilMoisture_Decagon_rxAddressDetected = 0u;
+ 847:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****                 #endif /* End UART_SoilMoisture_Decagon_RXBUFFERSIZE > UART_SoilMoisture_Decagon_FI
+ 848:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             #endif /* End UART_SoilMoisture_Decagon_CONTROL_REG_REMOVED */
+ 849:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #else /* UART_SoilMoisture_Decagon_RXHW_ADDRESS_ENABLED */
+ 850:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****             if(addressMode != 0u) { }     /* release compiler warning */
+ 851:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         #endif /* End UART_SoilMoisture_Decagon_RXHW_ADDRESS_ENABLED */
+ 852:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     }
+ 639              		.loc 1 852 0
+ 640 000a 07F10C07 		add	r7, r7, #12
+ 641 000e BD46     		mov	sp, r7
+ 642 0010 80BC     		pop	{r7}
+ 643 0012 7047     		bx	lr
+ 644              		.cfi_endproc
+ 645              	.LFE13:
+ 646              		.size	UART_SoilMoisture_Decagon_SetRxAddressMode, .-UART_SoilMoisture_Decagon_SetRxAddressMode
+ 647              		.section	.text.UART_SoilMoisture_Decagon_SetRxAddress1,"ax",%progbits
+ 648              		.align	2
+ 649              		.global	UART_SoilMoisture_Decagon_SetRxAddress1
+ 650              		.thumb
+ 651              		.thumb_func
+ 652              		.type	UART_SoilMoisture_Decagon_SetRxAddress1, %function
+ 653              	UART_SoilMoisture_Decagon_SetRxAddress1:
+ 654              	.LFB14:
+ 853:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 854:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 855:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     /*******************************************************************************
+ 856:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Function Name: UART_SoilMoisture_Decagon_SetRxAddress1
+ 857:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     ********************************************************************************
+ 858:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 859:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Summary:
+ 860:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  Set the first hardware address compare value
+ 861:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 862:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Parameters:
+ 863:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  address
+ 864:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 865:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Return:
+ 866:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  None.
+ 867:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 868:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *******************************************************************************/
+ 869:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     void UART_SoilMoisture_Decagon_SetRxAddress1(uint8 address) 
+ 870:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 871:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     {
+ 655              		.loc 1 871 0
+ 656              		.cfi_startproc
+ 657              		@ args = 0, pretend = 0, frame = 8
+ 658              		@ frame_needed = 1, uses_anonymous_args = 0
+ 659              		@ link register save eliminated.
+ 660 0000 80B4     		push	{r7}
+ 661              	.LCFI38:
+ 662              		.cfi_def_cfa_offset 4
+ 663              		.cfi_offset 7, -4
+ 664 0002 83B0     		sub	sp, sp, #12
+ 665              	.LCFI39:
+ 666              		.cfi_def_cfa_offset 16
+ 667 0004 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 28
+
+
+ 668              	.LCFI40:
+ 669              		.cfi_def_cfa_register 7
+ 670 0006 0346     		mov	r3, r0
+ 671 0008 FB71     		strb	r3, [r7, #7]
+ 872:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         UART_SoilMoisture_Decagon_RXADDRESS1_REG = address;
+ 672              		.loc 1 872 0
+ 673 000a 46F22243 		movw	r3, #25634
+ 674 000e C4F20003 		movt	r3, 16384
+ 675 0012 FA79     		ldrb	r2, [r7, #7]
+ 676 0014 1A70     		strb	r2, [r3, #0]
+ 873:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     }
+ 677              		.loc 1 873 0
+ 678 0016 07F10C07 		add	r7, r7, #12
+ 679 001a BD46     		mov	sp, r7
+ 680 001c 80BC     		pop	{r7}
+ 681 001e 7047     		bx	lr
+ 682              		.cfi_endproc
+ 683              	.LFE14:
+ 684              		.size	UART_SoilMoisture_Decagon_SetRxAddress1, .-UART_SoilMoisture_Decagon_SetRxAddress1
+ 685              		.section	.text.UART_SoilMoisture_Decagon_SetRxAddress2,"ax",%progbits
+ 686              		.align	2
+ 687              		.global	UART_SoilMoisture_Decagon_SetRxAddress2
+ 688              		.thumb
+ 689              		.thumb_func
+ 690              		.type	UART_SoilMoisture_Decagon_SetRxAddress2, %function
+ 691              	UART_SoilMoisture_Decagon_SetRxAddress2:
+ 692              	.LFB15:
+ 874:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 875:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c **** 
+ 876:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     /*******************************************************************************
+ 877:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Function Name: UART_SoilMoisture_Decagon_SetRxAddress2
+ 878:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     ********************************************************************************
+ 879:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 880:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Summary:
+ 881:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  Set the second hardware address compare value
+ 882:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 883:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Parameters:
+ 884:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  address
+ 885:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 886:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     * Return:
+ 887:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *  None.
+ 888:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *
+ 889:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     *******************************************************************************/
+ 890:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     void UART_SoilMoisture_Decagon_SetRxAddress2(uint8 address) 
+ 891:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     {
+ 693              		.loc 1 891 0
+ 694              		.cfi_startproc
+ 695              		@ args = 0, pretend = 0, frame = 8
+ 696              		@ frame_needed = 1, uses_anonymous_args = 0
+ 697              		@ link register save eliminated.
+ 698 0000 80B4     		push	{r7}
+ 699              	.LCFI41:
+ 700              		.cfi_def_cfa_offset 4
+ 701              		.cfi_offset 7, -4
+ 702 0002 83B0     		sub	sp, sp, #12
+ 703              	.LCFI42:
+ 704              		.cfi_def_cfa_offset 16
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 29
+
+
+ 705 0004 00AF     		add	r7, sp, #0
+ 706              	.LCFI43:
+ 707              		.cfi_def_cfa_register 7
+ 708 0006 0346     		mov	r3, r0
+ 709 0008 FB71     		strb	r3, [r7, #7]
+ 892:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****         UART_SoilMoisture_Decagon_RXADDRESS2_REG = address;
+ 710              		.loc 1 892 0
+ 711 000a 46F23243 		movw	r3, #25650
+ 712 000e C4F20003 		movt	r3, 16384
+ 713 0012 FA79     		ldrb	r2, [r7, #7]
+ 714 0014 1A70     		strb	r2, [r3, #0]
+ 893:.\Generated_Source\PSoC5/UART_SoilMoisture_Decagon.c ****     }
+ 715              		.loc 1 893 0
+ 716 0016 07F10C07 		add	r7, r7, #12
+ 717 001a BD46     		mov	sp, r7
+ 718 001c 80BC     		pop	{r7}
+ 719 001e 7047     		bx	lr
+ 720              		.cfi_endproc
+ 721              	.LFE15:
+ 722              		.size	UART_SoilMoisture_Decagon_SetRxAddress2, .-UART_SoilMoisture_Decagon_SetRxAddress2
+ 723              		.text
+ 724              	.Letext0:
+ 725              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 726              		.section	.debug_info,"",%progbits
+ 727              	.Ldebug_info0:
+ 728 0000 41030000 		.4byte	0x341
+ 729 0004 0200     		.2byte	0x2
+ 730 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 731 000a 04       		.byte	0x4
+ 732 000b 01       		.uleb128 0x1
+ 733 000c 2F030000 		.4byte	.LASF41
+ 734 0010 01       		.byte	0x1
+ 735 0011 6A020000 		.4byte	.LASF42
+ 736 0015 AC030000 		.4byte	.LASF43
+ 737 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 738 001d 00000000 		.4byte	0
+ 739 0021 00000000 		.4byte	0
+ 740 0025 00000000 		.4byte	.Ldebug_line0
+ 741 0029 02       		.uleb128 0x2
+ 742 002a 01       		.byte	0x1
+ 743 002b 06       		.byte	0x6
+ 744 002c A0030000 		.4byte	.LASF0
+ 745 0030 02       		.uleb128 0x2
+ 746 0031 01       		.byte	0x1
+ 747 0032 08       		.byte	0x8
+ 748 0033 B2010000 		.4byte	.LASF1
+ 749 0037 02       		.uleb128 0x2
+ 750 0038 02       		.byte	0x2
+ 751 0039 05       		.byte	0x5
+ 752 003a 25030000 		.4byte	.LASF2
+ 753 003e 02       		.uleb128 0x2
+ 754 003f 02       		.byte	0x2
+ 755 0040 07       		.byte	0x7
+ 756 0041 C4000000 		.4byte	.LASF3
+ 757 0045 02       		.uleb128 0x2
+ 758 0046 04       		.byte	0x4
+ 759 0047 05       		.byte	0x5
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 30
+
+
+ 760 0048 78030000 		.4byte	.LASF4
+ 761 004c 02       		.uleb128 0x2
+ 762 004d 04       		.byte	0x4
+ 763 004e 07       		.byte	0x7
+ 764 004f 58010000 		.4byte	.LASF5
+ 765 0053 02       		.uleb128 0x2
+ 766 0054 08       		.byte	0x8
+ 767 0055 05       		.byte	0x5
+ 768 0056 A8020000 		.4byte	.LASF6
+ 769 005a 02       		.uleb128 0x2
+ 770 005b 08       		.byte	0x8
+ 771 005c 07       		.byte	0x7
+ 772 005d 30010000 		.4byte	.LASF7
+ 773 0061 03       		.uleb128 0x3
+ 774 0062 04       		.byte	0x4
+ 775 0063 05       		.byte	0x5
+ 776 0064 696E7400 		.ascii	"int\000"
+ 777 0068 02       		.uleb128 0x2
+ 778 0069 04       		.byte	0x4
+ 779 006a 07       		.byte	0x7
+ 780 006b FD010000 		.4byte	.LASF8
+ 781 006f 04       		.uleb128 0x4
+ 782 0070 6A010000 		.4byte	.LASF9
+ 783 0074 02       		.byte	0x2
+ 784 0075 5B       		.byte	0x5b
+ 785 0076 30000000 		.4byte	0x30
+ 786 007a 04       		.uleb128 0x4
+ 787 007b D7010000 		.4byte	.LASF10
+ 788 007f 02       		.byte	0x2
+ 789 0080 5C       		.byte	0x5c
+ 790 0081 3E000000 		.4byte	0x3e
+ 791 0085 02       		.uleb128 0x2
+ 792 0086 04       		.byte	0x4
+ 793 0087 04       		.byte	0x4
+ 794 0088 FF000000 		.4byte	.LASF11
+ 795 008c 02       		.uleb128 0x2
+ 796 008d 08       		.byte	0x8
+ 797 008e 04       		.byte	0x4
+ 798 008f C0010000 		.4byte	.LASF12
+ 799 0093 02       		.uleb128 0x2
+ 800 0094 01       		.byte	0x1
+ 801 0095 08       		.byte	0x8
+ 802 0096 D8020000 		.4byte	.LASF13
+ 803 009a 04       		.uleb128 0x4
+ 804 009b 53010000 		.4byte	.LASF14
+ 805 009f 02       		.byte	0x2
+ 806 00a0 F0       		.byte	0xf0
+ 807 00a1 A5000000 		.4byte	0xa5
+ 808 00a5 05       		.uleb128 0x5
+ 809 00a6 6F000000 		.4byte	0x6f
+ 810 00aa 02       		.uleb128 0x2
+ 811 00ab 04       		.byte	0x4
+ 812 00ac 07       		.byte	0x7
+ 813 00ad 9F020000 		.4byte	.LASF15
+ 814 00b1 06       		.uleb128 0x6
+ 815 00b2 01       		.byte	0x1
+ 816 00b3 DD020000 		.4byte	.LASF16
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 31
+
+
+ 817 00b7 01       		.byte	0x1
+ 818 00b8 49       		.byte	0x49
+ 819 00b9 01       		.byte	0x1
+ 820 00ba 00000000 		.4byte	.LFB0
+ 821 00be 2A000000 		.4byte	.LFE0
+ 822 00c2 00000000 		.4byte	.LLST0
+ 823 00c6 01       		.byte	0x1
+ 824 00c7 07       		.uleb128 0x7
+ 825 00c8 01       		.byte	0x1
+ 826 00c9 DE010000 		.4byte	.LASF17
+ 827 00cd 01       		.byte	0x1
+ 828 00ce 65       		.byte	0x65
+ 829 00cf 01       		.byte	0x1
+ 830 00d0 00000000 		.4byte	.LFB1
+ 831 00d4 26000000 		.4byte	.LFE1
+ 832 00d8 2C000000 		.4byte	.LLST1
+ 833 00dc 01       		.byte	0x1
+ 834 00dd 08       		.uleb128 0x8
+ 835 00de 01       		.byte	0x1
+ 836 00df DE000000 		.4byte	.LASF18
+ 837 00e3 01       		.byte	0x1
+ 838 00e4 AE       		.byte	0xae
+ 839 00e5 01       		.byte	0x1
+ 840 00e6 00000000 		.4byte	.LFB2
+ 841 00ea 5A000000 		.4byte	.LFE2
+ 842 00ee 58000000 		.4byte	.LLST2
+ 843 00f2 01       		.byte	0x1
+ 844 00f3 06010000 		.4byte	0x106
+ 845 00f7 09       		.uleb128 0x9
+ 846 00f8 A1010000 		.4byte	.LASF20
+ 847 00fc 01       		.byte	0x1
+ 848 00fd B0       		.byte	0xb0
+ 849 00fe 6F000000 		.4byte	0x6f
+ 850 0102 02       		.byte	0x2
+ 851 0103 91       		.byte	0x91
+ 852 0104 77       		.sleb128 -9
+ 853 0105 00       		.byte	0
+ 854 0106 08       		.uleb128 0x8
+ 855 0107 01       		.byte	0x1
+ 856 0108 81030000 		.4byte	.LASF19
+ 857 010c 01       		.byte	0x1
+ 858 010d E3       		.byte	0xe3
+ 859 010e 01       		.byte	0x1
+ 860 010f 00000000 		.4byte	.LFB3
+ 861 0113 5A000000 		.4byte	.LFE3
+ 862 0117 90000000 		.4byte	.LLST3
+ 863 011b 01       		.byte	0x1
+ 864 011c 2F010000 		.4byte	0x12f
+ 865 0120 09       		.uleb128 0x9
+ 866 0121 A1010000 		.4byte	.LASF20
+ 867 0125 01       		.byte	0x1
+ 868 0126 E5       		.byte	0xe5
+ 869 0127 6F000000 		.4byte	0x6f
+ 870 012b 02       		.byte	0x2
+ 871 012c 91       		.byte	0x91
+ 872 012d 77       		.sleb128 -9
+ 873 012e 00       		.byte	0
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 32
+
+
+ 874 012f 0A       		.uleb128 0xa
+ 875 0130 01       		.byte	0x1
+ 876 0131 12020000 		.4byte	.LASF31
+ 877 0135 01       		.byte	0x1
+ 878 0136 1901     		.2byte	0x119
+ 879 0138 01       		.byte	0x1
+ 880 0139 6F000000 		.4byte	0x6f
+ 881 013d 00000000 		.4byte	.LFB4
+ 882 0141 10000000 		.4byte	.LFE4
+ 883 0145 C8000000 		.4byte	.LLST4
+ 884 0149 01       		.byte	0x1
+ 885 014a 0B       		.uleb128 0xb
+ 886 014b 01       		.byte	0x1
+ 887 014c 3C040000 		.4byte	.LASF21
+ 888 0150 01       		.byte	0x1
+ 889 0151 3101     		.2byte	0x131
+ 890 0153 01       		.byte	0x1
+ 891 0154 00000000 		.4byte	.LFB5
+ 892 0158 14000000 		.4byte	.LFE5
+ 893 015c F4000000 		.4byte	.LLST5
+ 894 0160 01       		.byte	0x1
+ 895 0161 75010000 		.4byte	0x175
+ 896 0165 0C       		.uleb128 0xc
+ 897 0166 70010000 		.4byte	.LASF23
+ 898 016a 01       		.byte	0x1
+ 899 016b 3101     		.2byte	0x131
+ 900 016d 6F000000 		.4byte	0x6f
+ 901 0171 02       		.byte	0x2
+ 902 0172 91       		.byte	0x91
+ 903 0173 77       		.sleb128 -9
+ 904 0174 00       		.byte	0
+ 905 0175 0B       		.uleb128 0xb
+ 906 0176 01       		.byte	0x1
+ 907 0177 00000000 		.4byte	.LASF22
+ 908 017b 01       		.byte	0x1
+ 909 017c 8101     		.2byte	0x181
+ 910 017e 01       		.byte	0x1
+ 911 017f 00000000 		.4byte	.LFB6
+ 912 0183 20000000 		.4byte	.LFE6
+ 913 0187 2C010000 		.4byte	.LLST6
+ 914 018b 01       		.byte	0x1
+ 915 018c A0010000 		.4byte	0x1a0
+ 916 0190 0C       		.uleb128 0xc
+ 917 0191 C7010000 		.4byte	.LASF24
+ 918 0195 01       		.byte	0x1
+ 919 0196 8101     		.2byte	0x181
+ 920 0198 6F000000 		.4byte	0x6f
+ 921 019c 02       		.byte	0x2
+ 922 019d 91       		.byte	0x91
+ 923 019e 77       		.sleb128 -9
+ 924 019f 00       		.byte	0
+ 925 01a0 0D       		.uleb128 0xd
+ 926 01a1 01       		.byte	0x1
+ 927 01a2 7D000000 		.4byte	.LASF26
+ 928 01a6 01       		.byte	0x1
+ 929 01a7 A201     		.2byte	0x1a2
+ 930 01a9 01       		.byte	0x1
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 33
+
+
+ 931 01aa 6F000000 		.4byte	0x6f
+ 932 01ae 00000000 		.4byte	.LFB7
+ 933 01b2 20000000 		.4byte	.LFE7
+ 934 01b6 64010000 		.4byte	.LLST7
+ 935 01ba 01       		.byte	0x1
+ 936 01bb CF010000 		.4byte	0x1cf
+ 937 01bf 0E       		.uleb128 0xe
+ 938 01c0 9A010000 		.4byte	.LASF25
+ 939 01c4 01       		.byte	0x1
+ 940 01c5 A401     		.2byte	0x1a4
+ 941 01c7 6F000000 		.4byte	0x6f
+ 942 01cb 02       		.byte	0x2
+ 943 01cc 91       		.byte	0x91
+ 944 01cd 77       		.sleb128 -9
+ 945 01ce 00       		.byte	0
+ 946 01cf 0D       		.uleb128 0xd
+ 947 01d0 01       		.byte	0x1
+ 948 01d1 6B040000 		.4byte	.LASF27
+ 949 01d5 01       		.byte	0x1
+ 950 01d6 FD01     		.2byte	0x1fd
+ 951 01d8 01       		.byte	0x1
+ 952 01d9 6F000000 		.4byte	0x6f
+ 953 01dd 00000000 		.4byte	.LFB8
+ 954 01e1 26000000 		.4byte	.LFE8
+ 955 01e5 9C010000 		.4byte	.LLST8
+ 956 01e9 01       		.byte	0x1
+ 957 01ea FE010000 		.4byte	0x1fe
+ 958 01ee 0E       		.uleb128 0xe
+ 959 01ef D7000000 		.4byte	.LASF28
+ 960 01f3 01       		.byte	0x1
+ 961 01f4 FF01     		.2byte	0x1ff
+ 962 01f6 6F000000 		.4byte	0x6f
+ 963 01fa 02       		.byte	0x2
+ 964 01fb 91       		.byte	0x91
+ 965 01fc 77       		.sleb128 -9
+ 966 01fd 00       		.byte	0
+ 967 01fe 0D       		.uleb128 0xd
+ 968 01ff 01       		.byte	0x1
+ 969 0200 A2000000 		.4byte	.LASF29
+ 970 0204 01       		.byte	0x1
+ 971 0205 2C02     		.2byte	0x22c
+ 972 0207 01       		.byte	0x1
+ 973 0208 6F000000 		.4byte	0x6f
+ 974 020c 00000000 		.4byte	.LFB9
+ 975 0210 4C000000 		.4byte	.LFE9
+ 976 0214 D4010000 		.4byte	.LLST9
+ 977 0218 01       		.byte	0x1
+ 978 0219 3C020000 		.4byte	0x23c
+ 979 021d 0E       		.uleb128 0xe
+ 980 021e 9A010000 		.4byte	.LASF25
+ 981 0222 01       		.byte	0x1
+ 982 0223 2E02     		.2byte	0x22e
+ 983 0225 6F000000 		.4byte	0x6f
+ 984 0229 02       		.byte	0x2
+ 985 022a 91       		.byte	0x91
+ 986 022b 77       		.sleb128 -9
+ 987 022c 0E       		.uleb128 0xe
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 34
+
+
+ 988 022d CE010000 		.4byte	.LASF30
+ 989 0231 01       		.byte	0x1
+ 990 0232 2F02     		.2byte	0x22f
+ 991 0234 6F000000 		.4byte	0x6f
+ 992 0238 02       		.byte	0x2
+ 993 0239 91       		.byte	0x91
+ 994 023a 76       		.sleb128 -10
+ 995 023b 00       		.byte	0
+ 996 023c 0F       		.uleb128 0xf
+ 997 023d 01       		.byte	0x1
+ 998 023e B6020000 		.4byte	.LASF32
+ 999 0242 01       		.byte	0x1
+ 1000 0243 9202     		.2byte	0x292
+ 1001 0245 01       		.byte	0x1
+ 1002 0246 7A000000 		.4byte	0x7a
+ 1003 024a 00000000 		.4byte	.LFB10
+ 1004 024e 22000000 		.4byte	.LFE10
+ 1005 0252 0C020000 		.4byte	.LLST10
+ 1006 0256 01       		.byte	0x1
+ 1007 0257 0D       		.uleb128 0xd
+ 1008 0258 01       		.byte	0x1
+ 1009 0259 40020000 		.4byte	.LASF33
+ 1010 025d 01       		.byte	0x1
+ 1011 025e B302     		.2byte	0x2b3
+ 1012 0260 01       		.byte	0x1
+ 1013 0261 6F000000 		.4byte	0x6f
+ 1014 0265 00000000 		.4byte	.LFB11
+ 1015 0269 34000000 		.4byte	.LFE11
+ 1016 026d 38020000 		.4byte	.LLST11
+ 1017 0271 01       		.byte	0x1
+ 1018 0272 86020000 		.4byte	0x286
+ 1019 0276 0E       		.uleb128 0xe
+ 1020 0277 37040000 		.4byte	.LASF34
+ 1021 027b 01       		.byte	0x1
+ 1022 027c B602     		.2byte	0x2b6
+ 1023 027e 6F000000 		.4byte	0x6f
+ 1024 0282 02       		.byte	0x2
+ 1025 0283 91       		.byte	0x91
+ 1026 0284 77       		.sleb128 -9
+ 1027 0285 00       		.byte	0
+ 1028 0286 10       		.uleb128 0x10
+ 1029 0287 01       		.byte	0x1
+ 1030 0288 FD020000 		.4byte	.LASF35
+ 1031 028c 01       		.byte	0x1
+ 1032 028d 0303     		.2byte	0x303
+ 1033 028f 01       		.byte	0x1
+ 1034 0290 00000000 		.4byte	.LFB12
+ 1035 0294 56000000 		.4byte	.LFE12
+ 1036 0298 70020000 		.4byte	.LLST12
+ 1037 029c 01       		.byte	0x1
+ 1038 029d B1020000 		.4byte	0x2b1
+ 1039 02a1 0E       		.uleb128 0xe
+ 1040 02a2 A1010000 		.4byte	.LASF20
+ 1041 02a6 01       		.byte	0x1
+ 1042 02a7 0503     		.2byte	0x305
+ 1043 02a9 6F000000 		.4byte	0x6f
+ 1044 02ad 02       		.byte	0x2
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 35
+
+
+ 1045 02ae 91       		.byte	0x91
+ 1046 02af 77       		.sleb128 -9
+ 1047 02b0 00       		.byte	0
+ 1048 02b1 0B       		.uleb128 0xb
+ 1049 02b2 01       		.byte	0x1
+ 1050 02b3 05010000 		.4byte	.LASF36
+ 1051 02b7 01       		.byte	0x1
+ 1052 02b8 4003     		.2byte	0x340
+ 1053 02ba 01       		.byte	0x1
+ 1054 02bb 00000000 		.4byte	.LFB13
+ 1055 02bf 14000000 		.4byte	.LFE13
+ 1056 02c3 A8020000 		.4byte	.LLST13
+ 1057 02c7 01       		.byte	0x1
+ 1058 02c8 DC020000 		.4byte	0x2dc
+ 1059 02cc 0C       		.uleb128 0xc
+ 1060 02cd 47010000 		.4byte	.LASF37
+ 1061 02d1 01       		.byte	0x1
+ 1062 02d2 4003     		.2byte	0x340
+ 1063 02d4 6F000000 		.4byte	0x6f
+ 1064 02d8 02       		.byte	0x2
+ 1065 02d9 91       		.byte	0x91
+ 1066 02da 77       		.sleb128 -9
+ 1067 02db 00       		.byte	0
+ 1068 02dc 0B       		.uleb128 0xb
+ 1069 02dd 01       		.byte	0x1
+ 1070 02de 2D000000 		.4byte	.LASF38
+ 1071 02e2 01       		.byte	0x1
+ 1072 02e3 6503     		.2byte	0x365
+ 1073 02e5 01       		.byte	0x1
+ 1074 02e6 00000000 		.4byte	.LFB14
+ 1075 02ea 20000000 		.4byte	.LFE14
+ 1076 02ee E0020000 		.4byte	.LLST14
+ 1077 02f2 01       		.byte	0x1
+ 1078 02f3 07030000 		.4byte	0x307
+ 1079 02f7 0C       		.uleb128 0xc
+ 1080 02f8 0A020000 		.4byte	.LASF39
+ 1081 02fc 01       		.byte	0x1
+ 1082 02fd 6503     		.2byte	0x365
+ 1083 02ff 6F000000 		.4byte	0x6f
+ 1084 0303 02       		.byte	0x2
+ 1085 0304 91       		.byte	0x91
+ 1086 0305 77       		.sleb128 -9
+ 1087 0306 00       		.byte	0
+ 1088 0307 0B       		.uleb128 0xb
+ 1089 0308 01       		.byte	0x1
+ 1090 0309 55000000 		.4byte	.LASF40
+ 1091 030d 01       		.byte	0x1
+ 1092 030e 7A03     		.2byte	0x37a
+ 1093 0310 01       		.byte	0x1
+ 1094 0311 00000000 		.4byte	.LFB15
+ 1095 0315 20000000 		.4byte	.LFE15
+ 1096 0319 18030000 		.4byte	.LLST15
+ 1097 031d 01       		.byte	0x1
+ 1098 031e 32030000 		.4byte	0x332
+ 1099 0322 0C       		.uleb128 0xc
+ 1100 0323 0A020000 		.4byte	.LASF39
+ 1101 0327 01       		.byte	0x1
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 36
+
+
+ 1102 0328 7A03     		.2byte	0x37a
+ 1103 032a 6F000000 		.4byte	0x6f
+ 1104 032e 02       		.byte	0x2
+ 1105 032f 91       		.byte	0x91
+ 1106 0330 77       		.sleb128 -9
+ 1107 0331 00       		.byte	0
+ 1108 0332 11       		.uleb128 0x11
+ 1109 0333 78010000 		.4byte	.LASF44
+ 1110 0337 01       		.byte	0x1
+ 1111 0338 1C       		.byte	0x1c
+ 1112 0339 6F000000 		.4byte	0x6f
+ 1113 033d 01       		.byte	0x1
+ 1114 033e 05       		.byte	0x5
+ 1115 033f 03       		.byte	0x3
+ 1116 0340 00000000 		.4byte	UART_SoilMoisture_Decagon_initVar
+ 1117 0344 00       		.byte	0
+ 1118              		.section	.debug_abbrev,"",%progbits
+ 1119              	.Ldebug_abbrev0:
+ 1120 0000 01       		.uleb128 0x1
+ 1121 0001 11       		.uleb128 0x11
+ 1122 0002 01       		.byte	0x1
+ 1123 0003 25       		.uleb128 0x25
+ 1124 0004 0E       		.uleb128 0xe
+ 1125 0005 13       		.uleb128 0x13
+ 1126 0006 0B       		.uleb128 0xb
+ 1127 0007 03       		.uleb128 0x3
+ 1128 0008 0E       		.uleb128 0xe
+ 1129 0009 1B       		.uleb128 0x1b
+ 1130 000a 0E       		.uleb128 0xe
+ 1131 000b 55       		.uleb128 0x55
+ 1132 000c 06       		.uleb128 0x6
+ 1133 000d 11       		.uleb128 0x11
+ 1134 000e 01       		.uleb128 0x1
+ 1135 000f 52       		.uleb128 0x52
+ 1136 0010 01       		.uleb128 0x1
+ 1137 0011 10       		.uleb128 0x10
+ 1138 0012 06       		.uleb128 0x6
+ 1139 0013 00       		.byte	0
+ 1140 0014 00       		.byte	0
+ 1141 0015 02       		.uleb128 0x2
+ 1142 0016 24       		.uleb128 0x24
+ 1143 0017 00       		.byte	0
+ 1144 0018 0B       		.uleb128 0xb
+ 1145 0019 0B       		.uleb128 0xb
+ 1146 001a 3E       		.uleb128 0x3e
+ 1147 001b 0B       		.uleb128 0xb
+ 1148 001c 03       		.uleb128 0x3
+ 1149 001d 0E       		.uleb128 0xe
+ 1150 001e 00       		.byte	0
+ 1151 001f 00       		.byte	0
+ 1152 0020 03       		.uleb128 0x3
+ 1153 0021 24       		.uleb128 0x24
+ 1154 0022 00       		.byte	0
+ 1155 0023 0B       		.uleb128 0xb
+ 1156 0024 0B       		.uleb128 0xb
+ 1157 0025 3E       		.uleb128 0x3e
+ 1158 0026 0B       		.uleb128 0xb
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 37
+
+
+ 1159 0027 03       		.uleb128 0x3
+ 1160 0028 08       		.uleb128 0x8
+ 1161 0029 00       		.byte	0
+ 1162 002a 00       		.byte	0
+ 1163 002b 04       		.uleb128 0x4
+ 1164 002c 16       		.uleb128 0x16
+ 1165 002d 00       		.byte	0
+ 1166 002e 03       		.uleb128 0x3
+ 1167 002f 0E       		.uleb128 0xe
+ 1168 0030 3A       		.uleb128 0x3a
+ 1169 0031 0B       		.uleb128 0xb
+ 1170 0032 3B       		.uleb128 0x3b
+ 1171 0033 0B       		.uleb128 0xb
+ 1172 0034 49       		.uleb128 0x49
+ 1173 0035 13       		.uleb128 0x13
+ 1174 0036 00       		.byte	0
+ 1175 0037 00       		.byte	0
+ 1176 0038 05       		.uleb128 0x5
+ 1177 0039 35       		.uleb128 0x35
+ 1178 003a 00       		.byte	0
+ 1179 003b 49       		.uleb128 0x49
+ 1180 003c 13       		.uleb128 0x13
+ 1181 003d 00       		.byte	0
+ 1182 003e 00       		.byte	0
+ 1183 003f 06       		.uleb128 0x6
+ 1184 0040 2E       		.uleb128 0x2e
+ 1185 0041 00       		.byte	0
+ 1186 0042 3F       		.uleb128 0x3f
+ 1187 0043 0C       		.uleb128 0xc
+ 1188 0044 03       		.uleb128 0x3
+ 1189 0045 0E       		.uleb128 0xe
+ 1190 0046 3A       		.uleb128 0x3a
+ 1191 0047 0B       		.uleb128 0xb
+ 1192 0048 3B       		.uleb128 0x3b
+ 1193 0049 0B       		.uleb128 0xb
+ 1194 004a 27       		.uleb128 0x27
+ 1195 004b 0C       		.uleb128 0xc
+ 1196 004c 11       		.uleb128 0x11
+ 1197 004d 01       		.uleb128 0x1
+ 1198 004e 12       		.uleb128 0x12
+ 1199 004f 01       		.uleb128 0x1
+ 1200 0050 40       		.uleb128 0x40
+ 1201 0051 06       		.uleb128 0x6
+ 1202 0052 9642     		.uleb128 0x2116
+ 1203 0054 0C       		.uleb128 0xc
+ 1204 0055 00       		.byte	0
+ 1205 0056 00       		.byte	0
+ 1206 0057 07       		.uleb128 0x7
+ 1207 0058 2E       		.uleb128 0x2e
+ 1208 0059 00       		.byte	0
+ 1209 005a 3F       		.uleb128 0x3f
+ 1210 005b 0C       		.uleb128 0xc
+ 1211 005c 03       		.uleb128 0x3
+ 1212 005d 0E       		.uleb128 0xe
+ 1213 005e 3A       		.uleb128 0x3a
+ 1214 005f 0B       		.uleb128 0xb
+ 1215 0060 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 38
+
+
+ 1216 0061 0B       		.uleb128 0xb
+ 1217 0062 27       		.uleb128 0x27
+ 1218 0063 0C       		.uleb128 0xc
+ 1219 0064 11       		.uleb128 0x11
+ 1220 0065 01       		.uleb128 0x1
+ 1221 0066 12       		.uleb128 0x12
+ 1222 0067 01       		.uleb128 0x1
+ 1223 0068 40       		.uleb128 0x40
+ 1224 0069 06       		.uleb128 0x6
+ 1225 006a 9742     		.uleb128 0x2117
+ 1226 006c 0C       		.uleb128 0xc
+ 1227 006d 00       		.byte	0
+ 1228 006e 00       		.byte	0
+ 1229 006f 08       		.uleb128 0x8
+ 1230 0070 2E       		.uleb128 0x2e
+ 1231 0071 01       		.byte	0x1
+ 1232 0072 3F       		.uleb128 0x3f
+ 1233 0073 0C       		.uleb128 0xc
+ 1234 0074 03       		.uleb128 0x3
+ 1235 0075 0E       		.uleb128 0xe
+ 1236 0076 3A       		.uleb128 0x3a
+ 1237 0077 0B       		.uleb128 0xb
+ 1238 0078 3B       		.uleb128 0x3b
+ 1239 0079 0B       		.uleb128 0xb
+ 1240 007a 27       		.uleb128 0x27
+ 1241 007b 0C       		.uleb128 0xc
+ 1242 007c 11       		.uleb128 0x11
+ 1243 007d 01       		.uleb128 0x1
+ 1244 007e 12       		.uleb128 0x12
+ 1245 007f 01       		.uleb128 0x1
+ 1246 0080 40       		.uleb128 0x40
+ 1247 0081 06       		.uleb128 0x6
+ 1248 0082 9642     		.uleb128 0x2116
+ 1249 0084 0C       		.uleb128 0xc
+ 1250 0085 01       		.uleb128 0x1
+ 1251 0086 13       		.uleb128 0x13
+ 1252 0087 00       		.byte	0
+ 1253 0088 00       		.byte	0
+ 1254 0089 09       		.uleb128 0x9
+ 1255 008a 34       		.uleb128 0x34
+ 1256 008b 00       		.byte	0
+ 1257 008c 03       		.uleb128 0x3
+ 1258 008d 0E       		.uleb128 0xe
+ 1259 008e 3A       		.uleb128 0x3a
+ 1260 008f 0B       		.uleb128 0xb
+ 1261 0090 3B       		.uleb128 0x3b
+ 1262 0091 0B       		.uleb128 0xb
+ 1263 0092 49       		.uleb128 0x49
+ 1264 0093 13       		.uleb128 0x13
+ 1265 0094 02       		.uleb128 0x2
+ 1266 0095 0A       		.uleb128 0xa
+ 1267 0096 00       		.byte	0
+ 1268 0097 00       		.byte	0
+ 1269 0098 0A       		.uleb128 0xa
+ 1270 0099 2E       		.uleb128 0x2e
+ 1271 009a 00       		.byte	0
+ 1272 009b 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 39
+
+
+ 1273 009c 0C       		.uleb128 0xc
+ 1274 009d 03       		.uleb128 0x3
+ 1275 009e 0E       		.uleb128 0xe
+ 1276 009f 3A       		.uleb128 0x3a
+ 1277 00a0 0B       		.uleb128 0xb
+ 1278 00a1 3B       		.uleb128 0x3b
+ 1279 00a2 05       		.uleb128 0x5
+ 1280 00a3 27       		.uleb128 0x27
+ 1281 00a4 0C       		.uleb128 0xc
+ 1282 00a5 49       		.uleb128 0x49
+ 1283 00a6 13       		.uleb128 0x13
+ 1284 00a7 11       		.uleb128 0x11
+ 1285 00a8 01       		.uleb128 0x1
+ 1286 00a9 12       		.uleb128 0x12
+ 1287 00aa 01       		.uleb128 0x1
+ 1288 00ab 40       		.uleb128 0x40
+ 1289 00ac 06       		.uleb128 0x6
+ 1290 00ad 9742     		.uleb128 0x2117
+ 1291 00af 0C       		.uleb128 0xc
+ 1292 00b0 00       		.byte	0
+ 1293 00b1 00       		.byte	0
+ 1294 00b2 0B       		.uleb128 0xb
+ 1295 00b3 2E       		.uleb128 0x2e
+ 1296 00b4 01       		.byte	0x1
+ 1297 00b5 3F       		.uleb128 0x3f
+ 1298 00b6 0C       		.uleb128 0xc
+ 1299 00b7 03       		.uleb128 0x3
+ 1300 00b8 0E       		.uleb128 0xe
+ 1301 00b9 3A       		.uleb128 0x3a
+ 1302 00ba 0B       		.uleb128 0xb
+ 1303 00bb 3B       		.uleb128 0x3b
+ 1304 00bc 05       		.uleb128 0x5
+ 1305 00bd 27       		.uleb128 0x27
+ 1306 00be 0C       		.uleb128 0xc
+ 1307 00bf 11       		.uleb128 0x11
+ 1308 00c0 01       		.uleb128 0x1
+ 1309 00c1 12       		.uleb128 0x12
+ 1310 00c2 01       		.uleb128 0x1
+ 1311 00c3 40       		.uleb128 0x40
+ 1312 00c4 06       		.uleb128 0x6
+ 1313 00c5 9742     		.uleb128 0x2117
+ 1314 00c7 0C       		.uleb128 0xc
+ 1315 00c8 01       		.uleb128 0x1
+ 1316 00c9 13       		.uleb128 0x13
+ 1317 00ca 00       		.byte	0
+ 1318 00cb 00       		.byte	0
+ 1319 00cc 0C       		.uleb128 0xc
+ 1320 00cd 05       		.uleb128 0x5
+ 1321 00ce 00       		.byte	0
+ 1322 00cf 03       		.uleb128 0x3
+ 1323 00d0 0E       		.uleb128 0xe
+ 1324 00d1 3A       		.uleb128 0x3a
+ 1325 00d2 0B       		.uleb128 0xb
+ 1326 00d3 3B       		.uleb128 0x3b
+ 1327 00d4 05       		.uleb128 0x5
+ 1328 00d5 49       		.uleb128 0x49
+ 1329 00d6 13       		.uleb128 0x13
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 40
+
+
+ 1330 00d7 02       		.uleb128 0x2
+ 1331 00d8 0A       		.uleb128 0xa
+ 1332 00d9 00       		.byte	0
+ 1333 00da 00       		.byte	0
+ 1334 00db 0D       		.uleb128 0xd
+ 1335 00dc 2E       		.uleb128 0x2e
+ 1336 00dd 01       		.byte	0x1
+ 1337 00de 3F       		.uleb128 0x3f
+ 1338 00df 0C       		.uleb128 0xc
+ 1339 00e0 03       		.uleb128 0x3
+ 1340 00e1 0E       		.uleb128 0xe
+ 1341 00e2 3A       		.uleb128 0x3a
+ 1342 00e3 0B       		.uleb128 0xb
+ 1343 00e4 3B       		.uleb128 0x3b
+ 1344 00e5 05       		.uleb128 0x5
+ 1345 00e6 27       		.uleb128 0x27
+ 1346 00e7 0C       		.uleb128 0xc
+ 1347 00e8 49       		.uleb128 0x49
+ 1348 00e9 13       		.uleb128 0x13
+ 1349 00ea 11       		.uleb128 0x11
+ 1350 00eb 01       		.uleb128 0x1
+ 1351 00ec 12       		.uleb128 0x12
+ 1352 00ed 01       		.uleb128 0x1
+ 1353 00ee 40       		.uleb128 0x40
+ 1354 00ef 06       		.uleb128 0x6
+ 1355 00f0 9742     		.uleb128 0x2117
+ 1356 00f2 0C       		.uleb128 0xc
+ 1357 00f3 01       		.uleb128 0x1
+ 1358 00f4 13       		.uleb128 0x13
+ 1359 00f5 00       		.byte	0
+ 1360 00f6 00       		.byte	0
+ 1361 00f7 0E       		.uleb128 0xe
+ 1362 00f8 34       		.uleb128 0x34
+ 1363 00f9 00       		.byte	0
+ 1364 00fa 03       		.uleb128 0x3
+ 1365 00fb 0E       		.uleb128 0xe
+ 1366 00fc 3A       		.uleb128 0x3a
+ 1367 00fd 0B       		.uleb128 0xb
+ 1368 00fe 3B       		.uleb128 0x3b
+ 1369 00ff 05       		.uleb128 0x5
+ 1370 0100 49       		.uleb128 0x49
+ 1371 0101 13       		.uleb128 0x13
+ 1372 0102 02       		.uleb128 0x2
+ 1373 0103 0A       		.uleb128 0xa
+ 1374 0104 00       		.byte	0
+ 1375 0105 00       		.byte	0
+ 1376 0106 0F       		.uleb128 0xf
+ 1377 0107 2E       		.uleb128 0x2e
+ 1378 0108 00       		.byte	0
+ 1379 0109 3F       		.uleb128 0x3f
+ 1380 010a 0C       		.uleb128 0xc
+ 1381 010b 03       		.uleb128 0x3
+ 1382 010c 0E       		.uleb128 0xe
+ 1383 010d 3A       		.uleb128 0x3a
+ 1384 010e 0B       		.uleb128 0xb
+ 1385 010f 3B       		.uleb128 0x3b
+ 1386 0110 05       		.uleb128 0x5
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 41
+
+
+ 1387 0111 27       		.uleb128 0x27
+ 1388 0112 0C       		.uleb128 0xc
+ 1389 0113 49       		.uleb128 0x49
+ 1390 0114 13       		.uleb128 0x13
+ 1391 0115 11       		.uleb128 0x11
+ 1392 0116 01       		.uleb128 0x1
+ 1393 0117 12       		.uleb128 0x12
+ 1394 0118 01       		.uleb128 0x1
+ 1395 0119 40       		.uleb128 0x40
+ 1396 011a 06       		.uleb128 0x6
+ 1397 011b 9642     		.uleb128 0x2116
+ 1398 011d 0C       		.uleb128 0xc
+ 1399 011e 00       		.byte	0
+ 1400 011f 00       		.byte	0
+ 1401 0120 10       		.uleb128 0x10
+ 1402 0121 2E       		.uleb128 0x2e
+ 1403 0122 01       		.byte	0x1
+ 1404 0123 3F       		.uleb128 0x3f
+ 1405 0124 0C       		.uleb128 0xc
+ 1406 0125 03       		.uleb128 0x3
+ 1407 0126 0E       		.uleb128 0xe
+ 1408 0127 3A       		.uleb128 0x3a
+ 1409 0128 0B       		.uleb128 0xb
+ 1410 0129 3B       		.uleb128 0x3b
+ 1411 012a 05       		.uleb128 0x5
+ 1412 012b 27       		.uleb128 0x27
+ 1413 012c 0C       		.uleb128 0xc
+ 1414 012d 11       		.uleb128 0x11
+ 1415 012e 01       		.uleb128 0x1
+ 1416 012f 12       		.uleb128 0x12
+ 1417 0130 01       		.uleb128 0x1
+ 1418 0131 40       		.uleb128 0x40
+ 1419 0132 06       		.uleb128 0x6
+ 1420 0133 9642     		.uleb128 0x2116
+ 1421 0135 0C       		.uleb128 0xc
+ 1422 0136 01       		.uleb128 0x1
+ 1423 0137 13       		.uleb128 0x13
+ 1424 0138 00       		.byte	0
+ 1425 0139 00       		.byte	0
+ 1426 013a 11       		.uleb128 0x11
+ 1427 013b 34       		.uleb128 0x34
+ 1428 013c 00       		.byte	0
+ 1429 013d 03       		.uleb128 0x3
+ 1430 013e 0E       		.uleb128 0xe
+ 1431 013f 3A       		.uleb128 0x3a
+ 1432 0140 0B       		.uleb128 0xb
+ 1433 0141 3B       		.uleb128 0x3b
+ 1434 0142 0B       		.uleb128 0xb
+ 1435 0143 49       		.uleb128 0x49
+ 1436 0144 13       		.uleb128 0x13
+ 1437 0145 3F       		.uleb128 0x3f
+ 1438 0146 0C       		.uleb128 0xc
+ 1439 0147 02       		.uleb128 0x2
+ 1440 0148 0A       		.uleb128 0xa
+ 1441 0149 00       		.byte	0
+ 1442 014a 00       		.byte	0
+ 1443 014b 00       		.byte	0
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 42
+
+
+ 1444              		.section	.debug_loc,"",%progbits
+ 1445              	.Ldebug_loc0:
+ 1446              	.LLST0:
+ 1447 0000 00000000 		.4byte	.LFB0
+ 1448 0004 02000000 		.4byte	.LCFI0
+ 1449 0008 0200     		.2byte	0x2
+ 1450 000a 7D       		.byte	0x7d
+ 1451 000b 00       		.sleb128 0
+ 1452 000c 02000000 		.4byte	.LCFI0
+ 1453 0010 04000000 		.4byte	.LCFI1
+ 1454 0014 0200     		.2byte	0x2
+ 1455 0016 7D       		.byte	0x7d
+ 1456 0017 08       		.sleb128 8
+ 1457 0018 04000000 		.4byte	.LCFI1
+ 1458 001c 2A000000 		.4byte	.LFE0
+ 1459 0020 0200     		.2byte	0x2
+ 1460 0022 77       		.byte	0x77
+ 1461 0023 08       		.sleb128 8
+ 1462 0024 00000000 		.4byte	0
+ 1463 0028 00000000 		.4byte	0
+ 1464              	.LLST1:
+ 1465 002c 00000000 		.4byte	.LFB1
+ 1466 0030 02000000 		.4byte	.LCFI2
+ 1467 0034 0200     		.2byte	0x2
+ 1468 0036 7D       		.byte	0x7d
+ 1469 0037 00       		.sleb128 0
+ 1470 0038 02000000 		.4byte	.LCFI2
+ 1471 003c 04000000 		.4byte	.LCFI3
+ 1472 0040 0200     		.2byte	0x2
+ 1473 0042 7D       		.byte	0x7d
+ 1474 0043 04       		.sleb128 4
+ 1475 0044 04000000 		.4byte	.LCFI3
+ 1476 0048 26000000 		.4byte	.LFE1
+ 1477 004c 0200     		.2byte	0x2
+ 1478 004e 77       		.byte	0x77
+ 1479 004f 04       		.sleb128 4
+ 1480 0050 00000000 		.4byte	0
+ 1481 0054 00000000 		.4byte	0
+ 1482              	.LLST2:
+ 1483 0058 00000000 		.4byte	.LFB2
+ 1484 005c 02000000 		.4byte	.LCFI4
+ 1485 0060 0200     		.2byte	0x2
+ 1486 0062 7D       		.byte	0x7d
+ 1487 0063 00       		.sleb128 0
+ 1488 0064 02000000 		.4byte	.LCFI4
+ 1489 0068 04000000 		.4byte	.LCFI5
+ 1490 006c 0200     		.2byte	0x2
+ 1491 006e 7D       		.byte	0x7d
+ 1492 006f 08       		.sleb128 8
+ 1493 0070 04000000 		.4byte	.LCFI5
+ 1494 0074 06000000 		.4byte	.LCFI6
+ 1495 0078 0200     		.2byte	0x2
+ 1496 007a 7D       		.byte	0x7d
+ 1497 007b 10       		.sleb128 16
+ 1498 007c 06000000 		.4byte	.LCFI6
+ 1499 0080 5A000000 		.4byte	.LFE2
+ 1500 0084 0200     		.2byte	0x2
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 43
+
+
+ 1501 0086 77       		.byte	0x77
+ 1502 0087 10       		.sleb128 16
+ 1503 0088 00000000 		.4byte	0
+ 1504 008c 00000000 		.4byte	0
+ 1505              	.LLST3:
+ 1506 0090 00000000 		.4byte	.LFB3
+ 1507 0094 02000000 		.4byte	.LCFI7
+ 1508 0098 0200     		.2byte	0x2
+ 1509 009a 7D       		.byte	0x7d
+ 1510 009b 00       		.sleb128 0
+ 1511 009c 02000000 		.4byte	.LCFI7
+ 1512 00a0 04000000 		.4byte	.LCFI8
+ 1513 00a4 0200     		.2byte	0x2
+ 1514 00a6 7D       		.byte	0x7d
+ 1515 00a7 08       		.sleb128 8
+ 1516 00a8 04000000 		.4byte	.LCFI8
+ 1517 00ac 06000000 		.4byte	.LCFI9
+ 1518 00b0 0200     		.2byte	0x2
+ 1519 00b2 7D       		.byte	0x7d
+ 1520 00b3 10       		.sleb128 16
+ 1521 00b4 06000000 		.4byte	.LCFI9
+ 1522 00b8 5A000000 		.4byte	.LFE3
+ 1523 00bc 0200     		.2byte	0x2
+ 1524 00be 77       		.byte	0x77
+ 1525 00bf 10       		.sleb128 16
+ 1526 00c0 00000000 		.4byte	0
+ 1527 00c4 00000000 		.4byte	0
+ 1528              	.LLST4:
+ 1529 00c8 00000000 		.4byte	.LFB4
+ 1530 00cc 02000000 		.4byte	.LCFI10
+ 1531 00d0 0200     		.2byte	0x2
+ 1532 00d2 7D       		.byte	0x7d
+ 1533 00d3 00       		.sleb128 0
+ 1534 00d4 02000000 		.4byte	.LCFI10
+ 1535 00d8 04000000 		.4byte	.LCFI11
+ 1536 00dc 0200     		.2byte	0x2
+ 1537 00de 7D       		.byte	0x7d
+ 1538 00df 04       		.sleb128 4
+ 1539 00e0 04000000 		.4byte	.LCFI11
+ 1540 00e4 10000000 		.4byte	.LFE4
+ 1541 00e8 0200     		.2byte	0x2
+ 1542 00ea 77       		.byte	0x77
+ 1543 00eb 04       		.sleb128 4
+ 1544 00ec 00000000 		.4byte	0
+ 1545 00f0 00000000 		.4byte	0
+ 1546              	.LLST5:
+ 1547 00f4 00000000 		.4byte	.LFB5
+ 1548 00f8 02000000 		.4byte	.LCFI12
+ 1549 00fc 0200     		.2byte	0x2
+ 1550 00fe 7D       		.byte	0x7d
+ 1551 00ff 00       		.sleb128 0
+ 1552 0100 02000000 		.4byte	.LCFI12
+ 1553 0104 04000000 		.4byte	.LCFI13
+ 1554 0108 0200     		.2byte	0x2
+ 1555 010a 7D       		.byte	0x7d
+ 1556 010b 04       		.sleb128 4
+ 1557 010c 04000000 		.4byte	.LCFI13
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 44
+
+
+ 1558 0110 06000000 		.4byte	.LCFI14
+ 1559 0114 0200     		.2byte	0x2
+ 1560 0116 7D       		.byte	0x7d
+ 1561 0117 10       		.sleb128 16
+ 1562 0118 06000000 		.4byte	.LCFI14
+ 1563 011c 14000000 		.4byte	.LFE5
+ 1564 0120 0200     		.2byte	0x2
+ 1565 0122 77       		.byte	0x77
+ 1566 0123 10       		.sleb128 16
+ 1567 0124 00000000 		.4byte	0
+ 1568 0128 00000000 		.4byte	0
+ 1569              	.LLST6:
+ 1570 012c 00000000 		.4byte	.LFB6
+ 1571 0130 02000000 		.4byte	.LCFI15
+ 1572 0134 0200     		.2byte	0x2
+ 1573 0136 7D       		.byte	0x7d
+ 1574 0137 00       		.sleb128 0
+ 1575 0138 02000000 		.4byte	.LCFI15
+ 1576 013c 04000000 		.4byte	.LCFI16
+ 1577 0140 0200     		.2byte	0x2
+ 1578 0142 7D       		.byte	0x7d
+ 1579 0143 04       		.sleb128 4
+ 1580 0144 04000000 		.4byte	.LCFI16
+ 1581 0148 06000000 		.4byte	.LCFI17
+ 1582 014c 0200     		.2byte	0x2
+ 1583 014e 7D       		.byte	0x7d
+ 1584 014f 10       		.sleb128 16
+ 1585 0150 06000000 		.4byte	.LCFI17
+ 1586 0154 20000000 		.4byte	.LFE6
+ 1587 0158 0200     		.2byte	0x2
+ 1588 015a 77       		.byte	0x77
+ 1589 015b 10       		.sleb128 16
+ 1590 015c 00000000 		.4byte	0
+ 1591 0160 00000000 		.4byte	0
+ 1592              	.LLST7:
+ 1593 0164 00000000 		.4byte	.LFB7
+ 1594 0168 02000000 		.4byte	.LCFI18
+ 1595 016c 0200     		.2byte	0x2
+ 1596 016e 7D       		.byte	0x7d
+ 1597 016f 00       		.sleb128 0
+ 1598 0170 02000000 		.4byte	.LCFI18
+ 1599 0174 04000000 		.4byte	.LCFI19
+ 1600 0178 0200     		.2byte	0x2
+ 1601 017a 7D       		.byte	0x7d
+ 1602 017b 04       		.sleb128 4
+ 1603 017c 04000000 		.4byte	.LCFI19
+ 1604 0180 06000000 		.4byte	.LCFI20
+ 1605 0184 0200     		.2byte	0x2
+ 1606 0186 7D       		.byte	0x7d
+ 1607 0187 10       		.sleb128 16
+ 1608 0188 06000000 		.4byte	.LCFI20
+ 1609 018c 20000000 		.4byte	.LFE7
+ 1610 0190 0200     		.2byte	0x2
+ 1611 0192 77       		.byte	0x77
+ 1612 0193 10       		.sleb128 16
+ 1613 0194 00000000 		.4byte	0
+ 1614 0198 00000000 		.4byte	0
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 45
+
+
+ 1615              	.LLST8:
+ 1616 019c 00000000 		.4byte	.LFB8
+ 1617 01a0 02000000 		.4byte	.LCFI21
+ 1618 01a4 0200     		.2byte	0x2
+ 1619 01a6 7D       		.byte	0x7d
+ 1620 01a7 00       		.sleb128 0
+ 1621 01a8 02000000 		.4byte	.LCFI21
+ 1622 01ac 04000000 		.4byte	.LCFI22
+ 1623 01b0 0200     		.2byte	0x2
+ 1624 01b2 7D       		.byte	0x7d
+ 1625 01b3 04       		.sleb128 4
+ 1626 01b4 04000000 		.4byte	.LCFI22
+ 1627 01b8 06000000 		.4byte	.LCFI23
+ 1628 01bc 0200     		.2byte	0x2
+ 1629 01be 7D       		.byte	0x7d
+ 1630 01bf 10       		.sleb128 16
+ 1631 01c0 06000000 		.4byte	.LCFI23
+ 1632 01c4 26000000 		.4byte	.LFE8
+ 1633 01c8 0200     		.2byte	0x2
+ 1634 01ca 77       		.byte	0x77
+ 1635 01cb 10       		.sleb128 16
+ 1636 01cc 00000000 		.4byte	0
+ 1637 01d0 00000000 		.4byte	0
+ 1638              	.LLST9:
+ 1639 01d4 00000000 		.4byte	.LFB9
+ 1640 01d8 02000000 		.4byte	.LCFI24
+ 1641 01dc 0200     		.2byte	0x2
+ 1642 01de 7D       		.byte	0x7d
+ 1643 01df 00       		.sleb128 0
+ 1644 01e0 02000000 		.4byte	.LCFI24
+ 1645 01e4 04000000 		.4byte	.LCFI25
+ 1646 01e8 0200     		.2byte	0x2
+ 1647 01ea 7D       		.byte	0x7d
+ 1648 01eb 04       		.sleb128 4
+ 1649 01ec 04000000 		.4byte	.LCFI25
+ 1650 01f0 06000000 		.4byte	.LCFI26
+ 1651 01f4 0200     		.2byte	0x2
+ 1652 01f6 7D       		.byte	0x7d
+ 1653 01f7 10       		.sleb128 16
+ 1654 01f8 06000000 		.4byte	.LCFI26
+ 1655 01fc 4C000000 		.4byte	.LFE9
+ 1656 0200 0200     		.2byte	0x2
+ 1657 0202 77       		.byte	0x77
+ 1658 0203 10       		.sleb128 16
+ 1659 0204 00000000 		.4byte	0
+ 1660 0208 00000000 		.4byte	0
+ 1661              	.LLST10:
+ 1662 020c 00000000 		.4byte	.LFB10
+ 1663 0210 02000000 		.4byte	.LCFI27
+ 1664 0214 0200     		.2byte	0x2
+ 1665 0216 7D       		.byte	0x7d
+ 1666 0217 00       		.sleb128 0
+ 1667 0218 02000000 		.4byte	.LCFI27
+ 1668 021c 04000000 		.4byte	.LCFI28
+ 1669 0220 0200     		.2byte	0x2
+ 1670 0222 7D       		.byte	0x7d
+ 1671 0223 10       		.sleb128 16
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 46
+
+
+ 1672 0224 04000000 		.4byte	.LCFI28
+ 1673 0228 22000000 		.4byte	.LFE10
+ 1674 022c 0200     		.2byte	0x2
+ 1675 022e 77       		.byte	0x77
+ 1676 022f 10       		.sleb128 16
+ 1677 0230 00000000 		.4byte	0
+ 1678 0234 00000000 		.4byte	0
+ 1679              	.LLST11:
+ 1680 0238 00000000 		.4byte	.LFB11
+ 1681 023c 02000000 		.4byte	.LCFI29
+ 1682 0240 0200     		.2byte	0x2
+ 1683 0242 7D       		.byte	0x7d
+ 1684 0243 00       		.sleb128 0
+ 1685 0244 02000000 		.4byte	.LCFI29
+ 1686 0248 04000000 		.4byte	.LCFI30
+ 1687 024c 0200     		.2byte	0x2
+ 1688 024e 7D       		.byte	0x7d
+ 1689 024f 04       		.sleb128 4
+ 1690 0250 04000000 		.4byte	.LCFI30
+ 1691 0254 06000000 		.4byte	.LCFI31
+ 1692 0258 0200     		.2byte	0x2
+ 1693 025a 7D       		.byte	0x7d
+ 1694 025b 10       		.sleb128 16
+ 1695 025c 06000000 		.4byte	.LCFI31
+ 1696 0260 34000000 		.4byte	.LFE11
+ 1697 0264 0200     		.2byte	0x2
+ 1698 0266 77       		.byte	0x77
+ 1699 0267 10       		.sleb128 16
+ 1700 0268 00000000 		.4byte	0
+ 1701 026c 00000000 		.4byte	0
+ 1702              	.LLST12:
+ 1703 0270 00000000 		.4byte	.LFB12
+ 1704 0274 02000000 		.4byte	.LCFI32
+ 1705 0278 0200     		.2byte	0x2
+ 1706 027a 7D       		.byte	0x7d
+ 1707 027b 00       		.sleb128 0
+ 1708 027c 02000000 		.4byte	.LCFI32
+ 1709 0280 04000000 		.4byte	.LCFI33
+ 1710 0284 0200     		.2byte	0x2
+ 1711 0286 7D       		.byte	0x7d
+ 1712 0287 08       		.sleb128 8
+ 1713 0288 04000000 		.4byte	.LCFI33
+ 1714 028c 06000000 		.4byte	.LCFI34
+ 1715 0290 0200     		.2byte	0x2
+ 1716 0292 7D       		.byte	0x7d
+ 1717 0293 10       		.sleb128 16
+ 1718 0294 06000000 		.4byte	.LCFI34
+ 1719 0298 56000000 		.4byte	.LFE12
+ 1720 029c 0200     		.2byte	0x2
+ 1721 029e 77       		.byte	0x77
+ 1722 029f 10       		.sleb128 16
+ 1723 02a0 00000000 		.4byte	0
+ 1724 02a4 00000000 		.4byte	0
+ 1725              	.LLST13:
+ 1726 02a8 00000000 		.4byte	.LFB13
+ 1727 02ac 02000000 		.4byte	.LCFI35
+ 1728 02b0 0200     		.2byte	0x2
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 47
+
+
+ 1729 02b2 7D       		.byte	0x7d
+ 1730 02b3 00       		.sleb128 0
+ 1731 02b4 02000000 		.4byte	.LCFI35
+ 1732 02b8 04000000 		.4byte	.LCFI36
+ 1733 02bc 0200     		.2byte	0x2
+ 1734 02be 7D       		.byte	0x7d
+ 1735 02bf 04       		.sleb128 4
+ 1736 02c0 04000000 		.4byte	.LCFI36
+ 1737 02c4 06000000 		.4byte	.LCFI37
+ 1738 02c8 0200     		.2byte	0x2
+ 1739 02ca 7D       		.byte	0x7d
+ 1740 02cb 10       		.sleb128 16
+ 1741 02cc 06000000 		.4byte	.LCFI37
+ 1742 02d0 14000000 		.4byte	.LFE13
+ 1743 02d4 0200     		.2byte	0x2
+ 1744 02d6 77       		.byte	0x77
+ 1745 02d7 10       		.sleb128 16
+ 1746 02d8 00000000 		.4byte	0
+ 1747 02dc 00000000 		.4byte	0
+ 1748              	.LLST14:
+ 1749 02e0 00000000 		.4byte	.LFB14
+ 1750 02e4 02000000 		.4byte	.LCFI38
+ 1751 02e8 0200     		.2byte	0x2
+ 1752 02ea 7D       		.byte	0x7d
+ 1753 02eb 00       		.sleb128 0
+ 1754 02ec 02000000 		.4byte	.LCFI38
+ 1755 02f0 04000000 		.4byte	.LCFI39
+ 1756 02f4 0200     		.2byte	0x2
+ 1757 02f6 7D       		.byte	0x7d
+ 1758 02f7 04       		.sleb128 4
+ 1759 02f8 04000000 		.4byte	.LCFI39
+ 1760 02fc 06000000 		.4byte	.LCFI40
+ 1761 0300 0200     		.2byte	0x2
+ 1762 0302 7D       		.byte	0x7d
+ 1763 0303 10       		.sleb128 16
+ 1764 0304 06000000 		.4byte	.LCFI40
+ 1765 0308 20000000 		.4byte	.LFE14
+ 1766 030c 0200     		.2byte	0x2
+ 1767 030e 77       		.byte	0x77
+ 1768 030f 10       		.sleb128 16
+ 1769 0310 00000000 		.4byte	0
+ 1770 0314 00000000 		.4byte	0
+ 1771              	.LLST15:
+ 1772 0318 00000000 		.4byte	.LFB15
+ 1773 031c 02000000 		.4byte	.LCFI41
+ 1774 0320 0200     		.2byte	0x2
+ 1775 0322 7D       		.byte	0x7d
+ 1776 0323 00       		.sleb128 0
+ 1777 0324 02000000 		.4byte	.LCFI41
+ 1778 0328 04000000 		.4byte	.LCFI42
+ 1779 032c 0200     		.2byte	0x2
+ 1780 032e 7D       		.byte	0x7d
+ 1781 032f 04       		.sleb128 4
+ 1782 0330 04000000 		.4byte	.LCFI42
+ 1783 0334 06000000 		.4byte	.LCFI43
+ 1784 0338 0200     		.2byte	0x2
+ 1785 033a 7D       		.byte	0x7d
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 48
+
+
+ 1786 033b 10       		.sleb128 16
+ 1787 033c 06000000 		.4byte	.LCFI43
+ 1788 0340 20000000 		.4byte	.LFE15
+ 1789 0344 0200     		.2byte	0x2
+ 1790 0346 77       		.byte	0x77
+ 1791 0347 10       		.sleb128 16
+ 1792 0348 00000000 		.4byte	0
+ 1793 034c 00000000 		.4byte	0
+ 1794              		.section	.debug_aranges,"",%progbits
+ 1795 0000 94000000 		.4byte	0x94
+ 1796 0004 0200     		.2byte	0x2
+ 1797 0006 00000000 		.4byte	.Ldebug_info0
+ 1798 000a 04       		.byte	0x4
+ 1799 000b 00       		.byte	0
+ 1800 000c 0000     		.2byte	0
+ 1801 000e 0000     		.2byte	0
+ 1802 0010 00000000 		.4byte	.LFB0
+ 1803 0014 2A000000 		.4byte	.LFE0-.LFB0
+ 1804 0018 00000000 		.4byte	.LFB1
+ 1805 001c 26000000 		.4byte	.LFE1-.LFB1
+ 1806 0020 00000000 		.4byte	.LFB2
+ 1807 0024 5A000000 		.4byte	.LFE2-.LFB2
+ 1808 0028 00000000 		.4byte	.LFB3
+ 1809 002c 5A000000 		.4byte	.LFE3-.LFB3
+ 1810 0030 00000000 		.4byte	.LFB4
+ 1811 0034 10000000 		.4byte	.LFE4-.LFB4
+ 1812 0038 00000000 		.4byte	.LFB5
+ 1813 003c 14000000 		.4byte	.LFE5-.LFB5
+ 1814 0040 00000000 		.4byte	.LFB6
+ 1815 0044 20000000 		.4byte	.LFE6-.LFB6
+ 1816 0048 00000000 		.4byte	.LFB7
+ 1817 004c 20000000 		.4byte	.LFE7-.LFB7
+ 1818 0050 00000000 		.4byte	.LFB8
+ 1819 0054 26000000 		.4byte	.LFE8-.LFB8
+ 1820 0058 00000000 		.4byte	.LFB9
+ 1821 005c 4C000000 		.4byte	.LFE9-.LFB9
+ 1822 0060 00000000 		.4byte	.LFB10
+ 1823 0064 22000000 		.4byte	.LFE10-.LFB10
+ 1824 0068 00000000 		.4byte	.LFB11
+ 1825 006c 34000000 		.4byte	.LFE11-.LFB11
+ 1826 0070 00000000 		.4byte	.LFB12
+ 1827 0074 56000000 		.4byte	.LFE12-.LFB12
+ 1828 0078 00000000 		.4byte	.LFB13
+ 1829 007c 14000000 		.4byte	.LFE13-.LFB13
+ 1830 0080 00000000 		.4byte	.LFB14
+ 1831 0084 20000000 		.4byte	.LFE14-.LFB14
+ 1832 0088 00000000 		.4byte	.LFB15
+ 1833 008c 20000000 		.4byte	.LFE15-.LFB15
+ 1834 0090 00000000 		.4byte	0
+ 1835 0094 00000000 		.4byte	0
+ 1836              		.section	.debug_ranges,"",%progbits
+ 1837              	.Ldebug_ranges0:
+ 1838 0000 00000000 		.4byte	.LFB0
+ 1839 0004 2A000000 		.4byte	.LFE0
+ 1840 0008 00000000 		.4byte	.LFB1
+ 1841 000c 26000000 		.4byte	.LFE1
+ 1842 0010 00000000 		.4byte	.LFB2
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 49
+
+
+ 1843 0014 5A000000 		.4byte	.LFE2
+ 1844 0018 00000000 		.4byte	.LFB3
+ 1845 001c 5A000000 		.4byte	.LFE3
+ 1846 0020 00000000 		.4byte	.LFB4
+ 1847 0024 10000000 		.4byte	.LFE4
+ 1848 0028 00000000 		.4byte	.LFB5
+ 1849 002c 14000000 		.4byte	.LFE5
+ 1850 0030 00000000 		.4byte	.LFB6
+ 1851 0034 20000000 		.4byte	.LFE6
+ 1852 0038 00000000 		.4byte	.LFB7
+ 1853 003c 20000000 		.4byte	.LFE7
+ 1854 0040 00000000 		.4byte	.LFB8
+ 1855 0044 26000000 		.4byte	.LFE8
+ 1856 0048 00000000 		.4byte	.LFB9
+ 1857 004c 4C000000 		.4byte	.LFE9
+ 1858 0050 00000000 		.4byte	.LFB10
+ 1859 0054 22000000 		.4byte	.LFE10
+ 1860 0058 00000000 		.4byte	.LFB11
+ 1861 005c 34000000 		.4byte	.LFE11
+ 1862 0060 00000000 		.4byte	.LFB12
+ 1863 0064 56000000 		.4byte	.LFE12
+ 1864 0068 00000000 		.4byte	.LFB13
+ 1865 006c 14000000 		.4byte	.LFE13
+ 1866 0070 00000000 		.4byte	.LFB14
+ 1867 0074 20000000 		.4byte	.LFE14
+ 1868 0078 00000000 		.4byte	.LFB15
+ 1869 007c 20000000 		.4byte	.LFE15
+ 1870 0080 00000000 		.4byte	0
+ 1871 0084 00000000 		.4byte	0
+ 1872              		.section	.debug_line,"",%progbits
+ 1873              	.Ldebug_line0:
+ 1874 0000 C5010000 		.section	.debug_str,"MS",%progbits,1
+ 1874      02005800 
+ 1874      00000201 
+ 1874      FB0E0D00 
+ 1874      01010101 
+ 1875              	.LASF22:
+ 1876 0000 55415254 		.ascii	"UART_SoilMoisture_Decagon_SetRxInterruptMode\000"
+ 1876      5F536F69 
+ 1876      6C4D6F69 
+ 1876      73747572 
+ 1876      655F4465 
+ 1877              	.LASF38:
+ 1878 002d 55415254 		.ascii	"UART_SoilMoisture_Decagon_SetRxAddress1\000"
+ 1878      5F536F69 
+ 1878      6C4D6F69 
+ 1878      73747572 
+ 1878      655F4465 
+ 1879              	.LASF40:
+ 1880 0055 55415254 		.ascii	"UART_SoilMoisture_Decagon_SetRxAddress2\000"
+ 1880      5F536F69 
+ 1880      6C4D6F69 
+ 1880      73747572 
+ 1880      655F4465 
+ 1881              	.LASF26:
+ 1882 007d 55415254 		.ascii	"UART_SoilMoisture_Decagon_ReadRxData\000"
+ 1882      5F536F69 
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 50
+
+
+ 1882      6C4D6F69 
+ 1882      73747572 
+ 1882      655F4465 
+ 1883              	.LASF29:
+ 1884 00a2 55415254 		.ascii	"UART_SoilMoisture_Decagon_GetChar\000"
+ 1884      5F536F69 
+ 1884      6C4D6F69 
+ 1884      73747572 
+ 1884      655F4465 
+ 1885              	.LASF3:
+ 1886 00c4 73686F72 		.ascii	"short unsigned int\000"
+ 1886      7420756E 
+ 1886      7369676E 
+ 1886      65642069 
+ 1886      6E7400
+ 1887              	.LASF28:
+ 1888 00d7 73746174 		.ascii	"status\000"
+ 1888      757300
+ 1889              	.LASF18:
+ 1890 00de 55415254 		.ascii	"UART_SoilMoisture_Decagon_Enable\000"
+ 1890      5F536F69 
+ 1890      6C4D6F69 
+ 1890      73747572 
+ 1890      655F4465 
+ 1891              	.LASF11:
+ 1892 00ff 666C6F61 		.ascii	"float\000"
+ 1892      7400
+ 1893              	.LASF36:
+ 1894 0105 55415254 		.ascii	"UART_SoilMoisture_Decagon_SetRxAddressMode\000"
+ 1894      5F536F69 
+ 1894      6C4D6F69 
+ 1894      73747572 
+ 1894      655F4465 
+ 1895              	.LASF7:
+ 1896 0130 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1896      206C6F6E 
+ 1896      6720756E 
+ 1896      7369676E 
+ 1896      65642069 
+ 1897              	.LASF37:
+ 1898 0147 61646472 		.ascii	"addressMode\000"
+ 1898      6573734D 
+ 1898      6F646500 
+ 1899              	.LASF14:
+ 1900 0153 72656738 		.ascii	"reg8\000"
+ 1900      00
+ 1901              	.LASF5:
+ 1902 0158 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1902      20756E73 
+ 1902      69676E65 
+ 1902      6420696E 
+ 1902      7400
+ 1903              	.LASF9:
+ 1904 016a 75696E74 		.ascii	"uint8\000"
+ 1904      3800
+ 1905              	.LASF23:
+ 1906 0170 636F6E74 		.ascii	"control\000"
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 51
+
+
+ 1906      726F6C00 
+ 1907              	.LASF44:
+ 1908 0178 55415254 		.ascii	"UART_SoilMoisture_Decagon_initVar\000"
+ 1908      5F536F69 
+ 1908      6C4D6F69 
+ 1908      73747572 
+ 1908      655F4465 
+ 1909              	.LASF25:
+ 1910 019a 72784461 		.ascii	"rxData\000"
+ 1910      746100
+ 1911              	.LASF20:
+ 1912 01a1 656E6162 		.ascii	"enableInterrupts\000"
+ 1912      6C65496E 
+ 1912      74657272 
+ 1912      75707473 
+ 1912      00
+ 1913              	.LASF1:
+ 1914 01b2 756E7369 		.ascii	"unsigned char\000"
+ 1914      676E6564 
+ 1914      20636861 
+ 1914      7200
+ 1915              	.LASF12:
+ 1916 01c0 646F7562 		.ascii	"double\000"
+ 1916      6C6500
+ 1917              	.LASF24:
+ 1918 01c7 696E7453 		.ascii	"intSrc\000"
+ 1918      726300
+ 1919              	.LASF30:
+ 1920 01ce 72785374 		.ascii	"rxStatus\000"
+ 1920      61747573 
+ 1920      00
+ 1921              	.LASF10:
+ 1922 01d7 75696E74 		.ascii	"uint16\000"
+ 1922      313600
+ 1923              	.LASF17:
+ 1924 01de 55415254 		.ascii	"UART_SoilMoisture_Decagon_Init\000"
+ 1924      5F536F69 
+ 1924      6C4D6F69 
+ 1924      73747572 
+ 1924      655F4465 
+ 1925              	.LASF8:
+ 1926 01fd 756E7369 		.ascii	"unsigned int\000"
+ 1926      676E6564 
+ 1926      20696E74 
+ 1926      00
+ 1927              	.LASF39:
+ 1928 020a 61646472 		.ascii	"address\000"
+ 1928      65737300 
+ 1929              	.LASF31:
+ 1930 0212 55415254 		.ascii	"UART_SoilMoisture_Decagon_ReadControlRegister\000"
+ 1930      5F536F69 
+ 1930      6C4D6F69 
+ 1930      73747572 
+ 1930      655F4465 
+ 1931              	.LASF33:
+ 1932 0240 55415254 		.ascii	"UART_SoilMoisture_Decagon_GetRxBufferSize\000"
+ 1932      5F536F69 
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 52
+
+
+ 1932      6C4D6F69 
+ 1932      73747572 
+ 1932      655F4465 
+ 1933              	.LASF42:
+ 1934 026a 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\UART_SoilMoisture_Decag"
+ 1934      6E657261 
+ 1934      7465645F 
+ 1934      536F7572 
+ 1934      63655C50 
+ 1935 029a 6F6E2E63 		.ascii	"on.c\000"
+ 1935      00
+ 1936              	.LASF15:
+ 1937 029f 73697A65 		.ascii	"sizetype\000"
+ 1937      74797065 
+ 1937      00
+ 1938              	.LASF6:
+ 1939 02a8 6C6F6E67 		.ascii	"long long int\000"
+ 1939      206C6F6E 
+ 1939      6720696E 
+ 1939      7400
+ 1940              	.LASF32:
+ 1941 02b6 55415254 		.ascii	"UART_SoilMoisture_Decagon_GetByte\000"
+ 1941      5F536F69 
+ 1941      6C4D6F69 
+ 1941      73747572 
+ 1941      655F4465 
+ 1942              	.LASF13:
+ 1943 02d8 63686172 		.ascii	"char\000"
+ 1943      00
+ 1944              	.LASF16:
+ 1945 02dd 55415254 		.ascii	"UART_SoilMoisture_Decagon_Start\000"
+ 1945      5F536F69 
+ 1945      6C4D6F69 
+ 1945      73747572 
+ 1945      655F4465 
+ 1946              	.LASF35:
+ 1947 02fd 55415254 		.ascii	"UART_SoilMoisture_Decagon_ClearRxBuffer\000"
+ 1947      5F536F69 
+ 1947      6C4D6F69 
+ 1947      73747572 
+ 1947      655F4465 
+ 1948              	.LASF2:
+ 1949 0325 73686F72 		.ascii	"short int\000"
+ 1949      7420696E 
+ 1949      7400
+ 1950              	.LASF41:
+ 1951 032f 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 1951      4320342E 
+ 1951      372E3320 
+ 1951      32303133 
+ 1951      30333132 
+ 1952 0362 616E6368 		.ascii	"anch revision 196615]\000"
+ 1952      20726576 
+ 1952      6973696F 
+ 1952      6E203139 
+ 1952      36363135 
+ 1953              	.LASF4:
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccp4Cpos.s 			page 53
+
+
+ 1954 0378 6C6F6E67 		.ascii	"long int\000"
+ 1954      20696E74 
+ 1954      00
+ 1955              	.LASF19:
+ 1956 0381 55415254 		.ascii	"UART_SoilMoisture_Decagon_Stop\000"
+ 1956      5F536F69 
+ 1956      6C4D6F69 
+ 1956      73747572 
+ 1956      655F4465 
+ 1957              	.LASF0:
+ 1958 03a0 7369676E 		.ascii	"signed char\000"
+ 1958      65642063 
+ 1958      68617200 
+ 1959              	.LASF43:
+ 1960 03ac 433A5C55 		.ascii	"C:\\Users\\hozhen\\Google Drive\\Docs Ho-Zhen\\proj"
+ 1960      73657273 
+ 1960      5C686F7A 
+ 1960      68656E5C 
+ 1960      476F6F67 
+ 1961 03da 65637473 		.ascii	"ects\\UMBS\\UMBS Project\\Software\\PSoC\\Drivers\\"
+ 1961      5C554D42 
+ 1961      535C554D 
+ 1961      42532050 
+ 1961      726F6A65 
+ 1962 0407 44656361 		.ascii	"Decagon_Soilmoisture\\Decagon_Soilmoisture.cydsn\000"
+ 1962      676F6E5F 
+ 1962      536F696C 
+ 1962      6D6F6973 
+ 1962      74757265 
+ 1963              	.LASF34:
+ 1964 0437 73697A65 		.ascii	"size\000"
+ 1964      00
+ 1965              	.LASF21:
+ 1966 043c 55415254 		.ascii	"UART_SoilMoisture_Decagon_WriteControlRegister\000"
+ 1966      5F536F69 
+ 1966      6C4D6F69 
+ 1966      73747572 
+ 1966      655F4465 
+ 1967              	.LASF27:
+ 1968 046b 55415254 		.ascii	"UART_SoilMoisture_Decagon_ReadRxStatus\000"
+ 1968      5F536F69 
+ 1968      6C4D6F69 
+ 1968      73747572 
+ 1968      655F4465 
+ 1969              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

@@ -1,0 +1,1291 @@
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"main.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.moteNotificationReceived,"ax",%progbits
+  19              		.align	2
+  20              		.global	moteNotificationReceived
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	moteNotificationReceived, %function
+  24              	moteNotificationReceived:
+  25              	.LFB56:
+  26              		.file 1 ".\\main.c"
+   1:.\main.c      **** #include <project.h>
+   2:.\main.c      **** #include <stdio.h>
+   3:.\main.c      **** #include <stdlib.h>
+   4:.\main.c      **** #include "SoilMoisture_Decagon.h"
+   5:.\main.c      **** 
+   6:.\main.c      **** #include "neomote.h"
+   7:.\main.c      **** 
+   8:.\main.c      **** //================================================== Wireless Section =============================
+   9:.\main.c      **** 
+  10:.\main.c      **** struct {
+  11:.\main.c      ****     NeoRtcTimeStruct time;
+  12:.\main.c      ****     DecagonGS3 SoilMoisture;
+  13:.\main.c      ****     
+  14:.\main.c      **** }typedef Wireless_Packet;
+  15:.\main.c      **** 
+  16:.\main.c      **** 
+  17:.\main.c      **** 
+  18:.\main.c      **** void rtcCallBackReceived(uint8 alarmType);
+  19:.\main.c      **** 
+  20:.\main.c      **** void moteNotificationReceived(NeoMoteNotification notification){
+  27              		.loc 1 20 0
+  28              		.cfi_startproc
+  29              		@ args = 84, pretend = 16, frame = 8
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 84B0     		sub	sp, sp, #16
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 16
+  35 0002 80B4     		push	{r7}
+  36              	.LCFI1:
+  37              		.cfi_def_cfa_offset 20
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 2
+
+
+  38              		.cfi_offset 7, -20
+  39 0004 83B0     		sub	sp, sp, #12
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_offset 32
+  42 0006 00AF     		add	r7, sp, #0
+  43              	.LCFI3:
+  44              		.cfi_def_cfa_register 7
+  45 0008 07F1100C 		add	ip, r7, #16
+  46 000c 8CE80F00 		stmia	ip, {r0, r1, r2, r3}
+  21:.\main.c      ****         
+  22:.\main.c      ****     if(notification.type == TYPE_MOTE_EVENT){
+  47              		.loc 1 22 0
+  48 0010 3B7C     		ldrb	r3, [r7, #16]	@ zero_extendqisi2
+  49 0012 002B     		cmp	r3, #0
+  50 0014 07D1     		bne	.L1
+  51              	.LBB2:
+  23:.\main.c      ****         uint8 type = notification.payload[0];
+  52              		.loc 1 23 0
+  53 0016 7B7C     		ldrb	r3, [r7, #17]
+  54 0018 FB71     		strb	r3, [r7, #7]
+  24:.\main.c      ****         if(type == EVENT_MOTE_OPERATIONAL){
+  55              		.loc 1 24 0
+  56 001a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  57 001c 012B     		cmp	r3, #1
+  58 001e 02D1     		bne	.L1
+  59              	.LBB3:
+  25:.\main.c      ****            uint8 x=0;
+  60              		.loc 1 25 0
+  61 0020 4FF00003 		mov	r3, #0
+  62 0024 BB71     		strb	r3, [r7, #6]
+  63              	.L1:
+  64              	.LBE3:
+  65              	.LBE2:
+  26:.\main.c      ****         }
+  27:.\main.c      ****     }
+  28:.\main.c      ****     else if(notification.type == TYPE_MOTE_DATA){
+  29:.\main.c      ****        
+  30:.\main.c      ****     }
+  31:.\main.c      ****     
+  32:.\main.c      **** }
+  66              		.loc 1 32 0
+  67 0026 07F10C07 		add	r7, r7, #12
+  68 002a BD46     		mov	sp, r7
+  69 002c 80BC     		pop	{r7}
+  70 002e 04B0     		add	sp, sp, #16
+  71 0030 7047     		bx	lr
+  72              		.cfi_endproc
+  73              	.LFE56:
+  74              		.size	moteNotificationReceived, .-moteNotificationReceived
+  75 0032 00BF     		.section	.text.main,"ax",%progbits
+  76              		.align	2
+  77              		.global	main
+  78              		.thumb
+  79              		.thumb_func
+  80              		.type	main, %function
+  81              	main:
+  82              	.LFB57:
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 3
+
+
+  33:.\main.c      **** 
+  34:.\main.c      **** 
+  35:.\main.c      **** 
+  36:.\main.c      **** 
+  37:.\main.c      **** 
+  38:.\main.c      **** 
+  39:.\main.c      **** 
+  40:.\main.c      **** //================================================== Main Section =================================
+  41:.\main.c      **** 
+  42:.\main.c      **** int main()
+  43:.\main.c      **** {
+  83              		.loc 1 43 0
+  84              		.cfi_startproc
+  85              		@ args = 0, pretend = 0, frame = 0
+  86              		@ frame_needed = 1, uses_anonymous_args = 0
+  87 0000 80B5     		push	{r7, lr}
+  88              	.LCFI4:
+  89              		.cfi_def_cfa_offset 8
+  90              		.cfi_offset 7, -8
+  91              		.cfi_offset 14, -4
+  92 0002 00AF     		add	r7, sp, #0
+  93              	.LCFI5:
+  94              		.cfi_def_cfa_register 7
+  44:.\main.c      **** 
+  45:.\main.c      ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  46:.\main.c      **** 
+  47:.\main.c      ****     /* CyGlobalIntEnable; */ /* Uncomment this line to enable global interrupts. */
+  48:.\main.c      ****     CYGlobalIntEnable;
+  95              		.loc 1 48 0
+  96              	@ 48 ".\main.c" 1
+  97 0004 62B6     		CPSIE   i
+  98              	@ 0 "" 2
+  49:.\main.c      ****     
+  50:.\main.c      ****     SoilMoisture_Decagon_Start();
+  99              		.loc 1 50 0
+ 100              		.thumb
+ 101 0006 FFF7FEFF 		bl	SoilMoisture_Decagon_Start
+  51:.\main.c      ****     
+  52:.\main.c      ****     
+  53:.\main.c      ****     //=======================Real Time Clock Section=======================
+  54:.\main.c      ****     NeoRTC_Start(rtcCallBackReceived); // Start and enable the RTC.
+ 102              		.loc 1 54 0
+ 103 000a 40F20000 		movw	r0, #:lower16:rtcCallBackReceived
+ 104 000e C0F20000 		movt	r0, #:upper16:rtcCallBackReceived
+ 105 0012 FFF7FEFF 		bl	NeoRTC_Start
+  55:.\main.c      ****     NeoRTC_Set_Repeating_Minute_Alarm(1u);
+ 106              		.loc 1 55 0
+ 107 0016 4FF00100 		mov	r0, #1
+ 108 001a FFF7FEFF 		bl	NeoRTC_Set_Repeating_Minute_Alarm
+  56:.\main.c      ****     NeoRTC_Enable_Second_Interrupt();
+ 109              		.loc 1 56 0
+ 110 001e FFF7FEFF 		bl	NeoRTC_Enable_Second_Interrupt
+  57:.\main.c      ****         Mote_Start(moteNotificationReceived);
+ 111              		.loc 1 57 0
+ 112 0022 40F20000 		movw	r0, #:lower16:moteNotificationReceived
+ 113 0026 C0F20000 		movt	r0, #:upper16:moteNotificationReceived
+ 114 002a FFF7FEFF 		bl	Mote_Start
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 4
+
+
+ 115              	.L5:
+  58:.\main.c      ****     for(;;){
+  59:.\main.c      ****         NeoRTC_Process_Tasks();
+ 116              		.loc 1 59 0 discriminator 1
+ 117 002e FFF7FEFF 		bl	NeoRTC_Process_Tasks
+  60:.\main.c      ****         Mote_Process_Tasks();
+ 118              		.loc 1 60 0 discriminator 1
+ 119 0032 FFF7FEFF 		bl	Mote_Process_Tasks
+  61:.\main.c      ****     }
+ 120              		.loc 1 61 0 discriminator 1
+ 121 0036 FAE7     		b	.L5
+ 122              		.cfi_endproc
+ 123              	.LFE57:
+ 124              		.size	main, .-main
+ 125              		.section	.text.rtcCallBackReceived,"ax",%progbits
+ 126              		.align	2
+ 127              		.global	rtcCallBackReceived
+ 128              		.thumb
+ 129              		.thumb_func
+ 130              		.type	rtcCallBackReceived, %function
+ 131              	rtcCallBackReceived:
+ 132              	.LFB58:
+  62:.\main.c      ****     //==============================================
+  63:.\main.c      ****     
+  64:.\main.c      **** 
+  65:.\main.c      **** }
+  66:.\main.c      ****     
+  67:.\main.c      **** //================================================== Real Time Clock Section ======================
+  68:.\main.c      ****  
+  69:.\main.c      **** void rtcCallBackReceived(uint8 alarmType){ // RTC Event Handler.
+ 133              		.loc 1 69 0
+ 134              		.cfi_startproc
+ 135              		@ args = 0, pretend = 0, frame = 64
+ 136              		@ frame_needed = 1, uses_anonymous_args = 0
+ 137 0000 90B5     		push	{r4, r7, lr}
+ 138              	.LCFI6:
+ 139              		.cfi_def_cfa_offset 12
+ 140              		.cfi_offset 4, -12
+ 141              		.cfi_offset 7, -8
+ 142              		.cfi_offset 14, -4
+ 143 0002 91B0     		sub	sp, sp, #68
+ 144              	.LCFI7:
+ 145              		.cfi_def_cfa_offset 80
+ 146 0004 00AF     		add	r7, sp, #0
+ 147              	.LCFI8:
+ 148              		.cfi_def_cfa_register 7
+ 149 0006 0346     		mov	r3, r0
+ 150 0008 FB77     		strb	r3, [r7, #31]
+  70:.\main.c      ****     if(alarmType == RTC_SECOND_ALARM){
+ 151              		.loc 1 70 0
+ 152 000a FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
+ 153 000c 002B     		cmp	r3, #0
+ 154 000e 1CD0     		beq	.L6
+  71:.\main.c      ****         
+  72:.\main.c      ****     }else if(alarmType == RTC_MINUTE_ALARM){
+ 155              		.loc 1 72 0
+ 156 0010 FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 5
+
+
+ 157 0012 012B     		cmp	r3, #1
+ 158 0014 19D1     		bne	.L6
+ 159              	.LBB4:
+  73:.\main.c      ****         Wireless_Packet Packet;
+  74:.\main.c      ****         Packet.time = NeoRTC_Read_Time();
+ 160              		.loc 1 74 0
+ 161 0016 07F11003 		add	r3, r7, #16
+ 162 001a 1846     		mov	r0, r3
+ 163 001c FFF7FEFF 		bl	NeoRTC_Read_Time
+ 164 0020 07F12403 		add	r3, r7, #36
+ 165 0024 07F11002 		add	r2, r7, #16
+ 166 0028 1068     		ldr	r0, [r2, #0]	@ unaligned
+ 167 002a 5168     		ldr	r1, [r2, #4]	@ unaligned
+ 168 002c 03C3     		stmia	r3!, {r0, r1}
+  75:.\main.c      ****         
+  76:.\main.c      ****         Packet.SoilMoisture = SoilMoisture_Decagon_Take_Reading();
+ 169              		.loc 1 76 0
+ 170 002e 3B46     		mov	r3, r7
+ 171 0030 1846     		mov	r0, r3
+ 172 0032 FFF7FEFF 		bl	SoilMoisture_Decagon_Take_Reading
+ 173 0036 07F12C04 		add	r4, r7, #44
+ 174 003a 3B46     		mov	r3, r7
+ 175 003c 0FCB     		ldmia	r3, {r0, r1, r2, r3}
+ 176 003e 84E80F00 		stmia	r4, {r0, r1, r2, r3}
+  77:.\main.c      ****         uint8 x =0;
+ 177              		.loc 1 77 0
+ 178 0042 4FF00003 		mov	r3, #0
+ 179 0046 87F83F30 		strb	r3, [r7, #63]
+ 180              	.L6:
+ 181              	.LBE4:
+  78:.\main.c      ****         //Mote_Send_Packet(Packet,sizeof(Wireless_Packet))
+  79:.\main.c      ****     
+  80:.\main.c      ****     }
+  81:.\main.c      **** 
+  82:.\main.c      **** }
+ 182              		.loc 1 82 0
+ 183 004a 07F14407 		add	r7, r7, #68
+ 184 004e BD46     		mov	sp, r7
+ 185 0050 90BD     		pop	{r4, r7, pc}
+ 186              		.cfi_endproc
+ 187              	.LFE58:
+ 188              		.size	rtcCallBackReceived, .-rtcCallBackReceived
+ 189 0052 00BF     		.text
+ 190              	.Letext0:
+ 191              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.0\\psoc creator\\import\\gnu_cs\\arm\\4
+ 192              		.file 3 "./Generated_Source/PSoC5/cytypes.h"
+ 193              		.file 4 ".\\SoilMoisture_Decagon.h"
+ 194              		.file 5 "..\\..\\..\\..\\neolib/neomote.h"
+ 195              		.file 6 "./Generated_Source/PSoC5/core_cm3.h"
+ 196              		.section	.debug_info,"",%progbits
+ 197              	.Ldebug_info0:
+ 198 0000 B9020000 		.4byte	0x2b9
+ 199 0004 0200     		.2byte	0x2
+ 200 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 201 000a 04       		.byte	0x4
+ 202 000b 01       		.uleb128 0x1
+ 203 000c 5A020000 		.4byte	.LASF40
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 6
+
+
+ 204 0010 01       		.byte	0x1
+ 205 0011 51000000 		.4byte	.LASF41
+ 206 0015 CF010000 		.4byte	.LASF42
+ 207 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 208 001d 00000000 		.4byte	0
+ 209 0021 00000000 		.4byte	0
+ 210 0025 00000000 		.4byte	.Ldebug_line0
+ 211 0029 02       		.uleb128 0x2
+ 212 002a 01       		.byte	0x1
+ 213 002b 06       		.byte	0x6
+ 214 002c C3010000 		.4byte	.LASF0
+ 215 0030 02       		.uleb128 0x2
+ 216 0031 01       		.byte	0x1
+ 217 0032 08       		.byte	0x8
+ 218 0033 43000000 		.4byte	.LASF1
+ 219 0037 02       		.uleb128 0x2
+ 220 0038 02       		.byte	0x2
+ 221 0039 05       		.byte	0x5
+ 222 003a BC000000 		.4byte	.LASF2
+ 223 003e 02       		.uleb128 0x2
+ 224 003f 02       		.byte	0x2
+ 225 0040 07       		.byte	0x7
+ 226 0041 71000000 		.4byte	.LASF3
+ 227 0045 03       		.uleb128 0x3
+ 228 0046 08010000 		.4byte	.LASF9
+ 229 004a 02       		.byte	0x2
+ 230 004b 4F       		.byte	0x4f
+ 231 004c 50000000 		.4byte	0x50
+ 232 0050 02       		.uleb128 0x2
+ 233 0051 04       		.byte	0x4
+ 234 0052 05       		.byte	0x5
+ 235 0053 A6010000 		.4byte	.LASF4
+ 236 0057 02       		.uleb128 0x2
+ 237 0058 04       		.byte	0x4
+ 238 0059 07       		.byte	0x7
+ 239 005a 5A000000 		.4byte	.LASF5
+ 240 005e 02       		.uleb128 0x2
+ 241 005f 08       		.byte	0x8
+ 242 0060 05       		.byte	0x5
+ 243 0061 26010000 		.4byte	.LASF6
+ 244 0065 02       		.uleb128 0x2
+ 245 0066 08       		.byte	0x8
+ 246 0067 07       		.byte	0x7
+ 247 0068 DF000000 		.4byte	.LASF7
+ 248 006c 04       		.uleb128 0x4
+ 249 006d 04       		.byte	0x4
+ 250 006e 05       		.byte	0x5
+ 251 006f 696E7400 		.ascii	"int\000"
+ 252 0073 02       		.uleb128 0x2
+ 253 0074 04       		.byte	0x4
+ 254 0075 07       		.byte	0x7
+ 255 0076 D2000000 		.4byte	.LASF8
+ 256 007a 03       		.uleb128 0x3
+ 257 007b 8C010000 		.4byte	.LASF10
+ 258 007f 03       		.byte	0x3
+ 259 0080 5B       		.byte	0x5b
+ 260 0081 30000000 		.4byte	0x30
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 7
+
+
+ 261 0085 03       		.uleb128 0x3
+ 262 0086 C6000000 		.4byte	.LASF11
+ 263 008a 03       		.byte	0x3
+ 264 008b 5C       		.byte	0x5c
+ 265 008c 3E000000 		.4byte	0x3e
+ 266 0090 02       		.uleb128 0x2
+ 267 0091 04       		.byte	0x4
+ 268 0092 04       		.byte	0x4
+ 269 0093 3D000000 		.4byte	.LASF12
+ 270 0097 02       		.uleb128 0x2
+ 271 0098 08       		.byte	0x8
+ 272 0099 04       		.byte	0x4
+ 273 009a A4000000 		.4byte	.LASF13
+ 274 009e 02       		.uleb128 0x2
+ 275 009f 01       		.byte	0x1
+ 276 00a0 08       		.byte	0x8
+ 277 00a1 3F010000 		.4byte	.LASF14
+ 278 00a5 02       		.uleb128 0x2
+ 279 00a6 04       		.byte	0x4
+ 280 00a7 07       		.byte	0x7
+ 281 00a8 10010000 		.4byte	.LASF15
+ 282 00ac 05       		.uleb128 0x5
+ 283 00ad 10       		.byte	0x10
+ 284 00ae 04       		.byte	0x4
+ 285 00af 10       		.byte	0x10
+ 286 00b0 FB000000 		.4byte	0xfb
+ 287 00b4 06       		.uleb128 0x6
+ 288 00b5 08000000 		.4byte	.LASF16
+ 289 00b9 04       		.byte	0x4
+ 290 00ba 11       		.byte	0x11
+ 291 00bb 90000000 		.4byte	0x90
+ 292 00bf 02       		.byte	0x2
+ 293 00c0 23       		.byte	0x23
+ 294 00c1 00       		.uleb128 0
+ 295 00c2 06       		.uleb128 0x6
+ 296 00c3 6C000000 		.4byte	.LASF17
+ 297 00c7 04       		.byte	0x4
+ 298 00c8 12       		.byte	0x12
+ 299 00c9 90000000 		.4byte	0x90
+ 300 00cd 02       		.byte	0x2
+ 301 00ce 23       		.byte	0x23
+ 302 00cf 04       		.uleb128 0x4
+ 303 00d0 06       		.uleb128 0x6
+ 304 00d1 66010000 		.4byte	.LASF18
+ 305 00d5 04       		.byte	0x4
+ 306 00d6 13       		.byte	0x13
+ 307 00d7 90000000 		.4byte	0x90
+ 308 00db 02       		.byte	0x2
+ 309 00dc 23       		.byte	0x23
+ 310 00dd 08       		.uleb128 0x8
+ 311 00de 06       		.uleb128 0x6
+ 312 00df 4A010000 		.4byte	.LASF19
+ 313 00e3 04       		.byte	0x4
+ 314 00e4 14       		.byte	0x14
+ 315 00e5 85000000 		.4byte	0x85
+ 316 00e9 02       		.byte	0x2
+ 317 00ea 23       		.byte	0x23
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 8
+
+
+ 318 00eb 0C       		.uleb128 0xc
+ 319 00ec 06       		.uleb128 0x6
+ 320 00ed 44010000 		.4byte	.LASF20
+ 321 00f1 04       		.byte	0x4
+ 322 00f2 15       		.byte	0x15
+ 323 00f3 7A000000 		.4byte	0x7a
+ 324 00f7 02       		.byte	0x2
+ 325 00f8 23       		.byte	0x23
+ 326 00f9 0E       		.uleb128 0xe
+ 327 00fa 00       		.byte	0
+ 328 00fb 03       		.uleb128 0x3
+ 329 00fc 34010000 		.4byte	.LASF21
+ 330 0100 04       		.byte	0x4
+ 331 0101 16       		.byte	0x16
+ 332 0102 AC000000 		.4byte	0xac
+ 333 0106 05       		.uleb128 0x5
+ 334 0107 08       		.byte	0x8
+ 335 0108 05       		.byte	0x5
+ 336 0109 27       		.byte	0x27
+ 337 010a 71010000 		.4byte	0x171
+ 338 010e 06       		.uleb128 0x6
+ 339 010f 98000000 		.4byte	.LASF22
+ 340 0113 05       		.byte	0x5
+ 341 0114 29       		.byte	0x29
+ 342 0115 7A000000 		.4byte	0x7a
+ 343 0119 02       		.byte	0x2
+ 344 011a 23       		.byte	0x23
+ 345 011b 00       		.uleb128 0
+ 346 011c 06       		.uleb128 0x6
+ 347 011d 20000000 		.4byte	.LASF23
+ 348 0121 05       		.byte	0x5
+ 349 0122 2A       		.byte	0x2a
+ 350 0123 7A000000 		.4byte	0x7a
+ 351 0127 02       		.byte	0x2
+ 352 0128 23       		.byte	0x23
+ 353 0129 01       		.uleb128 0x1
+ 354 012a 06       		.uleb128 0x6
+ 355 012b F6000000 		.4byte	.LASF24
+ 356 012f 05       		.byte	0x5
+ 357 0130 2B       		.byte	0x2b
+ 358 0131 7A000000 		.4byte	0x7a
+ 359 0135 02       		.byte	0x2
+ 360 0136 23       		.byte	0x23
+ 361 0137 02       		.uleb128 0x2
+ 362 0138 07       		.uleb128 0x7
+ 363 0139 64617900 		.ascii	"day\000"
+ 364 013d 05       		.byte	0x5
+ 365 013e 2C       		.byte	0x2c
+ 366 013f 7A000000 		.4byte	0x7a
+ 367 0143 02       		.byte	0x2
+ 368 0144 23       		.byte	0x23
+ 369 0145 03       		.uleb128 0x3
+ 370 0146 06       		.uleb128 0x6
+ 371 0147 00000000 		.4byte	.LASF25
+ 372 014b 05       		.byte	0x5
+ 373 014c 2D       		.byte	0x2d
+ 374 014d 7A000000 		.4byte	0x7a
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 9
+
+
+ 375 0151 02       		.byte	0x2
+ 376 0152 23       		.byte	0x23
+ 377 0153 04       		.uleb128 0x4
+ 378 0154 06       		.uleb128 0x6
+ 379 0155 27000000 		.4byte	.LASF26
+ 380 0159 05       		.byte	0x5
+ 381 015a 2E       		.byte	0x2e
+ 382 015b 7A000000 		.4byte	0x7a
+ 383 015f 02       		.byte	0x2
+ 384 0160 23       		.byte	0x23
+ 385 0161 05       		.uleb128 0x5
+ 386 0162 06       		.uleb128 0x6
+ 387 0163 9F000000 		.4byte	.LASF27
+ 388 0167 05       		.byte	0x5
+ 389 0168 2F       		.byte	0x2f
+ 390 0169 85000000 		.4byte	0x85
+ 391 016d 02       		.byte	0x2
+ 392 016e 23       		.byte	0x23
+ 393 016f 06       		.uleb128 0x6
+ 394 0170 00       		.byte	0
+ 395 0171 03       		.uleb128 0x3
+ 396 0172 AB000000 		.4byte	.LASF28
+ 397 0176 05       		.byte	0x5
+ 398 0177 30       		.byte	0x30
+ 399 0178 06010000 		.4byte	0x106
+ 400 017c 05       		.uleb128 0x5
+ 401 017d 51       		.byte	0x51
+ 402 017e 05       		.byte	0x5
+ 403 017f 59       		.byte	0x59
+ 404 0180 A1010000 		.4byte	0x1a1
+ 405 0184 06       		.uleb128 0x6
+ 406 0185 57010000 		.4byte	.LASF29
+ 407 0189 05       		.byte	0x5
+ 408 018a 5B       		.byte	0x5b
+ 409 018b 7A000000 		.4byte	0x7a
+ 410 018f 02       		.byte	0x2
+ 411 0190 23       		.byte	0x23
+ 412 0191 00       		.uleb128 0
+ 413 0192 06       		.uleb128 0x6
+ 414 0193 FB000000 		.4byte	.LASF30
+ 415 0197 05       		.byte	0x5
+ 416 0198 5C       		.byte	0x5c
+ 417 0199 A1010000 		.4byte	0x1a1
+ 418 019d 02       		.byte	0x2
+ 419 019e 23       		.byte	0x23
+ 420 019f 01       		.uleb128 0x1
+ 421 01a0 00       		.byte	0
+ 422 01a1 08       		.uleb128 0x8
+ 423 01a2 7A000000 		.4byte	0x7a
+ 424 01a6 B1010000 		.4byte	0x1b1
+ 425 01aa 09       		.uleb128 0x9
+ 426 01ab A5000000 		.4byte	0xa5
+ 427 01af 4F       		.byte	0x4f
+ 428 01b0 00       		.byte	0
+ 429 01b1 03       		.uleb128 0x3
+ 430 01b2 AF010000 		.4byte	.LASF31
+ 431 01b6 05       		.byte	0x5
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 10
+
+
+ 432 01b7 5D       		.byte	0x5d
+ 433 01b8 7C010000 		.4byte	0x17c
+ 434 01bc 05       		.uleb128 0x5
+ 435 01bd 18       		.byte	0x18
+ 436 01be 01       		.byte	0x1
+ 437 01bf 0A       		.byte	0xa
+ 438 01c0 E1010000 		.4byte	0x1e1
+ 439 01c4 06       		.uleb128 0x6
+ 440 01c5 03010000 		.4byte	.LASF32
+ 441 01c9 01       		.byte	0x1
+ 442 01ca 0B       		.byte	0xb
+ 443 01cb 71010000 		.4byte	0x171
+ 444 01cf 02       		.byte	0x2
+ 445 01d0 23       		.byte	0x23
+ 446 01d1 00       		.uleb128 0
+ 447 01d2 06       		.uleb128 0x6
+ 448 01d3 13000000 		.4byte	.LASF33
+ 449 01d7 01       		.byte	0x1
+ 450 01d8 0C       		.byte	0xc
+ 451 01d9 FB000000 		.4byte	0xfb
+ 452 01dd 02       		.byte	0x2
+ 453 01de 23       		.byte	0x23
+ 454 01df 08       		.uleb128 0x8
+ 455 01e0 00       		.byte	0
+ 456 01e1 03       		.uleb128 0x3
+ 457 01e2 2D000000 		.4byte	.LASF34
+ 458 01e6 01       		.byte	0x1
+ 459 01e7 0E       		.byte	0xe
+ 460 01e8 BC010000 		.4byte	0x1bc
+ 461 01ec 0A       		.uleb128 0xa
+ 462 01ed 01       		.byte	0x1
+ 463 01ee 73010000 		.4byte	.LASF35
+ 464 01f2 01       		.byte	0x1
+ 465 01f3 14       		.byte	0x14
+ 466 01f4 01       		.byte	0x1
+ 467 01f5 00000000 		.4byte	.LFB56
+ 468 01f9 32000000 		.4byte	.LFE56
+ 469 01fd 00000000 		.4byte	.LLST0
+ 470 0201 01       		.byte	0x1
+ 471 0202 43020000 		.4byte	0x243
+ 472 0206 0B       		.uleb128 0xb
+ 473 0207 19010000 		.4byte	.LASF37
+ 474 020b 01       		.byte	0x1
+ 475 020c 14       		.byte	0x14
+ 476 020d B1010000 		.4byte	0x1b1
+ 477 0211 02       		.byte	0x2
+ 478 0212 91       		.byte	0x91
+ 479 0213 70       		.sleb128 -16
+ 480 0214 0C       		.uleb128 0xc
+ 481 0215 16000000 		.4byte	.LBB2
+ 482 0219 26000000 		.4byte	.LBE2
+ 483 021d 0D       		.uleb128 0xd
+ 484 021e 57010000 		.4byte	.LASF29
+ 485 0222 01       		.byte	0x1
+ 486 0223 17       		.byte	0x17
+ 487 0224 7A000000 		.4byte	0x7a
+ 488 0228 02       		.byte	0x2
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 11
+
+
+ 489 0229 91       		.byte	0x91
+ 490 022a 67       		.sleb128 -25
+ 491 022b 0C       		.uleb128 0xc
+ 492 022c 20000000 		.4byte	.LBB3
+ 493 0230 26000000 		.4byte	.LBE3
+ 494 0234 0E       		.uleb128 0xe
+ 495 0235 7800     		.ascii	"x\000"
+ 496 0237 01       		.byte	0x1
+ 497 0238 19       		.byte	0x19
+ 498 0239 7A000000 		.4byte	0x7a
+ 499 023d 02       		.byte	0x2
+ 500 023e 91       		.byte	0x91
+ 501 023f 66       		.sleb128 -26
+ 502 0240 00       		.byte	0
+ 503 0241 00       		.byte	0
+ 504 0242 00       		.byte	0
+ 505 0243 0F       		.uleb128 0xf
+ 506 0244 01       		.byte	0x1
+ 507 0245 CD000000 		.4byte	.LASF43
+ 508 0249 01       		.byte	0x1
+ 509 024a 2A       		.byte	0x2a
+ 510 024b 6C000000 		.4byte	0x6c
+ 511 024f 00000000 		.4byte	.LFB57
+ 512 0253 38000000 		.4byte	.LFE57
+ 513 0257 44000000 		.4byte	.LLST1
+ 514 025b 01       		.byte	0x1
+ 515 025c 10       		.uleb128 0x10
+ 516 025d 01       		.byte	0x1
+ 517 025e 92010000 		.4byte	.LASF36
+ 518 0262 01       		.byte	0x1
+ 519 0263 45       		.byte	0x45
+ 520 0264 01       		.byte	0x1
+ 521 0265 00000000 		.4byte	.LFB58
+ 522 0269 52000000 		.4byte	.LFE58
+ 523 026d 70000000 		.4byte	.LLST2
+ 524 0271 01       		.byte	0x1
+ 525 0272 A9020000 		.4byte	0x2a9
+ 526 0276 0B       		.uleb128 0xb
+ 527 0277 5C010000 		.4byte	.LASF38
+ 528 027b 01       		.byte	0x1
+ 529 027c 45       		.byte	0x45
+ 530 027d 7A000000 		.4byte	0x7a
+ 531 0281 02       		.byte	0x2
+ 532 0282 91       		.byte	0x91
+ 533 0283 4F       		.sleb128 -49
+ 534 0284 0C       		.uleb128 0xc
+ 535 0285 16000000 		.4byte	.LBB4
+ 536 0289 4A000000 		.4byte	.LBE4
+ 537 028d 0D       		.uleb128 0xd
+ 538 028e 84000000 		.4byte	.LASF39
+ 539 0292 01       		.byte	0x1
+ 540 0293 49       		.byte	0x49
+ 541 0294 E1010000 		.4byte	0x1e1
+ 542 0298 02       		.byte	0x2
+ 543 0299 91       		.byte	0x91
+ 544 029a 54       		.sleb128 -44
+ 545 029b 0E       		.uleb128 0xe
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 12
+
+
+ 546 029c 7800     		.ascii	"x\000"
+ 547 029e 01       		.byte	0x1
+ 548 029f 4D       		.byte	0x4d
+ 549 02a0 7A000000 		.4byte	0x7a
+ 550 02a4 02       		.byte	0x2
+ 551 02a5 91       		.byte	0x91
+ 552 02a6 6F       		.sleb128 -17
+ 553 02a7 00       		.byte	0
+ 554 02a8 00       		.byte	0
+ 555 02a9 11       		.uleb128 0x11
+ 556 02aa 8B000000 		.4byte	.LASF44
+ 557 02ae 06       		.byte	0x6
+ 558 02af 1606     		.2byte	0x616
+ 559 02b1 B7020000 		.4byte	0x2b7
+ 560 02b5 01       		.byte	0x1
+ 561 02b6 01       		.byte	0x1
+ 562 02b7 12       		.uleb128 0x12
+ 563 02b8 45000000 		.4byte	0x45
+ 564 02bc 00       		.byte	0
+ 565              		.section	.debug_abbrev,"",%progbits
+ 566              	.Ldebug_abbrev0:
+ 567 0000 01       		.uleb128 0x1
+ 568 0001 11       		.uleb128 0x11
+ 569 0002 01       		.byte	0x1
+ 570 0003 25       		.uleb128 0x25
+ 571 0004 0E       		.uleb128 0xe
+ 572 0005 13       		.uleb128 0x13
+ 573 0006 0B       		.uleb128 0xb
+ 574 0007 03       		.uleb128 0x3
+ 575 0008 0E       		.uleb128 0xe
+ 576 0009 1B       		.uleb128 0x1b
+ 577 000a 0E       		.uleb128 0xe
+ 578 000b 55       		.uleb128 0x55
+ 579 000c 06       		.uleb128 0x6
+ 580 000d 11       		.uleb128 0x11
+ 581 000e 01       		.uleb128 0x1
+ 582 000f 52       		.uleb128 0x52
+ 583 0010 01       		.uleb128 0x1
+ 584 0011 10       		.uleb128 0x10
+ 585 0012 06       		.uleb128 0x6
+ 586 0013 00       		.byte	0
+ 587 0014 00       		.byte	0
+ 588 0015 02       		.uleb128 0x2
+ 589 0016 24       		.uleb128 0x24
+ 590 0017 00       		.byte	0
+ 591 0018 0B       		.uleb128 0xb
+ 592 0019 0B       		.uleb128 0xb
+ 593 001a 3E       		.uleb128 0x3e
+ 594 001b 0B       		.uleb128 0xb
+ 595 001c 03       		.uleb128 0x3
+ 596 001d 0E       		.uleb128 0xe
+ 597 001e 00       		.byte	0
+ 598 001f 00       		.byte	0
+ 599 0020 03       		.uleb128 0x3
+ 600 0021 16       		.uleb128 0x16
+ 601 0022 00       		.byte	0
+ 602 0023 03       		.uleb128 0x3
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 13
+
+
+ 603 0024 0E       		.uleb128 0xe
+ 604 0025 3A       		.uleb128 0x3a
+ 605 0026 0B       		.uleb128 0xb
+ 606 0027 3B       		.uleb128 0x3b
+ 607 0028 0B       		.uleb128 0xb
+ 608 0029 49       		.uleb128 0x49
+ 609 002a 13       		.uleb128 0x13
+ 610 002b 00       		.byte	0
+ 611 002c 00       		.byte	0
+ 612 002d 04       		.uleb128 0x4
+ 613 002e 24       		.uleb128 0x24
+ 614 002f 00       		.byte	0
+ 615 0030 0B       		.uleb128 0xb
+ 616 0031 0B       		.uleb128 0xb
+ 617 0032 3E       		.uleb128 0x3e
+ 618 0033 0B       		.uleb128 0xb
+ 619 0034 03       		.uleb128 0x3
+ 620 0035 08       		.uleb128 0x8
+ 621 0036 00       		.byte	0
+ 622 0037 00       		.byte	0
+ 623 0038 05       		.uleb128 0x5
+ 624 0039 13       		.uleb128 0x13
+ 625 003a 01       		.byte	0x1
+ 626 003b 0B       		.uleb128 0xb
+ 627 003c 0B       		.uleb128 0xb
+ 628 003d 3A       		.uleb128 0x3a
+ 629 003e 0B       		.uleb128 0xb
+ 630 003f 3B       		.uleb128 0x3b
+ 631 0040 0B       		.uleb128 0xb
+ 632 0041 01       		.uleb128 0x1
+ 633 0042 13       		.uleb128 0x13
+ 634 0043 00       		.byte	0
+ 635 0044 00       		.byte	0
+ 636 0045 06       		.uleb128 0x6
+ 637 0046 0D       		.uleb128 0xd
+ 638 0047 00       		.byte	0
+ 639 0048 03       		.uleb128 0x3
+ 640 0049 0E       		.uleb128 0xe
+ 641 004a 3A       		.uleb128 0x3a
+ 642 004b 0B       		.uleb128 0xb
+ 643 004c 3B       		.uleb128 0x3b
+ 644 004d 0B       		.uleb128 0xb
+ 645 004e 49       		.uleb128 0x49
+ 646 004f 13       		.uleb128 0x13
+ 647 0050 38       		.uleb128 0x38
+ 648 0051 0A       		.uleb128 0xa
+ 649 0052 00       		.byte	0
+ 650 0053 00       		.byte	0
+ 651 0054 07       		.uleb128 0x7
+ 652 0055 0D       		.uleb128 0xd
+ 653 0056 00       		.byte	0
+ 654 0057 03       		.uleb128 0x3
+ 655 0058 08       		.uleb128 0x8
+ 656 0059 3A       		.uleb128 0x3a
+ 657 005a 0B       		.uleb128 0xb
+ 658 005b 3B       		.uleb128 0x3b
+ 659 005c 0B       		.uleb128 0xb
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 14
+
+
+ 660 005d 49       		.uleb128 0x49
+ 661 005e 13       		.uleb128 0x13
+ 662 005f 38       		.uleb128 0x38
+ 663 0060 0A       		.uleb128 0xa
+ 664 0061 00       		.byte	0
+ 665 0062 00       		.byte	0
+ 666 0063 08       		.uleb128 0x8
+ 667 0064 01       		.uleb128 0x1
+ 668 0065 01       		.byte	0x1
+ 669 0066 49       		.uleb128 0x49
+ 670 0067 13       		.uleb128 0x13
+ 671 0068 01       		.uleb128 0x1
+ 672 0069 13       		.uleb128 0x13
+ 673 006a 00       		.byte	0
+ 674 006b 00       		.byte	0
+ 675 006c 09       		.uleb128 0x9
+ 676 006d 21       		.uleb128 0x21
+ 677 006e 00       		.byte	0
+ 678 006f 49       		.uleb128 0x49
+ 679 0070 13       		.uleb128 0x13
+ 680 0071 2F       		.uleb128 0x2f
+ 681 0072 0B       		.uleb128 0xb
+ 682 0073 00       		.byte	0
+ 683 0074 00       		.byte	0
+ 684 0075 0A       		.uleb128 0xa
+ 685 0076 2E       		.uleb128 0x2e
+ 686 0077 01       		.byte	0x1
+ 687 0078 3F       		.uleb128 0x3f
+ 688 0079 0C       		.uleb128 0xc
+ 689 007a 03       		.uleb128 0x3
+ 690 007b 0E       		.uleb128 0xe
+ 691 007c 3A       		.uleb128 0x3a
+ 692 007d 0B       		.uleb128 0xb
+ 693 007e 3B       		.uleb128 0x3b
+ 694 007f 0B       		.uleb128 0xb
+ 695 0080 27       		.uleb128 0x27
+ 696 0081 0C       		.uleb128 0xc
+ 697 0082 11       		.uleb128 0x11
+ 698 0083 01       		.uleb128 0x1
+ 699 0084 12       		.uleb128 0x12
+ 700 0085 01       		.uleb128 0x1
+ 701 0086 40       		.uleb128 0x40
+ 702 0087 06       		.uleb128 0x6
+ 703 0088 9742     		.uleb128 0x2117
+ 704 008a 0C       		.uleb128 0xc
+ 705 008b 01       		.uleb128 0x1
+ 706 008c 13       		.uleb128 0x13
+ 707 008d 00       		.byte	0
+ 708 008e 00       		.byte	0
+ 709 008f 0B       		.uleb128 0xb
+ 710 0090 05       		.uleb128 0x5
+ 711 0091 00       		.byte	0
+ 712 0092 03       		.uleb128 0x3
+ 713 0093 0E       		.uleb128 0xe
+ 714 0094 3A       		.uleb128 0x3a
+ 715 0095 0B       		.uleb128 0xb
+ 716 0096 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 15
+
+
+ 717 0097 0B       		.uleb128 0xb
+ 718 0098 49       		.uleb128 0x49
+ 719 0099 13       		.uleb128 0x13
+ 720 009a 02       		.uleb128 0x2
+ 721 009b 0A       		.uleb128 0xa
+ 722 009c 00       		.byte	0
+ 723 009d 00       		.byte	0
+ 724 009e 0C       		.uleb128 0xc
+ 725 009f 0B       		.uleb128 0xb
+ 726 00a0 01       		.byte	0x1
+ 727 00a1 11       		.uleb128 0x11
+ 728 00a2 01       		.uleb128 0x1
+ 729 00a3 12       		.uleb128 0x12
+ 730 00a4 01       		.uleb128 0x1
+ 731 00a5 00       		.byte	0
+ 732 00a6 00       		.byte	0
+ 733 00a7 0D       		.uleb128 0xd
+ 734 00a8 34       		.uleb128 0x34
+ 735 00a9 00       		.byte	0
+ 736 00aa 03       		.uleb128 0x3
+ 737 00ab 0E       		.uleb128 0xe
+ 738 00ac 3A       		.uleb128 0x3a
+ 739 00ad 0B       		.uleb128 0xb
+ 740 00ae 3B       		.uleb128 0x3b
+ 741 00af 0B       		.uleb128 0xb
+ 742 00b0 49       		.uleb128 0x49
+ 743 00b1 13       		.uleb128 0x13
+ 744 00b2 02       		.uleb128 0x2
+ 745 00b3 0A       		.uleb128 0xa
+ 746 00b4 00       		.byte	0
+ 747 00b5 00       		.byte	0
+ 748 00b6 0E       		.uleb128 0xe
+ 749 00b7 34       		.uleb128 0x34
+ 750 00b8 00       		.byte	0
+ 751 00b9 03       		.uleb128 0x3
+ 752 00ba 08       		.uleb128 0x8
+ 753 00bb 3A       		.uleb128 0x3a
+ 754 00bc 0B       		.uleb128 0xb
+ 755 00bd 3B       		.uleb128 0x3b
+ 756 00be 0B       		.uleb128 0xb
+ 757 00bf 49       		.uleb128 0x49
+ 758 00c0 13       		.uleb128 0x13
+ 759 00c1 02       		.uleb128 0x2
+ 760 00c2 0A       		.uleb128 0xa
+ 761 00c3 00       		.byte	0
+ 762 00c4 00       		.byte	0
+ 763 00c5 0F       		.uleb128 0xf
+ 764 00c6 2E       		.uleb128 0x2e
+ 765 00c7 00       		.byte	0
+ 766 00c8 3F       		.uleb128 0x3f
+ 767 00c9 0C       		.uleb128 0xc
+ 768 00ca 03       		.uleb128 0x3
+ 769 00cb 0E       		.uleb128 0xe
+ 770 00cc 3A       		.uleb128 0x3a
+ 771 00cd 0B       		.uleb128 0xb
+ 772 00ce 3B       		.uleb128 0x3b
+ 773 00cf 0B       		.uleb128 0xb
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 16
+
+
+ 774 00d0 49       		.uleb128 0x49
+ 775 00d1 13       		.uleb128 0x13
+ 776 00d2 11       		.uleb128 0x11
+ 777 00d3 01       		.uleb128 0x1
+ 778 00d4 12       		.uleb128 0x12
+ 779 00d5 01       		.uleb128 0x1
+ 780 00d6 40       		.uleb128 0x40
+ 781 00d7 06       		.uleb128 0x6
+ 782 00d8 9642     		.uleb128 0x2116
+ 783 00da 0C       		.uleb128 0xc
+ 784 00db 00       		.byte	0
+ 785 00dc 00       		.byte	0
+ 786 00dd 10       		.uleb128 0x10
+ 787 00de 2E       		.uleb128 0x2e
+ 788 00df 01       		.byte	0x1
+ 789 00e0 3F       		.uleb128 0x3f
+ 790 00e1 0C       		.uleb128 0xc
+ 791 00e2 03       		.uleb128 0x3
+ 792 00e3 0E       		.uleb128 0xe
+ 793 00e4 3A       		.uleb128 0x3a
+ 794 00e5 0B       		.uleb128 0xb
+ 795 00e6 3B       		.uleb128 0x3b
+ 796 00e7 0B       		.uleb128 0xb
+ 797 00e8 27       		.uleb128 0x27
+ 798 00e9 0C       		.uleb128 0xc
+ 799 00ea 11       		.uleb128 0x11
+ 800 00eb 01       		.uleb128 0x1
+ 801 00ec 12       		.uleb128 0x12
+ 802 00ed 01       		.uleb128 0x1
+ 803 00ee 40       		.uleb128 0x40
+ 804 00ef 06       		.uleb128 0x6
+ 805 00f0 9642     		.uleb128 0x2116
+ 806 00f2 0C       		.uleb128 0xc
+ 807 00f3 01       		.uleb128 0x1
+ 808 00f4 13       		.uleb128 0x13
+ 809 00f5 00       		.byte	0
+ 810 00f6 00       		.byte	0
+ 811 00f7 11       		.uleb128 0x11
+ 812 00f8 34       		.uleb128 0x34
+ 813 00f9 00       		.byte	0
+ 814 00fa 03       		.uleb128 0x3
+ 815 00fb 0E       		.uleb128 0xe
+ 816 00fc 3A       		.uleb128 0x3a
+ 817 00fd 0B       		.uleb128 0xb
+ 818 00fe 3B       		.uleb128 0x3b
+ 819 00ff 05       		.uleb128 0x5
+ 820 0100 49       		.uleb128 0x49
+ 821 0101 13       		.uleb128 0x13
+ 822 0102 3F       		.uleb128 0x3f
+ 823 0103 0C       		.uleb128 0xc
+ 824 0104 3C       		.uleb128 0x3c
+ 825 0105 0C       		.uleb128 0xc
+ 826 0106 00       		.byte	0
+ 827 0107 00       		.byte	0
+ 828 0108 12       		.uleb128 0x12
+ 829 0109 35       		.uleb128 0x35
+ 830 010a 00       		.byte	0
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 17
+
+
+ 831 010b 49       		.uleb128 0x49
+ 832 010c 13       		.uleb128 0x13
+ 833 010d 00       		.byte	0
+ 834 010e 00       		.byte	0
+ 835 010f 00       		.byte	0
+ 836              		.section	.debug_loc,"",%progbits
+ 837              	.Ldebug_loc0:
+ 838              	.LLST0:
+ 839 0000 00000000 		.4byte	.LFB56
+ 840 0004 02000000 		.4byte	.LCFI0
+ 841 0008 0200     		.2byte	0x2
+ 842 000a 7D       		.byte	0x7d
+ 843 000b 00       		.sleb128 0
+ 844 000c 02000000 		.4byte	.LCFI0
+ 845 0010 04000000 		.4byte	.LCFI1
+ 846 0014 0200     		.2byte	0x2
+ 847 0016 7D       		.byte	0x7d
+ 848 0017 10       		.sleb128 16
+ 849 0018 04000000 		.4byte	.LCFI1
+ 850 001c 06000000 		.4byte	.LCFI2
+ 851 0020 0200     		.2byte	0x2
+ 852 0022 7D       		.byte	0x7d
+ 853 0023 14       		.sleb128 20
+ 854 0024 06000000 		.4byte	.LCFI2
+ 855 0028 08000000 		.4byte	.LCFI3
+ 856 002c 0200     		.2byte	0x2
+ 857 002e 7D       		.byte	0x7d
+ 858 002f 20       		.sleb128 32
+ 859 0030 08000000 		.4byte	.LCFI3
+ 860 0034 32000000 		.4byte	.LFE56
+ 861 0038 0200     		.2byte	0x2
+ 862 003a 77       		.byte	0x77
+ 863 003b 20       		.sleb128 32
+ 864 003c 00000000 		.4byte	0
+ 865 0040 00000000 		.4byte	0
+ 866              	.LLST1:
+ 867 0044 00000000 		.4byte	.LFB57
+ 868 0048 02000000 		.4byte	.LCFI4
+ 869 004c 0200     		.2byte	0x2
+ 870 004e 7D       		.byte	0x7d
+ 871 004f 00       		.sleb128 0
+ 872 0050 02000000 		.4byte	.LCFI4
+ 873 0054 04000000 		.4byte	.LCFI5
+ 874 0058 0200     		.2byte	0x2
+ 875 005a 7D       		.byte	0x7d
+ 876 005b 08       		.sleb128 8
+ 877 005c 04000000 		.4byte	.LCFI5
+ 878 0060 38000000 		.4byte	.LFE57
+ 879 0064 0200     		.2byte	0x2
+ 880 0066 77       		.byte	0x77
+ 881 0067 08       		.sleb128 8
+ 882 0068 00000000 		.4byte	0
+ 883 006c 00000000 		.4byte	0
+ 884              	.LLST2:
+ 885 0070 00000000 		.4byte	.LFB58
+ 886 0074 02000000 		.4byte	.LCFI6
+ 887 0078 0200     		.2byte	0x2
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 18
+
+
+ 888 007a 7D       		.byte	0x7d
+ 889 007b 00       		.sleb128 0
+ 890 007c 02000000 		.4byte	.LCFI6
+ 891 0080 04000000 		.4byte	.LCFI7
+ 892 0084 0200     		.2byte	0x2
+ 893 0086 7D       		.byte	0x7d
+ 894 0087 0C       		.sleb128 12
+ 895 0088 04000000 		.4byte	.LCFI7
+ 896 008c 06000000 		.4byte	.LCFI8
+ 897 0090 0300     		.2byte	0x3
+ 898 0092 7D       		.byte	0x7d
+ 899 0093 D000     		.sleb128 80
+ 900 0095 06000000 		.4byte	.LCFI8
+ 901 0099 52000000 		.4byte	.LFE58
+ 902 009d 0300     		.2byte	0x3
+ 903 009f 77       		.byte	0x77
+ 904 00a0 D000     		.sleb128 80
+ 905 00a2 00000000 		.4byte	0
+ 906 00a6 00000000 		.4byte	0
+ 907              		.section	.debug_aranges,"",%progbits
+ 908 0000 2C000000 		.4byte	0x2c
+ 909 0004 0200     		.2byte	0x2
+ 910 0006 00000000 		.4byte	.Ldebug_info0
+ 911 000a 04       		.byte	0x4
+ 912 000b 00       		.byte	0
+ 913 000c 0000     		.2byte	0
+ 914 000e 0000     		.2byte	0
+ 915 0010 00000000 		.4byte	.LFB56
+ 916 0014 32000000 		.4byte	.LFE56-.LFB56
+ 917 0018 00000000 		.4byte	.LFB57
+ 918 001c 38000000 		.4byte	.LFE57-.LFB57
+ 919 0020 00000000 		.4byte	.LFB58
+ 920 0024 52000000 		.4byte	.LFE58-.LFB58
+ 921 0028 00000000 		.4byte	0
+ 922 002c 00000000 		.4byte	0
+ 923              		.section	.debug_ranges,"",%progbits
+ 924              	.Ldebug_ranges0:
+ 925 0000 00000000 		.4byte	.LFB56
+ 926 0004 32000000 		.4byte	.LFE56
+ 927 0008 00000000 		.4byte	.LFB57
+ 928 000c 38000000 		.4byte	.LFE57
+ 929 0010 00000000 		.4byte	.LFB58
+ 930 0014 52000000 		.4byte	.LFE58
+ 931 0018 00000000 		.4byte	0
+ 932 001c 00000000 		.4byte	0
+ 933              		.section	.debug_line,"",%progbits
+ 934              	.Ldebug_line0:
+ 935 0000 89010000 		.section	.debug_str,"MS",%progbits,1
+ 935      02003501 
+ 935      00000201 
+ 935      FB0E0D00 
+ 935      01010101 
+ 936              	.LASF25:
+ 937 0000 7765656B 		.ascii	"weekday\000"
+ 937      64617900 
+ 938              	.LASF16:
+ 939 0008 6469656C 		.ascii	"dielectric\000"
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 19
+
+
+ 939      65637472 
+ 939      696300
+ 940              	.LASF33:
+ 941 0013 536F696C 		.ascii	"SoilMoisture\000"
+ 941      4D6F6973 
+ 941      74757265 
+ 941      00
+ 942              	.LASF23:
+ 943 0020 6D696E75 		.ascii	"minute\000"
+ 943      746500
+ 944              	.LASF26:
+ 945 0027 6D6F6E74 		.ascii	"month\000"
+ 945      6800
+ 946              	.LASF34:
+ 947 002d 57697265 		.ascii	"Wireless_Packet\000"
+ 947      6C657373 
+ 947      5F506163 
+ 947      6B657400 
+ 948              	.LASF12:
+ 949 003d 666C6F61 		.ascii	"float\000"
+ 949      7400
+ 950              	.LASF1:
+ 951 0043 756E7369 		.ascii	"unsigned char\000"
+ 951      676E6564 
+ 951      20636861 
+ 951      7200
+ 952              	.LASF41:
+ 953 0051 2E5C6D61 		.ascii	".\\main.c\000"
+ 953      696E2E63 
+ 953      00
+ 954              	.LASF5:
+ 955 005a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 955      20756E73 
+ 955      69676E65 
+ 955      6420696E 
+ 955      7400
+ 956              	.LASF17:
+ 957 006c 74656D70 		.ascii	"temp\000"
+ 957      00
+ 958              	.LASF3:
+ 959 0071 73686F72 		.ascii	"short unsigned int\000"
+ 959      7420756E 
+ 959      7369676E 
+ 959      65642069 
+ 959      6E7400
+ 960              	.LASF39:
+ 961 0084 5061636B 		.ascii	"Packet\000"
+ 961      657400
+ 962              	.LASF44:
+ 963 008b 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 963      52784275 
+ 963      66666572 
+ 963      00
+ 964              	.LASF22:
+ 965 0098 7365636F 		.ascii	"second\000"
+ 965      6E6400
+ 966              	.LASF27:
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 20
+
+
+ 967 009f 79656172 		.ascii	"year\000"
+ 967      00
+ 968              	.LASF13:
+ 969 00a4 646F7562 		.ascii	"double\000"
+ 969      6C6500
+ 970              	.LASF28:
+ 971 00ab 4E656F52 		.ascii	"NeoRtcTimeStruct\000"
+ 971      74635469 
+ 971      6D655374 
+ 971      72756374 
+ 971      00
+ 972              	.LASF2:
+ 973 00bc 73686F72 		.ascii	"short int\000"
+ 973      7420696E 
+ 973      7400
+ 974              	.LASF11:
+ 975 00c6 75696E74 		.ascii	"uint16\000"
+ 975      313600
+ 976              	.LASF43:
+ 977 00cd 6D61696E 		.ascii	"main\000"
+ 977      00
+ 978              	.LASF8:
+ 979 00d2 756E7369 		.ascii	"unsigned int\000"
+ 979      676E6564 
+ 979      20696E74 
+ 979      00
+ 980              	.LASF7:
+ 981 00df 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 981      206C6F6E 
+ 981      6720756E 
+ 981      7369676E 
+ 981      65642069 
+ 982              	.LASF24:
+ 983 00f6 686F7572 		.ascii	"hour\000"
+ 983      00
+ 984              	.LASF30:
+ 985 00fb 7061796C 		.ascii	"payload\000"
+ 985      6F616400 
+ 986              	.LASF32:
+ 987 0103 74696D65 		.ascii	"time\000"
+ 987      00
+ 988              	.LASF9:
+ 989 0108 696E7433 		.ascii	"int32_t\000"
+ 989      325F7400 
+ 990              	.LASF15:
+ 991 0110 73697A65 		.ascii	"sizetype\000"
+ 991      74797065 
+ 991      00
+ 992              	.LASF37:
+ 993 0119 6E6F7469 		.ascii	"notification\000"
+ 993      66696361 
+ 993      74696F6E 
+ 993      00
+ 994              	.LASF6:
+ 995 0126 6C6F6E67 		.ascii	"long long int\000"
+ 995      206C6F6E 
+ 995      6720696E 
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 21
+
+
+ 995      7400
+ 996              	.LASF21:
+ 997 0134 44656361 		.ascii	"DecagonGS3\000"
+ 997      676F6E47 
+ 997      533300
+ 998              	.LASF14:
+ 999 013f 63686172 		.ascii	"char\000"
+ 999      00
+ 1000              	.LASF20:
+ 1001 0144 76616C69 		.ascii	"valid\000"
+ 1001      6400
+ 1002              	.LASF19:
+ 1003 014a 636F6E64 		.ascii	"conductivity\000"
+ 1003      75637469 
+ 1003      76697479 
+ 1003      00
+ 1004              	.LASF29:
+ 1005 0157 74797065 		.ascii	"type\000"
+ 1005      00
+ 1006              	.LASF38:
+ 1007 015c 616C6172 		.ascii	"alarmType\000"
+ 1007      6D547970 
+ 1007      6500
+ 1008              	.LASF18:
+ 1009 0166 736F696C 		.ascii	"soilMoisture\000"
+ 1009      4D6F6973 
+ 1009      74757265 
+ 1009      00
+ 1010              	.LASF35:
+ 1011 0173 6D6F7465 		.ascii	"moteNotificationReceived\000"
+ 1011      4E6F7469 
+ 1011      66696361 
+ 1011      74696F6E 
+ 1011      52656365 
+ 1012              	.LASF10:
+ 1013 018c 75696E74 		.ascii	"uint8\000"
+ 1013      3800
+ 1014              	.LASF36:
+ 1015 0192 72746343 		.ascii	"rtcCallBackReceived\000"
+ 1015      616C6C42 
+ 1015      61636B52 
+ 1015      65636569 
+ 1015      76656400 
+ 1016              	.LASF4:
+ 1017 01a6 6C6F6E67 		.ascii	"long int\000"
+ 1017      20696E74 
+ 1017      00
+ 1018              	.LASF31:
+ 1019 01af 4E656F4D 		.ascii	"NeoMoteNotification\000"
+ 1019      6F74654E 
+ 1019      6F746966 
+ 1019      69636174 
+ 1019      696F6E00 
+ 1020              	.LASF0:
+ 1021 01c3 7369676E 		.ascii	"signed char\000"
+ 1021      65642063 
+ 1021      68617200 
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\ccw9XyJi.s 			page 22
+
+
+ 1022              	.LASF42:
+ 1023 01cf 433A5C55 		.ascii	"C:\\Users\\hozhen\\Google Drive\\Docs Ho-Zhen\\proj"
+ 1023      73657273 
+ 1023      5C686F7A 
+ 1023      68656E5C 
+ 1023      476F6F67 
+ 1024 01fd 65637473 		.ascii	"ects\\UMBS\\UMBS Project\\Software\\PSoC\\Drivers\\"
+ 1024      5C554D42 
+ 1024      535C554D 
+ 1024      42532050 
+ 1024      726F6A65 
+ 1025 022a 44656361 		.ascii	"Decagon_Soilmoisture\\Decagon_Soilmoisture.cydsn\000"
+ 1025      676F6E5F 
+ 1025      536F696C 
+ 1025      6D6F6973 
+ 1025      74757265 
+ 1026              	.LASF40:
+ 1027 025a 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 1027      4320342E 
+ 1027      372E3320 
+ 1027      32303133 
+ 1027      30333132 
+ 1028 028d 616E6368 		.ascii	"anch revision 196615]\000"
+ 1028      20726576 
+ 1028      6973696F 
+ 1028      6E203139 
+ 1028      36363135 
+ 1029              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

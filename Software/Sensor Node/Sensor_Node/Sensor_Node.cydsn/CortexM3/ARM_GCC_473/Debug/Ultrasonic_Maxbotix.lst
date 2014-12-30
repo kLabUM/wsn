@@ -1,0 +1,1459 @@
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Ultrasonic_Maxbotix.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.comm	raw_serial_data_m,30,4
+  19              		.comm	raw_serial_data_count_m,1,1
+  20              		.section	.text.Ultrasonic_Maxbotix_Start,"ax",%progbits
+  21              		.align	2
+  22              		.global	Ultrasonic_Maxbotix_Start
+  23              		.thumb
+  24              		.thumb_func
+  25              		.type	Ultrasonic_Maxbotix_Start, %function
+  26              	Ultrasonic_Maxbotix_Start:
+  27              	.LFB56:
+  28              		.file 1 "..\\..\\..\\PSoC\\Drivers\\Ultrasonic_Maxbotix\\Ultrasonic_Maxbotix\\Ultrasonic_Maxbotix.
+   1:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** /* ========================================
+   2:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****  *
+   3:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****  * All Rights Reserved
+   5:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****  *
+   7:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****  *
+  10:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****  * ========================================
+  11:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** */
+  12:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** #include <string.h>
+  13:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** #include "Ultrasonic_Maxbotix.h"
+  14:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** #define RAW_SERIAL_DATA_LENGTH_m 30
+  15:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** #define VALUES_ARRAY_LENGTH 5
+  16:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** uint8 raw_serial_data_m[RAW_SERIAL_DATA_LENGTH_m];
+  17:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** uint8 raw_serial_data_count_m;
+  18:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** 
+  19:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** CY_ISR_PROTO(IntUartRx_M);
+  20:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** 
+  21:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** void Ultrasonic_Maxbotix_Start(){
+  29              		.loc 1 21 0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 1, uses_anonymous_args = 0
+  33 0000 80B5     		push	{r7, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 7, -8
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 2
+
+
+  37              		.cfi_offset 14, -4
+  38 0002 00AF     		add	r7, sp, #0
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_register 7
+  22:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     
+  23:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     UART_Ultrasonic_Maxbotix_Start();
+  41              		.loc 1 23 0
+  42 0004 FFF7FEFF 		bl	UART_Ultrasonic_Maxbotix_Start
+  24:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** 
+  25:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** }
+  43              		.loc 1 25 0
+  44 0008 80BD     		pop	{r7, pc}
+  45              		.cfi_endproc
+  46              	.LFE56:
+  47              		.size	Ultrasonic_Maxbotix_Start, .-Ultrasonic_Maxbotix_Start
+  48 000a 00BF     		.section	.text.IntUartRx_M,"ax",%progbits
+  49              		.align	2
+  50              		.global	IntUartRx_M
+  51              		.thumb
+  52              		.thumb_func
+  53              		.type	IntUartRx_M, %function
+  54              	IntUartRx_M:
+  55              	.LFB57:
+  26:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** 
+  27:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** CY_ISR(IntUartRx_M)
+  28:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** {
+  56              		.loc 1 28 0
+  57              		.cfi_startproc
+  58              		@ args = 0, pretend = 0, frame = 8
+  59              		@ frame_needed = 1, uses_anonymous_args = 0
+  60 0000 80B5     		push	{r7, lr}
+  61              	.LCFI2:
+  62              		.cfi_def_cfa_offset 8
+  63              		.cfi_offset 7, -8
+  64              		.cfi_offset 14, -4
+  65 0002 82B0     		sub	sp, sp, #8
+  66              	.LCFI3:
+  67              		.cfi_def_cfa_offset 16
+  68 0004 00AF     		add	r7, sp, #0
+  69              	.LCFI4:
+  70              		.cfi_def_cfa_register 7
+  29:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****    uint8 getchar;
+  30:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****    getchar  = UART_Ultrasonic_Maxbotix_GetChar();
+  71              		.loc 1 30 0
+  72 0006 FFF7FEFF 		bl	UART_Ultrasonic_Maxbotix_GetChar
+  73 000a 0346     		mov	r3, r0
+  74 000c FB71     		strb	r3, [r7, #7]
+  31:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****         
+  32:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****    if(getchar > 0u && raw_serial_data_count_m < RAW_SERIAL_DATA_LENGTH_m){
+  75              		.loc 1 32 0
+  76 000e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  77 0010 002B     		cmp	r3, #0
+  78 0012 1FD0     		beq	.L2
+  79              		.loc 1 32 0 is_stmt 0 discriminator 1
+  80 0014 40F20003 		movw	r3, #:lower16:raw_serial_data_count_m
+  81 0018 C0F20003 		movt	r3, #:upper16:raw_serial_data_count_m
+  82 001c 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 3
+
+
+  83 001e 1D2B     		cmp	r3, #29
+  84 0020 18D8     		bhi	.L2
+  33:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****         raw_serial_data_m[raw_serial_data_count_m] = getchar;
+  85              		.loc 1 33 0 is_stmt 1
+  86 0022 40F20003 		movw	r3, #:lower16:raw_serial_data_count_m
+  87 0026 C0F20003 		movt	r3, #:upper16:raw_serial_data_count_m
+  88 002a 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+  89 002c 1A46     		mov	r2, r3
+  90 002e 40F20003 		movw	r3, #:lower16:raw_serial_data_m
+  91 0032 C0F20003 		movt	r3, #:upper16:raw_serial_data_m
+  92 0036 F979     		ldrb	r1, [r7, #7]
+  93 0038 9954     		strb	r1, [r3, r2]
+  34:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****         raw_serial_data_count_m++;
+  94              		.loc 1 34 0
+  95 003a 40F20003 		movw	r3, #:lower16:raw_serial_data_count_m
+  96 003e C0F20003 		movt	r3, #:upper16:raw_serial_data_count_m
+  97 0042 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+  98 0044 03F10103 		add	r3, r3, #1
+  99 0048 DAB2     		uxtb	r2, r3
+ 100 004a 40F20003 		movw	r3, #:lower16:raw_serial_data_count_m
+ 101 004e C0F20003 		movt	r3, #:upper16:raw_serial_data_count_m
+ 102 0052 1A70     		strb	r2, [r3, #0]
+ 103              	.L2:
+  35:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****         }   
+  36:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     
+  37:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** }
+ 104              		.loc 1 37 0
+ 105 0054 07F10807 		add	r7, r7, #8
+ 106 0058 BD46     		mov	sp, r7
+ 107 005a 80BD     		pop	{r7, pc}
+ 108              		.cfi_endproc
+ 109              	.LFE57:
+ 110              		.size	IntUartRx_M, .-IntUartRx_M
+ 111              		.section	.rodata
+ 112              		.align	2
+ 113              	.LC0:
+ 114 0000 0D00     		.ascii	"\015\000"
+ 115 0002 0000     		.align	2
+ 116              	.LC1:
+ 117 0004 52256400 		.ascii	"R%d\000"
+ 118              		.section	.text.Ultrasonic_Maxbotix_Convert_Raw_Reading,"ax",%progbits
+ 119              		.align	2
+ 120              		.global	Ultrasonic_Maxbotix_Convert_Raw_Reading
+ 121              		.thumb
+ 122              		.thumb_func
+ 123              		.type	Ultrasonic_Maxbotix_Convert_Raw_Reading, %function
+ 124              	Ultrasonic_Maxbotix_Convert_Raw_Reading:
+ 125              	.LFB58:
+  38:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** 
+  39:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** MaxbotixUltrasonic Ultrasonic_Maxbotix_Convert_Raw_Reading(uint8* raw_M){
+ 126              		.loc 1 39 0
+ 127              		.cfi_startproc
+ 128              		@ args = 0, pretend = 0, frame = 56
+ 129              		@ frame_needed = 1, uses_anonymous_args = 0
+ 130 0000 80B5     		push	{r7, lr}
+ 131              	.LCFI5:
+ 132              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 4
+
+
+ 133              		.cfi_offset 7, -8
+ 134              		.cfi_offset 14, -4
+ 135 0002 8EB0     		sub	sp, sp, #56
+ 136              	.LCFI6:
+ 137              		.cfi_def_cfa_offset 64
+ 138 0004 00AF     		add	r7, sp, #0
+ 139              	.LCFI7:
+ 140              		.cfi_def_cfa_register 7
+ 141 0006 7860     		str	r0, [r7, #4]
+ 142 0008 3960     		str	r1, [r7, #0]
+  40:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     uint32 values[VALUES_ARRAY_LENGTH];
+  41:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     char* token;
+  42:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     uint8 value_count = 0u;
+ 143              		.loc 1 42 0
+ 144 000a 4FF00003 		mov	r3, #0
+ 145 000e 87F83330 		strb	r3, [r7, #51]
+  43:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     token = strtok(raw_M,"\r");
+ 146              		.loc 1 43 0
+ 147 0012 3868     		ldr	r0, [r7, #0]
+ 148 0014 40F20001 		movw	r1, #:lower16:.LC0
+ 149 0018 C0F20001 		movt	r1, #:upper16:.LC0
+ 150 001c FFF7FEFF 		bl	strtok
+ 151 0020 7863     		str	r0, [r7, #52]
+  44:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     while(token != NULL){
+ 152              		.loc 1 44 0
+ 153 0022 2BE0     		b	.L5
+ 154              	.L9:
+ 155              	.LBB2:
+  45:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****         uint32 value;
+  46:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****         uint32 scan_valid;
+  47:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****         scan_valid = sscanf(token,"R%d",&value);
+ 156              		.loc 1 47 0
+ 157 0024 07F10803 		add	r3, r7, #8
+ 158 0028 786B     		ldr	r0, [r7, #52]
+ 159 002a 40F20001 		movw	r1, #:lower16:.LC1
+ 160 002e C0F20001 		movt	r1, #:upper16:.LC1
+ 161 0032 1A46     		mov	r2, r3
+ 162 0034 FFF7FEFF 		bl	sscanf
+ 163 0038 0346     		mov	r3, r0
+ 164 003a BB62     		str	r3, [r7, #40]
+  48:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****         if (scan_valid != 0){
+ 165              		.loc 1 48 0
+ 166 003c BB6A     		ldr	r3, [r7, #40]
+ 167 003e 002B     		cmp	r3, #0
+ 168 0040 13D0     		beq	.L6
+  49:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****             values[value_count] = value;
+ 169              		.loc 1 49 0
+ 170 0042 97F83330 		ldrb	r3, [r7, #51]	@ zero_extendqisi2
+ 171 0046 BA68     		ldr	r2, [r7, #8]
+ 172 0048 4FEA8303 		lsl	r3, r3, #2
+ 173 004c 07F13801 		add	r1, r7, #56
+ 174 0050 CB18     		adds	r3, r1, r3
+ 175 0052 43F8242C 		str	r2, [r3, #-36]
+  50:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****             value_count++;
+ 176              		.loc 1 50 0
+ 177 0056 97F83330 		ldrb	r3, [r7, #51]
+ 178 005a 03F10103 		add	r3, r3, #1
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 5
+
+
+ 179 005e 87F83330 		strb	r3, [r7, #51]
+  51:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****             if (value_count == VALUES_ARRAY_LENGTH){
+ 180              		.loc 1 51 0
+ 181 0062 97F83330 		ldrb	r3, [r7, #51]	@ zero_extendqisi2
+ 182 0066 052B     		cmp	r3, #5
+ 183 0068 0BD0     		beq	.L8
+ 184              	.L6:
+  52:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****                 break;
+  53:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****             }
+  54:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****         
+  55:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****         }
+  56:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****         token = strtok(NULL,"\r");
+ 185              		.loc 1 56 0
+ 186 006a 4FF00000 		mov	r0, #0
+ 187 006e 40F20001 		movw	r1, #:lower16:.LC0
+ 188 0072 C0F20001 		movt	r1, #:upper16:.LC0
+ 189 0076 FFF7FEFF 		bl	strtok
+ 190 007a 7863     		str	r0, [r7, #52]
+ 191              	.L5:
+ 192              	.LBE2:
+  44:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     while(token != NULL){
+ 193              		.loc 1 44 0 discriminator 1
+ 194 007c 7B6B     		ldr	r3, [r7, #52]
+ 195 007e 002B     		cmp	r3, #0
+ 196 0080 D0D1     		bne	.L9
+ 197              	.L8:
+  57:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****         
+  58:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     }
+  59:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     //uint32 final_value = 0u;
+  60:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     
+  61:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     MaxbotixUltrasonic final_value;
+  62:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     final_value.valid = 0u;    
+ 198              		.loc 1 62 0
+ 199 0082 4FF00003 		mov	r3, #0
+ 200 0086 3B74     		strb	r3, [r7, #16]
+  63:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     
+  64:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     
+  65:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     int i = 0;
+ 201              		.loc 1 65 0
+ 202 0088 4FF00003 		mov	r3, #0
+ 203 008c FB62     		str	r3, [r7, #44]
+  66:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     for(i = 0; i < VALUES_ARRAY_LENGTH+1; i++){
+ 204              		.loc 1 66 0
+ 205 008e 4FF00003 		mov	r3, #0
+ 206 0092 FB62     		str	r3, [r7, #44]
+ 207 0094 0EE0     		b	.L10
+ 208              	.L11:
+  67:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****         final_value.depth = final_value.depth + values[i];
+ 209              		.loc 1 67 0 discriminator 2
+ 210 0096 FA68     		ldr	r2, [r7, #12]
+ 211 0098 FB6A     		ldr	r3, [r7, #44]
+ 212 009a 4FEA8303 		lsl	r3, r3, #2
+ 213 009e 07F13801 		add	r1, r7, #56
+ 214 00a2 CB18     		adds	r3, r1, r3
+ 215 00a4 53F8243C 		ldr	r3, [r3, #-36]
+ 216 00a8 D318     		adds	r3, r2, r3
+ 217 00aa FB60     		str	r3, [r7, #12]
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 6
+
+
+  66:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     for(i = 0; i < VALUES_ARRAY_LENGTH+1; i++){
+ 218              		.loc 1 66 0 discriminator 2
+ 219 00ac FB6A     		ldr	r3, [r7, #44]
+ 220 00ae 03F10103 		add	r3, r3, #1
+ 221 00b2 FB62     		str	r3, [r7, #44]
+ 222              	.L10:
+  66:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     for(i = 0; i < VALUES_ARRAY_LENGTH+1; i++){
+ 223              		.loc 1 66 0 is_stmt 0 discriminator 1
+ 224 00b4 FB6A     		ldr	r3, [r7, #44]
+ 225 00b6 052B     		cmp	r3, #5
+ 226 00b8 EDDD     		ble	.L11
+  68:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     }
+  69:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     final_value.depth = final_value.depth/VALUES_ARRAY_LENGTH;
+ 227              		.loc 1 69 0 is_stmt 1
+ 228 00ba FA68     		ldr	r2, [r7, #12]
+ 229 00bc 4CF6CD43 		movw	r3, #52429
+ 230 00c0 CCF6CC43 		movt	r3, 52428
+ 231 00c4 A3FB0213 		umull	r1, r3, r3, r2
+ 232 00c8 4FEA9303 		lsr	r3, r3, #2
+ 233 00cc FB60     		str	r3, [r7, #12]
+  70:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** 
+  71:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     return final_value;
+ 234              		.loc 1 71 0
+ 235 00ce 7B68     		ldr	r3, [r7, #4]
+ 236 00d0 07F10C02 		add	r2, r7, #12
+ 237 00d4 92E80300 		ldmia	r2, {r0, r1}
+ 238 00d8 83E80300 		stmia	r3, {r0, r1}
+  72:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     
+  73:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** 
+  74:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     
+  75:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** }
+ 239              		.loc 1 75 0
+ 240 00dc 7868     		ldr	r0, [r7, #4]
+ 241 00de 07F13807 		add	r7, r7, #56
+ 242 00e2 BD46     		mov	sp, r7
+ 243 00e4 80BD     		pop	{r7, pc}
+ 244              		.cfi_endproc
+ 245              	.LFE58:
+ 246              		.size	Ultrasonic_Maxbotix_Convert_Raw_Reading, .-Ultrasonic_Maxbotix_Convert_Raw_Reading
+ 247 00e6 00BF     		.section	.text.Ultrasonic_Maxbotix_Take_Reading,"ax",%progbits
+ 248              		.align	2
+ 249              		.global	Ultrasonic_Maxbotix_Take_Reading
+ 250              		.thumb
+ 251              		.thumb_func
+ 252              		.type	Ultrasonic_Maxbotix_Take_Reading, %function
+ 253              	Ultrasonic_Maxbotix_Take_Reading:
+ 254              	.LFB59:
+  76:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** 
+  77:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** MaxbotixUltrasonic Ultrasonic_Maxbotix_Take_Reading(){
+ 255              		.loc 1 77 0
+ 256              		.cfi_startproc
+ 257              		@ args = 0, pretend = 0, frame = 16
+ 258              		@ frame_needed = 1, uses_anonymous_args = 0
+ 259 0000 80B5     		push	{r7, lr}
+ 260              	.LCFI8:
+ 261              		.cfi_def_cfa_offset 8
+ 262              		.cfi_offset 7, -8
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 7
+
+
+ 263              		.cfi_offset 14, -4
+ 264 0002 84B0     		sub	sp, sp, #16
+ 265              	.LCFI9:
+ 266              		.cfi_def_cfa_offset 24
+ 267 0004 00AF     		add	r7, sp, #0
+ 268              	.LCFI10:
+ 269              		.cfi_def_cfa_register 7
+ 270 0006 7860     		str	r0, [r7, #4]
+  78:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** 
+  79:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** //    uint8 getchar;
+  80:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     //uint8 arraycount = 0u;
+  81:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     raw_serial_data_count_m = 0u;
+ 271              		.loc 1 81 0
+ 272 0008 40F20003 		movw	r3, #:lower16:raw_serial_data_count_m
+ 273 000c C0F20003 		movt	r3, #:upper16:raw_serial_data_count_m
+ 274 0010 4FF00002 		mov	r2, #0
+ 275 0014 1A70     		strb	r2, [r3, #0]
+  82:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     isr_Ultrasonic_Maxbotix_StartEx(IntUartRx_M);
+ 276              		.loc 1 82 0
+ 277 0016 40F20000 		movw	r0, #:lower16:IntUartRx_M
+ 278 001a C0F20000 		movt	r0, #:upper16:IntUartRx_M
+ 279 001e FFF7FEFF 		bl	isr_Ultrasonic_Maxbotix_StartEx
+  83:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     CyDelay(1000u);
+ 280              		.loc 1 83 0
+ 281 0022 4FF47A70 		mov	r0, #1000
+ 282 0026 FFF7FEFF 		bl	CyDelay
+  84:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     isr_Ultrasonic_Maxbotix_Stop();
+ 283              		.loc 1 84 0
+ 284 002a FFF7FEFF 		bl	isr_Ultrasonic_Maxbotix_Stop
+  85:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** /*    while(1){
+  86:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****         getchar  = UART_Maxbotix_GetChar();
+  87:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****         
+  88:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****         if(getchar > 0u){
+  89:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****             raw_serial_data_m[arraycount] = getchar;
+  90:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****             arraycount++;
+  91:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****             if (arraycount == RAW_SERIAL_DATA_LENGTH_m){
+  92:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****                 break;
+  93:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****             }
+  94:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****         }   
+  95:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     }*/
+  96:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     MaxbotixUltrasonic depth;
+  97:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     depth = Ultrasonic_Maxbotix_Convert_Raw_Reading(raw_serial_data_m);
+ 285              		.loc 1 97 0
+ 286 002e 07F10803 		add	r3, r7, #8
+ 287 0032 1846     		mov	r0, r3
+ 288 0034 40F20001 		movw	r1, #:lower16:raw_serial_data_m
+ 289 0038 C0F20001 		movt	r1, #:upper16:raw_serial_data_m
+ 290 003c FFF7FEFF 		bl	Ultrasonic_Maxbotix_Convert_Raw_Reading
+  98:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c ****     return depth;
+ 291              		.loc 1 98 0
+ 292 0040 7B68     		ldr	r3, [r7, #4]
+ 293 0042 07F10802 		add	r2, r7, #8
+ 294 0046 92E80300 		ldmia	r2, {r0, r1}
+ 295 004a 83E80300 		stmia	r3, {r0, r1}
+  99:..\..\..\PSoC\Drivers\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix\Ultrasonic_Maxbotix.cydsn/Ultrasonic_Maxbotix.c **** }
+ 296              		.loc 1 99 0
+ 297 004e 7868     		ldr	r0, [r7, #4]
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 8
+
+
+ 298 0050 07F11007 		add	r7, r7, #16
+ 299 0054 BD46     		mov	sp, r7
+ 300 0056 80BD     		pop	{r7, pc}
+ 301              		.cfi_endproc
+ 302              	.LFE59:
+ 303              		.size	Ultrasonic_Maxbotix_Take_Reading, .-Ultrasonic_Maxbotix_Take_Reading
+ 304              		.text
+ 305              	.Letext0:
+ 306              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.0\\psoc creator\\import\\gnu_cs\\arm\\4
+ 307              		.file 3 "./Generated_Source/PSoC5/cytypes.h"
+ 308              		.file 4 "..\\..\\..\\PSoC\\Drivers\\Ultrasonic_Maxbotix\\Ultrasonic_Maxbotix\\Ultrasonic_Maxbotix.
+ 309              		.file 5 "./Generated_Source/PSoC5/core_cm3.h"
+ 310              		.file 6 "<built-in>"
+ 311              		.section	.debug_info,"",%progbits
+ 312              	.Ldebug_info0:
+ 313 0000 62020000 		.4byte	0x262
+ 314 0004 0200     		.2byte	0x2
+ 315 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 316 000a 04       		.byte	0x4
+ 317 000b 01       		.uleb128 0x1
+ 318 000c 7A020000 		.4byte	.LASF31
+ 319 0010 01       		.byte	0x1
+ 320 0011 4B010000 		.4byte	.LASF32
+ 321 0015 8C000000 		.4byte	.LASF33
+ 322 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 323 001d 00000000 		.4byte	0
+ 324 0021 00000000 		.4byte	0
+ 325 0025 00000000 		.4byte	.Ldebug_line0
+ 326 0029 02       		.uleb128 0x2
+ 327 002a 01       		.byte	0x1
+ 328 002b 06       		.byte	0x6
+ 329 002c C9020000 		.4byte	.LASF0
+ 330 0030 02       		.uleb128 0x2
+ 331 0031 01       		.byte	0x1
+ 332 0032 08       		.byte	0x8
+ 333 0033 54000000 		.4byte	.LASF1
+ 334 0037 02       		.uleb128 0x2
+ 335 0038 02       		.byte	0x2
+ 336 0039 05       		.byte	0x5
+ 337 003a 56020000 		.4byte	.LASF2
+ 338 003e 02       		.uleb128 0x2
+ 339 003f 02       		.byte	0x2
+ 340 0040 07       		.byte	0x7
+ 341 0041 04010000 		.4byte	.LASF3
+ 342 0045 03       		.uleb128 0x3
+ 343 0046 04       		.byte	0x4
+ 344 0047 05       		.byte	0x5
+ 345 0048 696E7400 		.ascii	"int\000"
+ 346 004c 02       		.uleb128 0x2
+ 347 004d 04       		.byte	0x4
+ 348 004e 07       		.byte	0x7
+ 349 004f E6010000 		.4byte	.LASF4
+ 350 0053 02       		.uleb128 0x2
+ 351 0054 08       		.byte	0x8
+ 352 0055 05       		.byte	0x5
+ 353 0056 30020000 		.4byte	.LASF5
+ 354 005a 02       		.uleb128 0x2
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 9
+
+
+ 355 005b 08       		.byte	0x8
+ 356 005c 07       		.byte	0x7
+ 357 005d F3010000 		.4byte	.LASF6
+ 358 0061 02       		.uleb128 0x2
+ 359 0062 04       		.byte	0x4
+ 360 0063 05       		.byte	0x5
+ 361 0064 2E000000 		.4byte	.LASF7
+ 362 0068 02       		.uleb128 0x2
+ 363 0069 04       		.byte	0x4
+ 364 006a 07       		.byte	0x7
+ 365 006b 27020000 		.4byte	.LASF8
+ 366 006f 02       		.uleb128 0x2
+ 367 0070 04       		.byte	0x4
+ 368 0071 07       		.byte	0x7
+ 369 0072 7A000000 		.4byte	.LASF9
+ 370 0076 04       		.uleb128 0x4
+ 371 0077 04       		.byte	0x4
+ 372 0078 7C000000 		.4byte	0x7c
+ 373 007c 02       		.uleb128 0x2
+ 374 007d 01       		.byte	0x1
+ 375 007e 08       		.byte	0x8
+ 376 007f 44020000 		.4byte	.LASF10
+ 377 0083 04       		.uleb128 0x4
+ 378 0084 04       		.byte	0x4
+ 379 0085 89000000 		.4byte	0x89
+ 380 0089 05       		.uleb128 0x5
+ 381 008a 7C000000 		.4byte	0x7c
+ 382 008e 06       		.uleb128 0x6
+ 383 008f 1F020000 		.4byte	.LASF11
+ 384 0093 02       		.byte	0x2
+ 385 0094 4F       		.byte	0x4f
+ 386 0095 61000000 		.4byte	0x61
+ 387 0099 06       		.uleb128 0x6
+ 388 009a 4E000000 		.4byte	.LASF12
+ 389 009e 03       		.byte	0x3
+ 390 009f 5B       		.byte	0x5b
+ 391 00a0 30000000 		.4byte	0x30
+ 392 00a4 06       		.uleb128 0x6
+ 393 00a5 DF010000 		.4byte	.LASF13
+ 394 00a9 03       		.byte	0x3
+ 395 00aa 5D       		.byte	0x5d
+ 396 00ab 6F000000 		.4byte	0x6f
+ 397 00af 02       		.uleb128 0x2
+ 398 00b0 04       		.byte	0x4
+ 399 00b1 04       		.byte	0x4
+ 400 00b2 48000000 		.4byte	.LASF14
+ 401 00b6 02       		.uleb128 0x2
+ 402 00b7 08       		.byte	0x8
+ 403 00b8 04       		.byte	0x4
+ 404 00b9 C5010000 		.4byte	.LASF15
+ 405 00bd 07       		.uleb128 0x7
+ 406 00be 08       		.byte	0x8
+ 407 00bf 04       		.byte	0x4
+ 408 00c0 16       		.byte	0x16
+ 409 00c1 E2000000 		.4byte	0xe2
+ 410 00c5 08       		.uleb128 0x8
+ 411 00c6 3E020000 		.4byte	.LASF16
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 10
+
+
+ 412 00ca 04       		.byte	0x4
+ 413 00cb 17       		.byte	0x17
+ 414 00cc A4000000 		.4byte	0xa4
+ 415 00d0 02       		.byte	0x2
+ 416 00d1 23       		.byte	0x23
+ 417 00d2 00       		.uleb128 0
+ 418 00d3 08       		.uleb128 0x8
+ 419 00d4 50020000 		.4byte	.LASF17
+ 420 00d8 04       		.byte	0x4
+ 421 00d9 18       		.byte	0x18
+ 422 00da 99000000 		.4byte	0x99
+ 423 00de 02       		.byte	0x2
+ 424 00df 23       		.byte	0x23
+ 425 00e0 04       		.uleb128 0x4
+ 426 00e1 00       		.byte	0
+ 427 00e2 06       		.uleb128 0x6
+ 428 00e3 CC010000 		.4byte	.LASF18
+ 429 00e7 04       		.byte	0x4
+ 430 00e8 19       		.byte	0x19
+ 431 00e9 BD000000 		.4byte	0xbd
+ 432 00ed 09       		.uleb128 0x9
+ 433 00ee 01       		.byte	0x1
+ 434 00ef 60020000 		.4byte	.LASF34
+ 435 00f3 01       		.byte	0x1
+ 436 00f4 15       		.byte	0x15
+ 437 00f5 00000000 		.4byte	.LFB56
+ 438 00f9 0A000000 		.4byte	.LFE56
+ 439 00fd 00000000 		.4byte	.LLST0
+ 440 0101 01       		.byte	0x1
+ 441 0102 0A       		.uleb128 0xa
+ 442 0103 01       		.byte	0x1
+ 443 0104 D5020000 		.4byte	.LASF26
+ 444 0108 01       		.byte	0x1
+ 445 0109 1B       		.byte	0x1b
+ 446 010a 01       		.byte	0x1
+ 447 010b 00000000 		.4byte	.LFB57
+ 448 010f 5C000000 		.4byte	.LFE57
+ 449 0113 2C000000 		.4byte	.LLST1
+ 450 0117 01       		.byte	0x1
+ 451 0118 2B010000 		.4byte	0x12b
+ 452 011c 0B       		.uleb128 0xb
+ 453 011d 0A020000 		.4byte	.LASF19
+ 454 0121 01       		.byte	0x1
+ 455 0122 1D       		.byte	0x1d
+ 456 0123 99000000 		.4byte	0x99
+ 457 0127 02       		.byte	0x2
+ 458 0128 91       		.byte	0x91
+ 459 0129 77       		.sleb128 -9
+ 460 012a 00       		.byte	0
+ 461 012b 0C       		.uleb128 0xc
+ 462 012c 01       		.byte	0x1
+ 463 012d 17010000 		.4byte	.LASF35
+ 464 0131 01       		.byte	0x1
+ 465 0132 27       		.byte	0x27
+ 466 0133 01       		.byte	0x1
+ 467 0134 E2000000 		.4byte	0xe2
+ 468 0138 00000000 		.4byte	.LFB58
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 11
+
+
+ 469 013c E6000000 		.4byte	.LFE58
+ 470 0140 64000000 		.4byte	.LLST2
+ 471 0144 01       		.byte	0x1
+ 472 0145 DC010000 		.4byte	0x1dc
+ 473 0149 0D       		.uleb128 0xd
+ 474 014a 37000000 		.4byte	.LASF36
+ 475 014e 01       		.byte	0x1
+ 476 014f 27       		.byte	0x27
+ 477 0150 DC010000 		.4byte	0x1dc
+ 478 0154 02       		.byte	0x2
+ 479 0155 91       		.byte	0x91
+ 480 0156 40       		.sleb128 -64
+ 481 0157 0B       		.uleb128 0xb
+ 482 0158 49020000 		.4byte	.LASF20
+ 483 015c 01       		.byte	0x1
+ 484 015d 28       		.byte	0x28
+ 485 015e E2010000 		.4byte	0x1e2
+ 486 0162 02       		.byte	0x2
+ 487 0163 91       		.byte	0x91
+ 488 0164 54       		.sleb128 -44
+ 489 0165 0B       		.uleb128 0xb
+ 490 0166 C3020000 		.4byte	.LASF21
+ 491 016a 01       		.byte	0x1
+ 492 016b 29       		.byte	0x29
+ 493 016c 76000000 		.4byte	0x76
+ 494 0170 02       		.byte	0x2
+ 495 0171 91       		.byte	0x91
+ 496 0172 74       		.sleb128 -12
+ 497 0173 0B       		.uleb128 0xb
+ 498 0174 B9010000 		.4byte	.LASF22
+ 499 0178 01       		.byte	0x1
+ 500 0179 2A       		.byte	0x2a
+ 501 017a 99000000 		.4byte	0x99
+ 502 017e 02       		.byte	0x2
+ 503 017f 91       		.byte	0x91
+ 504 0180 73       		.sleb128 -13
+ 505 0181 0B       		.uleb128 0xb
+ 506 0182 3F010000 		.4byte	.LASF23
+ 507 0186 01       		.byte	0x1
+ 508 0187 3D       		.byte	0x3d
+ 509 0188 E2000000 		.4byte	0xe2
+ 510 018c 02       		.byte	0x2
+ 511 018d 91       		.byte	0x91
+ 512 018e 4C       		.sleb128 -52
+ 513 018f 0E       		.uleb128 0xe
+ 514 0190 6900     		.ascii	"i\000"
+ 515 0192 01       		.byte	0x1
+ 516 0193 41       		.byte	0x41
+ 517 0194 45000000 		.4byte	0x45
+ 518 0198 02       		.byte	0x2
+ 519 0199 91       		.byte	0x91
+ 520 019a 6C       		.sleb128 -20
+ 521 019b 0F       		.uleb128 0xf
+ 522 019c 24000000 		.4byte	.LBB2
+ 523 01a0 7C000000 		.4byte	.LBE2
+ 524 01a4 0B       		.uleb128 0xb
+ 525 01a5 28000000 		.4byte	.LASF24
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 12
+
+
+ 526 01a9 01       		.byte	0x1
+ 527 01aa 2D       		.byte	0x2d
+ 528 01ab A4000000 		.4byte	0xa4
+ 529 01af 02       		.byte	0x2
+ 530 01b0 91       		.byte	0x91
+ 531 01b1 48       		.sleb128 -56
+ 532 01b2 0B       		.uleb128 0xb
+ 533 01b3 3D000000 		.4byte	.LASF25
+ 534 01b7 01       		.byte	0x1
+ 535 01b8 2E       		.byte	0x2e
+ 536 01b9 A4000000 		.4byte	0xa4
+ 537 01bd 02       		.byte	0x2
+ 538 01be 91       		.byte	0x91
+ 539 01bf 68       		.sleb128 -24
+ 540 01c0 10       		.uleb128 0x10
+ 541 01c1 01       		.byte	0x1
+ 542 01c2 00000000 		.4byte	.LASF37
+ 543 01c6 06       		.byte	0x6
+ 544 01c7 00       		.byte	0
+ 545 01c8 01       		.byte	0x1
+ 546 01c9 45000000 		.4byte	0x45
+ 547 01cd 01       		.byte	0x1
+ 548 01ce 11       		.uleb128 0x11
+ 549 01cf 83000000 		.4byte	0x83
+ 550 01d3 11       		.uleb128 0x11
+ 551 01d4 83000000 		.4byte	0x83
+ 552 01d8 12       		.uleb128 0x12
+ 553 01d9 00       		.byte	0
+ 554 01da 00       		.byte	0
+ 555 01db 00       		.byte	0
+ 556 01dc 04       		.uleb128 0x4
+ 557 01dd 04       		.byte	0x4
+ 558 01de 99000000 		.4byte	0x99
+ 559 01e2 13       		.uleb128 0x13
+ 560 01e3 A4000000 		.4byte	0xa4
+ 561 01e7 F2010000 		.4byte	0x1f2
+ 562 01eb 14       		.uleb128 0x14
+ 563 01ec 68000000 		.4byte	0x68
+ 564 01f0 04       		.byte	0x4
+ 565 01f1 00       		.byte	0
+ 566 01f2 15       		.uleb128 0x15
+ 567 01f3 01       		.byte	0x1
+ 568 01f4 07000000 		.4byte	.LASF27
+ 569 01f8 01       		.byte	0x1
+ 570 01f9 4D       		.byte	0x4d
+ 571 01fa E2000000 		.4byte	0xe2
+ 572 01fe 00000000 		.4byte	.LFB59
+ 573 0202 58000000 		.4byte	.LFE59
+ 574 0206 9E000000 		.4byte	.LLST3
+ 575 020a 01       		.byte	0x1
+ 576 020b 1E020000 		.4byte	0x21e
+ 577 020f 0B       		.uleb128 0xb
+ 578 0210 3E020000 		.4byte	.LASF16
+ 579 0214 01       		.byte	0x1
+ 580 0215 60       		.byte	0x60
+ 581 0216 E2000000 		.4byte	0xe2
+ 582 021a 02       		.byte	0x2
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 13
+
+
+ 583 021b 91       		.byte	0x91
+ 584 021c 70       		.sleb128 -16
+ 585 021d 00       		.byte	0
+ 586 021e 16       		.uleb128 0x16
+ 587 021f 12020000 		.4byte	.LASF28
+ 588 0223 05       		.byte	0x5
+ 589 0224 1606     		.2byte	0x616
+ 590 0226 2C020000 		.4byte	0x22c
+ 591 022a 01       		.byte	0x1
+ 592 022b 01       		.byte	0x1
+ 593 022c 17       		.uleb128 0x17
+ 594 022d 8E000000 		.4byte	0x8e
+ 595 0231 13       		.uleb128 0x13
+ 596 0232 99000000 		.4byte	0x99
+ 597 0236 41020000 		.4byte	0x241
+ 598 023a 14       		.uleb128 0x14
+ 599 023b 68000000 		.4byte	0x68
+ 600 023f 1D       		.byte	0x1d
+ 601 0240 00       		.byte	0
+ 602 0241 18       		.uleb128 0x18
+ 603 0242 E1020000 		.4byte	.LASF29
+ 604 0246 01       		.byte	0x1
+ 605 0247 10       		.byte	0x10
+ 606 0248 31020000 		.4byte	0x231
+ 607 024c 01       		.byte	0x1
+ 608 024d 05       		.byte	0x5
+ 609 024e 03       		.byte	0x3
+ 610 024f 00000000 		.4byte	raw_serial_data_m
+ 611 0253 18       		.uleb128 0x18
+ 612 0254 62000000 		.4byte	.LASF30
+ 613 0258 01       		.byte	0x1
+ 614 0259 11       		.byte	0x11
+ 615 025a 99000000 		.4byte	0x99
+ 616 025e 01       		.byte	0x1
+ 617 025f 05       		.byte	0x5
+ 618 0260 03       		.byte	0x3
+ 619 0261 00000000 		.4byte	raw_serial_data_count_m
+ 620 0265 00       		.byte	0
+ 621              		.section	.debug_abbrev,"",%progbits
+ 622              	.Ldebug_abbrev0:
+ 623 0000 01       		.uleb128 0x1
+ 624 0001 11       		.uleb128 0x11
+ 625 0002 01       		.byte	0x1
+ 626 0003 25       		.uleb128 0x25
+ 627 0004 0E       		.uleb128 0xe
+ 628 0005 13       		.uleb128 0x13
+ 629 0006 0B       		.uleb128 0xb
+ 630 0007 03       		.uleb128 0x3
+ 631 0008 0E       		.uleb128 0xe
+ 632 0009 1B       		.uleb128 0x1b
+ 633 000a 0E       		.uleb128 0xe
+ 634 000b 55       		.uleb128 0x55
+ 635 000c 06       		.uleb128 0x6
+ 636 000d 11       		.uleb128 0x11
+ 637 000e 01       		.uleb128 0x1
+ 638 000f 52       		.uleb128 0x52
+ 639 0010 01       		.uleb128 0x1
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 14
+
+
+ 640 0011 10       		.uleb128 0x10
+ 641 0012 06       		.uleb128 0x6
+ 642 0013 00       		.byte	0
+ 643 0014 00       		.byte	0
+ 644 0015 02       		.uleb128 0x2
+ 645 0016 24       		.uleb128 0x24
+ 646 0017 00       		.byte	0
+ 647 0018 0B       		.uleb128 0xb
+ 648 0019 0B       		.uleb128 0xb
+ 649 001a 3E       		.uleb128 0x3e
+ 650 001b 0B       		.uleb128 0xb
+ 651 001c 03       		.uleb128 0x3
+ 652 001d 0E       		.uleb128 0xe
+ 653 001e 00       		.byte	0
+ 654 001f 00       		.byte	0
+ 655 0020 03       		.uleb128 0x3
+ 656 0021 24       		.uleb128 0x24
+ 657 0022 00       		.byte	0
+ 658 0023 0B       		.uleb128 0xb
+ 659 0024 0B       		.uleb128 0xb
+ 660 0025 3E       		.uleb128 0x3e
+ 661 0026 0B       		.uleb128 0xb
+ 662 0027 03       		.uleb128 0x3
+ 663 0028 08       		.uleb128 0x8
+ 664 0029 00       		.byte	0
+ 665 002a 00       		.byte	0
+ 666 002b 04       		.uleb128 0x4
+ 667 002c 0F       		.uleb128 0xf
+ 668 002d 00       		.byte	0
+ 669 002e 0B       		.uleb128 0xb
+ 670 002f 0B       		.uleb128 0xb
+ 671 0030 49       		.uleb128 0x49
+ 672 0031 13       		.uleb128 0x13
+ 673 0032 00       		.byte	0
+ 674 0033 00       		.byte	0
+ 675 0034 05       		.uleb128 0x5
+ 676 0035 26       		.uleb128 0x26
+ 677 0036 00       		.byte	0
+ 678 0037 49       		.uleb128 0x49
+ 679 0038 13       		.uleb128 0x13
+ 680 0039 00       		.byte	0
+ 681 003a 00       		.byte	0
+ 682 003b 06       		.uleb128 0x6
+ 683 003c 16       		.uleb128 0x16
+ 684 003d 00       		.byte	0
+ 685 003e 03       		.uleb128 0x3
+ 686 003f 0E       		.uleb128 0xe
+ 687 0040 3A       		.uleb128 0x3a
+ 688 0041 0B       		.uleb128 0xb
+ 689 0042 3B       		.uleb128 0x3b
+ 690 0043 0B       		.uleb128 0xb
+ 691 0044 49       		.uleb128 0x49
+ 692 0045 13       		.uleb128 0x13
+ 693 0046 00       		.byte	0
+ 694 0047 00       		.byte	0
+ 695 0048 07       		.uleb128 0x7
+ 696 0049 13       		.uleb128 0x13
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 15
+
+
+ 697 004a 01       		.byte	0x1
+ 698 004b 0B       		.uleb128 0xb
+ 699 004c 0B       		.uleb128 0xb
+ 700 004d 3A       		.uleb128 0x3a
+ 701 004e 0B       		.uleb128 0xb
+ 702 004f 3B       		.uleb128 0x3b
+ 703 0050 0B       		.uleb128 0xb
+ 704 0051 01       		.uleb128 0x1
+ 705 0052 13       		.uleb128 0x13
+ 706 0053 00       		.byte	0
+ 707 0054 00       		.byte	0
+ 708 0055 08       		.uleb128 0x8
+ 709 0056 0D       		.uleb128 0xd
+ 710 0057 00       		.byte	0
+ 711 0058 03       		.uleb128 0x3
+ 712 0059 0E       		.uleb128 0xe
+ 713 005a 3A       		.uleb128 0x3a
+ 714 005b 0B       		.uleb128 0xb
+ 715 005c 3B       		.uleb128 0x3b
+ 716 005d 0B       		.uleb128 0xb
+ 717 005e 49       		.uleb128 0x49
+ 718 005f 13       		.uleb128 0x13
+ 719 0060 38       		.uleb128 0x38
+ 720 0061 0A       		.uleb128 0xa
+ 721 0062 00       		.byte	0
+ 722 0063 00       		.byte	0
+ 723 0064 09       		.uleb128 0x9
+ 724 0065 2E       		.uleb128 0x2e
+ 725 0066 00       		.byte	0
+ 726 0067 3F       		.uleb128 0x3f
+ 727 0068 0C       		.uleb128 0xc
+ 728 0069 03       		.uleb128 0x3
+ 729 006a 0E       		.uleb128 0xe
+ 730 006b 3A       		.uleb128 0x3a
+ 731 006c 0B       		.uleb128 0xb
+ 732 006d 3B       		.uleb128 0x3b
+ 733 006e 0B       		.uleb128 0xb
+ 734 006f 11       		.uleb128 0x11
+ 735 0070 01       		.uleb128 0x1
+ 736 0071 12       		.uleb128 0x12
+ 737 0072 01       		.uleb128 0x1
+ 738 0073 40       		.uleb128 0x40
+ 739 0074 06       		.uleb128 0x6
+ 740 0075 9642     		.uleb128 0x2116
+ 741 0077 0C       		.uleb128 0xc
+ 742 0078 00       		.byte	0
+ 743 0079 00       		.byte	0
+ 744 007a 0A       		.uleb128 0xa
+ 745 007b 2E       		.uleb128 0x2e
+ 746 007c 01       		.byte	0x1
+ 747 007d 3F       		.uleb128 0x3f
+ 748 007e 0C       		.uleb128 0xc
+ 749 007f 03       		.uleb128 0x3
+ 750 0080 0E       		.uleb128 0xe
+ 751 0081 3A       		.uleb128 0x3a
+ 752 0082 0B       		.uleb128 0xb
+ 753 0083 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 16
+
+
+ 754 0084 0B       		.uleb128 0xb
+ 755 0085 27       		.uleb128 0x27
+ 756 0086 0C       		.uleb128 0xc
+ 757 0087 11       		.uleb128 0x11
+ 758 0088 01       		.uleb128 0x1
+ 759 0089 12       		.uleb128 0x12
+ 760 008a 01       		.uleb128 0x1
+ 761 008b 40       		.uleb128 0x40
+ 762 008c 06       		.uleb128 0x6
+ 763 008d 9642     		.uleb128 0x2116
+ 764 008f 0C       		.uleb128 0xc
+ 765 0090 01       		.uleb128 0x1
+ 766 0091 13       		.uleb128 0x13
+ 767 0092 00       		.byte	0
+ 768 0093 00       		.byte	0
+ 769 0094 0B       		.uleb128 0xb
+ 770 0095 34       		.uleb128 0x34
+ 771 0096 00       		.byte	0
+ 772 0097 03       		.uleb128 0x3
+ 773 0098 0E       		.uleb128 0xe
+ 774 0099 3A       		.uleb128 0x3a
+ 775 009a 0B       		.uleb128 0xb
+ 776 009b 3B       		.uleb128 0x3b
+ 777 009c 0B       		.uleb128 0xb
+ 778 009d 49       		.uleb128 0x49
+ 779 009e 13       		.uleb128 0x13
+ 780 009f 02       		.uleb128 0x2
+ 781 00a0 0A       		.uleb128 0xa
+ 782 00a1 00       		.byte	0
+ 783 00a2 00       		.byte	0
+ 784 00a3 0C       		.uleb128 0xc
+ 785 00a4 2E       		.uleb128 0x2e
+ 786 00a5 01       		.byte	0x1
+ 787 00a6 3F       		.uleb128 0x3f
+ 788 00a7 0C       		.uleb128 0xc
+ 789 00a8 03       		.uleb128 0x3
+ 790 00a9 0E       		.uleb128 0xe
+ 791 00aa 3A       		.uleb128 0x3a
+ 792 00ab 0B       		.uleb128 0xb
+ 793 00ac 3B       		.uleb128 0x3b
+ 794 00ad 0B       		.uleb128 0xb
+ 795 00ae 27       		.uleb128 0x27
+ 796 00af 0C       		.uleb128 0xc
+ 797 00b0 49       		.uleb128 0x49
+ 798 00b1 13       		.uleb128 0x13
+ 799 00b2 11       		.uleb128 0x11
+ 800 00b3 01       		.uleb128 0x1
+ 801 00b4 12       		.uleb128 0x12
+ 802 00b5 01       		.uleb128 0x1
+ 803 00b6 40       		.uleb128 0x40
+ 804 00b7 06       		.uleb128 0x6
+ 805 00b8 9642     		.uleb128 0x2116
+ 806 00ba 0C       		.uleb128 0xc
+ 807 00bb 01       		.uleb128 0x1
+ 808 00bc 13       		.uleb128 0x13
+ 809 00bd 00       		.byte	0
+ 810 00be 00       		.byte	0
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 17
+
+
+ 811 00bf 0D       		.uleb128 0xd
+ 812 00c0 05       		.uleb128 0x5
+ 813 00c1 00       		.byte	0
+ 814 00c2 03       		.uleb128 0x3
+ 815 00c3 0E       		.uleb128 0xe
+ 816 00c4 3A       		.uleb128 0x3a
+ 817 00c5 0B       		.uleb128 0xb
+ 818 00c6 3B       		.uleb128 0x3b
+ 819 00c7 0B       		.uleb128 0xb
+ 820 00c8 49       		.uleb128 0x49
+ 821 00c9 13       		.uleb128 0x13
+ 822 00ca 02       		.uleb128 0x2
+ 823 00cb 0A       		.uleb128 0xa
+ 824 00cc 00       		.byte	0
+ 825 00cd 00       		.byte	0
+ 826 00ce 0E       		.uleb128 0xe
+ 827 00cf 34       		.uleb128 0x34
+ 828 00d0 00       		.byte	0
+ 829 00d1 03       		.uleb128 0x3
+ 830 00d2 08       		.uleb128 0x8
+ 831 00d3 3A       		.uleb128 0x3a
+ 832 00d4 0B       		.uleb128 0xb
+ 833 00d5 3B       		.uleb128 0x3b
+ 834 00d6 0B       		.uleb128 0xb
+ 835 00d7 49       		.uleb128 0x49
+ 836 00d8 13       		.uleb128 0x13
+ 837 00d9 02       		.uleb128 0x2
+ 838 00da 0A       		.uleb128 0xa
+ 839 00db 00       		.byte	0
+ 840 00dc 00       		.byte	0
+ 841 00dd 0F       		.uleb128 0xf
+ 842 00de 0B       		.uleb128 0xb
+ 843 00df 01       		.byte	0x1
+ 844 00e0 11       		.uleb128 0x11
+ 845 00e1 01       		.uleb128 0x1
+ 846 00e2 12       		.uleb128 0x12
+ 847 00e3 01       		.uleb128 0x1
+ 848 00e4 00       		.byte	0
+ 849 00e5 00       		.byte	0
+ 850 00e6 10       		.uleb128 0x10
+ 851 00e7 2E       		.uleb128 0x2e
+ 852 00e8 01       		.byte	0x1
+ 853 00e9 3F       		.uleb128 0x3f
+ 854 00ea 0C       		.uleb128 0xc
+ 855 00eb 03       		.uleb128 0x3
+ 856 00ec 0E       		.uleb128 0xe
+ 857 00ed 3A       		.uleb128 0x3a
+ 858 00ee 0B       		.uleb128 0xb
+ 859 00ef 3B       		.uleb128 0x3b
+ 860 00f0 0B       		.uleb128 0xb
+ 861 00f1 27       		.uleb128 0x27
+ 862 00f2 0C       		.uleb128 0xc
+ 863 00f3 49       		.uleb128 0x49
+ 864 00f4 13       		.uleb128 0x13
+ 865 00f5 3C       		.uleb128 0x3c
+ 866 00f6 0C       		.uleb128 0xc
+ 867 00f7 00       		.byte	0
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 18
+
+
+ 868 00f8 00       		.byte	0
+ 869 00f9 11       		.uleb128 0x11
+ 870 00fa 05       		.uleb128 0x5
+ 871 00fb 00       		.byte	0
+ 872 00fc 49       		.uleb128 0x49
+ 873 00fd 13       		.uleb128 0x13
+ 874 00fe 00       		.byte	0
+ 875 00ff 00       		.byte	0
+ 876 0100 12       		.uleb128 0x12
+ 877 0101 18       		.uleb128 0x18
+ 878 0102 00       		.byte	0
+ 879 0103 00       		.byte	0
+ 880 0104 00       		.byte	0
+ 881 0105 13       		.uleb128 0x13
+ 882 0106 01       		.uleb128 0x1
+ 883 0107 01       		.byte	0x1
+ 884 0108 49       		.uleb128 0x49
+ 885 0109 13       		.uleb128 0x13
+ 886 010a 01       		.uleb128 0x1
+ 887 010b 13       		.uleb128 0x13
+ 888 010c 00       		.byte	0
+ 889 010d 00       		.byte	0
+ 890 010e 14       		.uleb128 0x14
+ 891 010f 21       		.uleb128 0x21
+ 892 0110 00       		.byte	0
+ 893 0111 49       		.uleb128 0x49
+ 894 0112 13       		.uleb128 0x13
+ 895 0113 2F       		.uleb128 0x2f
+ 896 0114 0B       		.uleb128 0xb
+ 897 0115 00       		.byte	0
+ 898 0116 00       		.byte	0
+ 899 0117 15       		.uleb128 0x15
+ 900 0118 2E       		.uleb128 0x2e
+ 901 0119 01       		.byte	0x1
+ 902 011a 3F       		.uleb128 0x3f
+ 903 011b 0C       		.uleb128 0xc
+ 904 011c 03       		.uleb128 0x3
+ 905 011d 0E       		.uleb128 0xe
+ 906 011e 3A       		.uleb128 0x3a
+ 907 011f 0B       		.uleb128 0xb
+ 908 0120 3B       		.uleb128 0x3b
+ 909 0121 0B       		.uleb128 0xb
+ 910 0122 49       		.uleb128 0x49
+ 911 0123 13       		.uleb128 0x13
+ 912 0124 11       		.uleb128 0x11
+ 913 0125 01       		.uleb128 0x1
+ 914 0126 12       		.uleb128 0x12
+ 915 0127 01       		.uleb128 0x1
+ 916 0128 40       		.uleb128 0x40
+ 917 0129 06       		.uleb128 0x6
+ 918 012a 9642     		.uleb128 0x2116
+ 919 012c 0C       		.uleb128 0xc
+ 920 012d 01       		.uleb128 0x1
+ 921 012e 13       		.uleb128 0x13
+ 922 012f 00       		.byte	0
+ 923 0130 00       		.byte	0
+ 924 0131 16       		.uleb128 0x16
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 19
+
+
+ 925 0132 34       		.uleb128 0x34
+ 926 0133 00       		.byte	0
+ 927 0134 03       		.uleb128 0x3
+ 928 0135 0E       		.uleb128 0xe
+ 929 0136 3A       		.uleb128 0x3a
+ 930 0137 0B       		.uleb128 0xb
+ 931 0138 3B       		.uleb128 0x3b
+ 932 0139 05       		.uleb128 0x5
+ 933 013a 49       		.uleb128 0x49
+ 934 013b 13       		.uleb128 0x13
+ 935 013c 3F       		.uleb128 0x3f
+ 936 013d 0C       		.uleb128 0xc
+ 937 013e 3C       		.uleb128 0x3c
+ 938 013f 0C       		.uleb128 0xc
+ 939 0140 00       		.byte	0
+ 940 0141 00       		.byte	0
+ 941 0142 17       		.uleb128 0x17
+ 942 0143 35       		.uleb128 0x35
+ 943 0144 00       		.byte	0
+ 944 0145 49       		.uleb128 0x49
+ 945 0146 13       		.uleb128 0x13
+ 946 0147 00       		.byte	0
+ 947 0148 00       		.byte	0
+ 948 0149 18       		.uleb128 0x18
+ 949 014a 34       		.uleb128 0x34
+ 950 014b 00       		.byte	0
+ 951 014c 03       		.uleb128 0x3
+ 952 014d 0E       		.uleb128 0xe
+ 953 014e 3A       		.uleb128 0x3a
+ 954 014f 0B       		.uleb128 0xb
+ 955 0150 3B       		.uleb128 0x3b
+ 956 0151 0B       		.uleb128 0xb
+ 957 0152 49       		.uleb128 0x49
+ 958 0153 13       		.uleb128 0x13
+ 959 0154 3F       		.uleb128 0x3f
+ 960 0155 0C       		.uleb128 0xc
+ 961 0156 02       		.uleb128 0x2
+ 962 0157 0A       		.uleb128 0xa
+ 963 0158 00       		.byte	0
+ 964 0159 00       		.byte	0
+ 965 015a 00       		.byte	0
+ 966              		.section	.debug_loc,"",%progbits
+ 967              	.Ldebug_loc0:
+ 968              	.LLST0:
+ 969 0000 00000000 		.4byte	.LFB56
+ 970 0004 02000000 		.4byte	.LCFI0
+ 971 0008 0200     		.2byte	0x2
+ 972 000a 7D       		.byte	0x7d
+ 973 000b 00       		.sleb128 0
+ 974 000c 02000000 		.4byte	.LCFI0
+ 975 0010 04000000 		.4byte	.LCFI1
+ 976 0014 0200     		.2byte	0x2
+ 977 0016 7D       		.byte	0x7d
+ 978 0017 08       		.sleb128 8
+ 979 0018 04000000 		.4byte	.LCFI1
+ 980 001c 0A000000 		.4byte	.LFE56
+ 981 0020 0200     		.2byte	0x2
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 20
+
+
+ 982 0022 77       		.byte	0x77
+ 983 0023 08       		.sleb128 8
+ 984 0024 00000000 		.4byte	0
+ 985 0028 00000000 		.4byte	0
+ 986              	.LLST1:
+ 987 002c 00000000 		.4byte	.LFB57
+ 988 0030 02000000 		.4byte	.LCFI2
+ 989 0034 0200     		.2byte	0x2
+ 990 0036 7D       		.byte	0x7d
+ 991 0037 00       		.sleb128 0
+ 992 0038 02000000 		.4byte	.LCFI2
+ 993 003c 04000000 		.4byte	.LCFI3
+ 994 0040 0200     		.2byte	0x2
+ 995 0042 7D       		.byte	0x7d
+ 996 0043 08       		.sleb128 8
+ 997 0044 04000000 		.4byte	.LCFI3
+ 998 0048 06000000 		.4byte	.LCFI4
+ 999 004c 0200     		.2byte	0x2
+ 1000 004e 7D       		.byte	0x7d
+ 1001 004f 10       		.sleb128 16
+ 1002 0050 06000000 		.4byte	.LCFI4
+ 1003 0054 5C000000 		.4byte	.LFE57
+ 1004 0058 0200     		.2byte	0x2
+ 1005 005a 77       		.byte	0x77
+ 1006 005b 10       		.sleb128 16
+ 1007 005c 00000000 		.4byte	0
+ 1008 0060 00000000 		.4byte	0
+ 1009              	.LLST2:
+ 1010 0064 00000000 		.4byte	.LFB58
+ 1011 0068 02000000 		.4byte	.LCFI5
+ 1012 006c 0200     		.2byte	0x2
+ 1013 006e 7D       		.byte	0x7d
+ 1014 006f 00       		.sleb128 0
+ 1015 0070 02000000 		.4byte	.LCFI5
+ 1016 0074 04000000 		.4byte	.LCFI6
+ 1017 0078 0200     		.2byte	0x2
+ 1018 007a 7D       		.byte	0x7d
+ 1019 007b 08       		.sleb128 8
+ 1020 007c 04000000 		.4byte	.LCFI6
+ 1021 0080 06000000 		.4byte	.LCFI7
+ 1022 0084 0300     		.2byte	0x3
+ 1023 0086 7D       		.byte	0x7d
+ 1024 0087 C000     		.sleb128 64
+ 1025 0089 06000000 		.4byte	.LCFI7
+ 1026 008d E6000000 		.4byte	.LFE58
+ 1027 0091 0300     		.2byte	0x3
+ 1028 0093 77       		.byte	0x77
+ 1029 0094 C000     		.sleb128 64
+ 1030 0096 00000000 		.4byte	0
+ 1031 009a 00000000 		.4byte	0
+ 1032              	.LLST3:
+ 1033 009e 00000000 		.4byte	.LFB59
+ 1034 00a2 02000000 		.4byte	.LCFI8
+ 1035 00a6 0200     		.2byte	0x2
+ 1036 00a8 7D       		.byte	0x7d
+ 1037 00a9 00       		.sleb128 0
+ 1038 00aa 02000000 		.4byte	.LCFI8
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 21
+
+
+ 1039 00ae 04000000 		.4byte	.LCFI9
+ 1040 00b2 0200     		.2byte	0x2
+ 1041 00b4 7D       		.byte	0x7d
+ 1042 00b5 08       		.sleb128 8
+ 1043 00b6 04000000 		.4byte	.LCFI9
+ 1044 00ba 06000000 		.4byte	.LCFI10
+ 1045 00be 0200     		.2byte	0x2
+ 1046 00c0 7D       		.byte	0x7d
+ 1047 00c1 18       		.sleb128 24
+ 1048 00c2 06000000 		.4byte	.LCFI10
+ 1049 00c6 58000000 		.4byte	.LFE59
+ 1050 00ca 0200     		.2byte	0x2
+ 1051 00cc 77       		.byte	0x77
+ 1052 00cd 18       		.sleb128 24
+ 1053 00ce 00000000 		.4byte	0
+ 1054 00d2 00000000 		.4byte	0
+ 1055              		.section	.debug_aranges,"",%progbits
+ 1056 0000 34000000 		.4byte	0x34
+ 1057 0004 0200     		.2byte	0x2
+ 1058 0006 00000000 		.4byte	.Ldebug_info0
+ 1059 000a 04       		.byte	0x4
+ 1060 000b 00       		.byte	0
+ 1061 000c 0000     		.2byte	0
+ 1062 000e 0000     		.2byte	0
+ 1063 0010 00000000 		.4byte	.LFB56
+ 1064 0014 0A000000 		.4byte	.LFE56-.LFB56
+ 1065 0018 00000000 		.4byte	.LFB57
+ 1066 001c 5C000000 		.4byte	.LFE57-.LFB57
+ 1067 0020 00000000 		.4byte	.LFB58
+ 1068 0024 E6000000 		.4byte	.LFE58-.LFB58
+ 1069 0028 00000000 		.4byte	.LFB59
+ 1070 002c 58000000 		.4byte	.LFE59-.LFB59
+ 1071 0030 00000000 		.4byte	0
+ 1072 0034 00000000 		.4byte	0
+ 1073              		.section	.debug_ranges,"",%progbits
+ 1074              	.Ldebug_ranges0:
+ 1075 0000 00000000 		.4byte	.LFB56
+ 1076 0004 0A000000 		.4byte	.LFE56
+ 1077 0008 00000000 		.4byte	.LFB57
+ 1078 000c 5C000000 		.4byte	.LFE57
+ 1079 0010 00000000 		.4byte	.LFB58
+ 1080 0014 E6000000 		.4byte	.LFE58
+ 1081 0018 00000000 		.4byte	.LFB59
+ 1082 001c 58000000 		.4byte	.LFE59
+ 1083 0020 00000000 		.4byte	0
+ 1084 0024 00000000 		.4byte	0
+ 1085              		.section	.debug_line,"",%progbits
+ 1086              	.Ldebug_line0:
+ 1087 0000 08020000 		.section	.debug_str,"MS",%progbits,1
+ 1087      02008501 
+ 1087      00000201 
+ 1087      FB0E0D00 
+ 1087      01010101 
+ 1088              	.LASF37:
+ 1089 0000 73736361 		.ascii	"sscanf\000"
+ 1089      6E6600
+ 1090              	.LASF27:
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 22
+
+
+ 1091 0007 556C7472 		.ascii	"Ultrasonic_Maxbotix_Take_Reading\000"
+ 1091      61736F6E 
+ 1091      69635F4D 
+ 1091      6178626F 
+ 1091      7469785F 
+ 1092              	.LASF24:
+ 1093 0028 76616C75 		.ascii	"value\000"
+ 1093      6500
+ 1094              	.LASF7:
+ 1095 002e 6C6F6E67 		.ascii	"long int\000"
+ 1095      20696E74 
+ 1095      00
+ 1096              	.LASF36:
+ 1097 0037 7261775F 		.ascii	"raw_M\000"
+ 1097      4D00
+ 1098              	.LASF25:
+ 1099 003d 7363616E 		.ascii	"scan_valid\000"
+ 1099      5F76616C 
+ 1099      696400
+ 1100              	.LASF14:
+ 1101 0048 666C6F61 		.ascii	"float\000"
+ 1101      7400
+ 1102              	.LASF12:
+ 1103 004e 75696E74 		.ascii	"uint8\000"
+ 1103      3800
+ 1104              	.LASF1:
+ 1105 0054 756E7369 		.ascii	"unsigned char\000"
+ 1105      676E6564 
+ 1105      20636861 
+ 1105      7200
+ 1106              	.LASF30:
+ 1107 0062 7261775F 		.ascii	"raw_serial_data_count_m\000"
+ 1107      73657269 
+ 1107      616C5F64 
+ 1107      6174615F 
+ 1107      636F756E 
+ 1108              	.LASF9:
+ 1109 007a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1109      20756E73 
+ 1109      69676E65 
+ 1109      6420696E 
+ 1109      7400
+ 1110              	.LASF33:
+ 1111 008c 433A5C55 		.ascii	"C:\\Users\\hozhen\\Google Drive\\Docs Ho-Zhen\\proj"
+ 1111      73657273 
+ 1111      5C686F7A 
+ 1111      68656E5C 
+ 1111      476F6F67 
+ 1112 00ba 65637473 		.ascii	"ects\\UMBS\\UMBS Project\\Software\\Sensor Node\\Se"
+ 1112      5C554D42 
+ 1112      535C554D 
+ 1112      42532050 
+ 1112      726F6A65 
+ 1113 00e8 6E736F72 		.ascii	"nsor_Node\\Sensor_Node.cydsn\000"
+ 1113      5F4E6F64 
+ 1113      655C5365 
+ 1113      6E736F72 
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 23
+
+
+ 1113      5F4E6F64 
+ 1114              	.LASF3:
+ 1115 0104 73686F72 		.ascii	"short unsigned int\000"
+ 1115      7420756E 
+ 1115      7369676E 
+ 1115      65642069 
+ 1115      6E7400
+ 1116              	.LASF35:
+ 1117 0117 556C7472 		.ascii	"Ultrasonic_Maxbotix_Convert_Raw_Reading\000"
+ 1117      61736F6E 
+ 1117      69635F4D 
+ 1117      6178626F 
+ 1117      7469785F 
+ 1118              	.LASF23:
+ 1119 013f 66696E61 		.ascii	"final_value\000"
+ 1119      6C5F7661 
+ 1119      6C756500 
+ 1120              	.LASF32:
+ 1121 014b 2E2E5C2E 		.ascii	"..\\..\\..\\PSoC\\Drivers\\Ultrasonic_Maxbotix\\Ult"
+ 1121      2E5C2E2E 
+ 1121      5C50536F 
+ 1121      435C4472 
+ 1121      69766572 
+ 1122 0178 7261736F 		.ascii	"rasonic_Maxbotix\\Ultrasonic_Maxbotix.cydsn\\Ultras"
+ 1122      6E69635F 
+ 1122      4D617862 
+ 1122      6F746978 
+ 1122      5C556C74 
+ 1123 01a9 6F6E6963 		.ascii	"onic_Maxbotix.c\000"
+ 1123      5F4D6178 
+ 1123      626F7469 
+ 1123      782E6300 
+ 1124              	.LASF22:
+ 1125 01b9 76616C75 		.ascii	"value_count\000"
+ 1125      655F636F 
+ 1125      756E7400 
+ 1126              	.LASF15:
+ 1127 01c5 646F7562 		.ascii	"double\000"
+ 1127      6C6500
+ 1128              	.LASF18:
+ 1129 01cc 4D617862 		.ascii	"MaxbotixUltrasonic\000"
+ 1129      6F746978 
+ 1129      556C7472 
+ 1129      61736F6E 
+ 1129      696300
+ 1130              	.LASF13:
+ 1131 01df 75696E74 		.ascii	"uint32\000"
+ 1131      333200
+ 1132              	.LASF4:
+ 1133 01e6 756E7369 		.ascii	"unsigned int\000"
+ 1133      676E6564 
+ 1133      20696E74 
+ 1133      00
+ 1134              	.LASF6:
+ 1135 01f3 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1135      206C6F6E 
+ 1135      6720756E 
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 24
+
+
+ 1135      7369676E 
+ 1135      65642069 
+ 1136              	.LASF19:
+ 1137 020a 67657463 		.ascii	"getchar\000"
+ 1137      68617200 
+ 1138              	.LASF28:
+ 1139 0212 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1139      52784275 
+ 1139      66666572 
+ 1139      00
+ 1140              	.LASF11:
+ 1141 021f 696E7433 		.ascii	"int32_t\000"
+ 1141      325F7400 
+ 1142              	.LASF8:
+ 1143 0227 73697A65 		.ascii	"sizetype\000"
+ 1143      74797065 
+ 1143      00
+ 1144              	.LASF5:
+ 1145 0230 6C6F6E67 		.ascii	"long long int\000"
+ 1145      206C6F6E 
+ 1145      6720696E 
+ 1145      7400
+ 1146              	.LASF16:
+ 1147 023e 64657074 		.ascii	"depth\000"
+ 1147      6800
+ 1148              	.LASF10:
+ 1149 0244 63686172 		.ascii	"char\000"
+ 1149      00
+ 1150              	.LASF20:
+ 1151 0249 76616C75 		.ascii	"values\000"
+ 1151      657300
+ 1152              	.LASF17:
+ 1153 0250 76616C69 		.ascii	"valid\000"
+ 1153      6400
+ 1154              	.LASF2:
+ 1155 0256 73686F72 		.ascii	"short int\000"
+ 1155      7420696E 
+ 1155      7400
+ 1156              	.LASF34:
+ 1157 0260 556C7472 		.ascii	"Ultrasonic_Maxbotix_Start\000"
+ 1157      61736F6E 
+ 1157      69635F4D 
+ 1157      6178626F 
+ 1157      7469785F 
+ 1158              	.LASF31:
+ 1159 027a 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 1159      4320342E 
+ 1159      372E3320 
+ 1159      32303133 
+ 1159      30333132 
+ 1160 02ad 616E6368 		.ascii	"anch revision 196615]\000"
+ 1160      20726576 
+ 1160      6973696F 
+ 1160      6E203139 
+ 1160      36363135 
+ 1161              	.LASF21:
+ 1162 02c3 746F6B65 		.ascii	"token\000"
+ARM GAS  C:\Users\hozhen\AppData\Local\Temp\cc192GiM.s 			page 25
+
+
+ 1162      6E00
+ 1163              	.LASF0:
+ 1164 02c9 7369676E 		.ascii	"signed char\000"
+ 1164      65642063 
+ 1164      68617200 
+ 1165              	.LASF26:
+ 1166 02d5 496E7455 		.ascii	"IntUartRx_M\000"
+ 1166      61727452 
+ 1166      785F4D00 
+ 1167              	.LASF29:
+ 1168 02e1 7261775F 		.ascii	"raw_serial_data_m\000"
+ 1168      73657269 
+ 1168      616C5F64 
+ 1168      6174615F 
+ 1168      6D00
+ 1169              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

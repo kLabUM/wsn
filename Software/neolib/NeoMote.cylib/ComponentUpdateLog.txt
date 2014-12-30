@@ -1,0 +1,20 @@
+Last Modified Date & Time: 08/08/2014 19:25:08
+
+Project : NeoMote
+		Schematic : NEOMOTE
+
+		RX_Pin	v 1.90tv 2.0
+		TX_Pin	v 1.90tv 2.0
+		RX_RTS_n	v 1.90tv 2.0
+		RX_CTS_n	v 1.90tv 2.0
+		TX_RTS_n	v 1.90tv 2.0
+		TX_CTS_n	v 1.90tv 2.0
+		TimeN	v 1.90tv 2.0
+		External_VRef	v 1.90tv 2.0
+		I2C_0_SDA	v 1.90tv 2.0
+		I2C_0_SCL	v 1.90tv 2.0
+		NEO_RTC_INT1	v 1.90tv 2.0
+		SD_Card_Power	v 1.90tv 2.0
+		Clock_1	v 2.10tv 2.20
+
+

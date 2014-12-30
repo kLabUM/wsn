@@ -1,0 +1,17 @@
+--------------- Build Started: 12/19/2014 15:30:39 Project: Sensirion_TempRH, Configuration: ARM GCC 4.7.3 Debug ---------------
+The code generation step is up to date.
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\main.lst -ffunction-sections -c .\main.c -o .\CortexM3\ARM_GCC_473\Debug\main.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\TempRH_Sensirion.lst -ffunction-sections -c .\TempRH_Sensirion.c -o .\CortexM3\ARM_GCC_473\Debug\TempRH_Sensirion.o
+.\TempRH_Sensirion.c:9:11: error: 'Get_SensironValue' redeclared as different kind of symbol
+In file included from .\TempRH_Sensirion.c:2:0:
+.\TempRH_Sensirion.h:12:11: note: previous declaration of 'Get_SensironValue' was here
+.\TempRH_Sensirion.c: In function 'Get_SensironValue':
+.\TempRH_Sensirion.c:31:5: error: incompatible types when returning type 'uint16' but 'Sensirion' was expected
+.\TempRH_Sensirion.c: In function 'Take_TempRH_Reading':
+.\TempRH_Sensirion.c:39:5: warning: implicit declaration of function 'Digital_Sensor_Power_Write' [-Wimplicit-function-declaration]
+.\TempRH_Sensirion.c:42:5: error: aggregate value used where a float was expected
+.\TempRH_Sensirion.c:45:5: error: aggregate value used where a float was expected
+.\TempRH_Sensirion.c: In function 'Get_SensironValue':
+.\TempRH_Sensirion.c:32:1: warning: control reaches end of non-void function [-Wreturn-type]
+The command 'arm-none-eabi-gcc.exe' failed with exit code '1'.
+--------------- Build Failed: 12/19/2014 15:30:40 ---------------
